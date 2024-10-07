@@ -127,16 +127,23 @@
     <br>
     <!-- Dashboard Content -->
     <br>
+    <header style="margin-top: 70px;">
+        <div class="container" id="contents" style="text-align: center;">
+            <h1>J.PED</h1> 
+            @if(session()->has('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+        </div>
+    </header>
+
     <div class="container mt-4">
         <div class="row">
             <div class="container" id="contents">
-                <header class="d-flex justify-content-between" style="margin-top: 30px;">
-                    <h2>
-                        <p>Chassis</p>
-                    </h2>
-                    <br>
-                    <br>
-                </header>
+            <header class="d-flex justify-content-center align-items-center text-center" style="margin-top: 30px;">
+                <h2>
+                    <p>Portraits</p>
+                </h2>
+            </header>
             </div>
 
             @foreach($Case as $item)

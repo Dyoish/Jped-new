@@ -15,6 +15,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Profile_Controller;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
+use App\Http\Controllers\GalleryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -129,3 +131,5 @@ Route::get('/chassis_category', [Category_Controller::class, 'Chassis_Category_R
 Route::get('/monitor_category', [Category_Controller::class, 'Monitor_Category_Route']);
 Route::get('/pre_built_units', [Category_Controller::class, 'PreBuilt_Category_Route']);
 Route::get('/psu_category', [Category_Controller::class, 'PSU_Category_Route']);
+
+//Route::get('/', [GalleryController::class, 'index']);

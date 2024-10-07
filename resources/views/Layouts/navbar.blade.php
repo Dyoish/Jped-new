@@ -1,23 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
-    style="background-image: linear-gradient(to right, #937952, #4d9584); box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); ">
+    style="background-color: black; box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);">
     <!-- Added border-radius here -->
 
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-            <img src="{{ asset('images/final_logo-removebg-preview.png') }}" style="width: 200px; margin-left: 2vw;">
-        </a>
+     <div class="container-fluid">
+     <a class="navbar-brand" href="/">
+        <img src="{{ asset('images/logoP.png') }}" style="height: 100%; max-height: 50px; object-fit: contain; margin-left: 2vw;">
+    </a>
+
         <br>
     </div>
     @auth
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 
-            <li class="nav-item" style="margin-right: 40px; margin-top: 5px;">
+            <!--<li class="nav-item" style="margin-right: 40px; margin-top: 5px;">
                 <a href="/cart"><img src="images/cart.png" style="width: 25px;"></a>
-            </li>
+            </li>-->
 
             <!-- mx-auto to center the content -->
-            <li class="nav-item" style="margin-right: 1.5vw;">
+            <!--<li class="nav-item" style="margin-right: 1.5vw;">
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -25,7 +26,7 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="categoriesDropdown" style="margin-left: -2vw;">
-                        <!-- Dropdown content goes here -->
+                        <!-- Dropdown content goes here
                         <a class="dropdown-item text-center" href="/chassis_category">Chassis</a>
                         <a class="dropdown-item text-center" href="/processor_category">Processor</a>
                         <a class="dropdown-item text-center" href="/motherboard_category">Motherboard</a>
@@ -35,7 +36,7 @@
                         <a class="dropdown-item text-center" href="/storage_category">Storage</a>
                     </div>
                 </div>
-            </li>
+            </li>-->
 
             <li class="nav-item" style="margin-right: 3vw;">
                 <div class=" nav-item dropdown">
@@ -48,7 +49,7 @@
                         style="margin-left: -2.5vw;">
                         <!-- Dropdown content goes here -->
                         <a class=" dropdown-item text-center" href="/profile">My account</a>
-                        <a class="dropdown-item text-center" href="/my_purchase">My Purchase</a>
+                        <!-- <a class="dropdown-item text-center" href="/my_purchase">My Purchase</a> -->
                         <a class="dropdown-item text-center" href="{{route('logout')}}">Log out</a>
                     </div>
 
