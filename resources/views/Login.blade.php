@@ -50,7 +50,7 @@
 
     /* Increase right margin for the content */
     .custom-container {
-        margin-right: -350px;
+        margin-right: 140px;
         position: relative;
         /* Adjust as needed */
     }
@@ -111,8 +111,6 @@
         transition: transform 0.3s ease-in-out;
         /* Adjust the transition properties as needed */
     }
-
-
 
     footer {
         flex-shrink: 0;
@@ -183,13 +181,13 @@
                     </form>
                 </div>
 
-                <!-- Image on the left side (as a clickable button) -->
+                <!-- Image on the left side (as a clickable button) 
                 <div class="col-lg-6 col-md-3 col-sm-9 position-fixed text-left hide-on-small"
                     style="left: 0; top: -40px;">
                     <a href="/">
                         <img src="images/logo white4.png" alt="Left Image" style="width: 100%;">
                     </a>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
