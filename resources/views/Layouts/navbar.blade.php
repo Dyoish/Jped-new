@@ -49,6 +49,7 @@
                         style="margin-left: -2.5vw;">
                         <!-- Dropdown content goes here -->
                         <a class=" dropdown-item text-center" href="/profile">My account</a>
+                        <a class=" dropdown-item text-center" href="/profile">Book Now</a>
                         <!-- <a class="dropdown-item text-center" href="/my_purchase">My Purchase</a> -->
                         <a class="dropdown-item text-center" href="{{route('logout')}}">Log out</a>
                     </div>

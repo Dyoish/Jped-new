@@ -73,7 +73,7 @@
         margin: 0 auto;
     }
 
-    .category_chassis {
+    .category_portrait {
         color: #f8f8f8;
         background-color: #000000;
     }
@@ -117,6 +117,51 @@
         transform: scale(1.1);
         /* Increase the scale on hover */
     }
+
+    .gallery-container {
+        padding: 40px 0;
+    }
+
+    .gallery-item {
+        margin-bottom: 30px;
+    }
+
+    .gallery-item img {
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .gallery-item img:hover {
+        transform: scale(1.05);
+        /* Slight zoom on hover */
+    }
+
+    .gallery-title {
+        margin-bottom: 20px;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .gallery-btn {
+        background-color: black;  /* Default background color */
+        color: white;             /* Text color */
+        border-color: black;      /* Button border color */
+        margin: 5px;
+    }
+
+    .gallery-btn:hover {
+        background-color: #4d9584; /* Highlight color on hover */
+        color: white;              /* Keep text white on hover */
+    }
+
+    .gallery-btn.active {
+        background-color: #4d9584; /* Highlight color for active button */
+        color: white;              /* Keep text white */
+    }
     </style>
 </head>
 
@@ -127,50 +172,68 @@
     <br>
     <!-- Dashboard Content -->
     <br>
-    <header style="margin-top: 70px;">
+    <header style="margin-top: 45px;">
         <div class="container" id="contents" style="text-align: center;">
             <h1>J.PED</h1> 
-            @if(session()->has('error'))
-                <div class="alert alert-danger">{{ session('error') }}</div>
-            @endif
         </div>
     </header>
 
-    <div class="container mt-4">
+    <div class="container mt-1">
         <div class="row">
             <div class="container" id="contents">
-            <header class="d-flex justify-content-center align-items-center text-center" style="margin-top: 30px;">
+            <header class="d-flex justify-content-center align-items-center text-center" style="margin-bottom: -50px;">
                 <h2>
                     <p>Portraits</p>
                 </h2>
             </header>
             </div>
-
-            @foreach($Case as $item)
-            <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-4">
-                <a href="{{url('product_demo/' . $item->id . '')}}" style="text-decoration: none; color: inherit;">
-                    <div class="card" style="border-radius: 30px 30px 30px 30px;">
-                        <img src="{{ asset($item->photo) }}" class="card-img-top border-2 img-fluid" alt="Card Image"
-                            style="border-top-left-radius: 30px; border-top-right-radius: 30px;">
-                        <div class="card-body text-center"
-                            style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
-                            <!-- Removed border-radius from the img element -->
-                            <h5 class="card-subtitle mb-0 mt-0">
-                                <p>{{$item->name}}</p>
-                            </h5>
-                            <p class="card-text">{{$item->category}}</p>
-                            <h6 class="card-subtitle mb-0 mt-0">₱{{number_format($item->price)}}</h6>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            @endforeach
         </div>
     </div>
 
+    <!-- Image Gallery Section -->
+    <section class="gallery-container">
+        <div class="container">
+            <!-- Category Buttons -->
+                <div class="gallery-categories text-center">
+                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraits</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/processor_category">Events</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/motherboard_category">Street</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a>
+                </div>
+                <br>
+            <div class="row">
+                <!-- Gallery item 1 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 1" class="img-fluid">
+                </div>
+                <!-- Gallery item 2 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 2" class="img-fluid">
+                </div>
+                <!-- Gallery item 3 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 3" class="img-fluid">
+                </div>
+                <!-- Gallery item 4 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 4" class="img-fluid">
+                </div>
+                <!-- Gallery item 5 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 5" class="img-fluid">
+                </div>
+                <!-- Gallery item 6 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 6" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Footer Section -->
-    @include('Layouts.footer2')
+
+    <!-- Footer Section 
+    @include('Layouts.footer2')-->
 
     <!-- Bootstrap JS and Popper.js scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

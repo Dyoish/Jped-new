@@ -48,48 +48,48 @@ Route::group(['middleware'=>'auth'], function(){
     //PROFILE
     Route::get('/change_number', [Profile_Controller::class, 'New_PhoneNumber_Route']);
     //purchase
-    Route::get('/my_purchase', [Profile_Controller::class, 'My_Purchase_Route']);
-    Route::get('/my_purchase/{id}/delete', [CartController::class, 'destroy2']);
-    Route::get('/my_bought', [CartController::class, 'bought']);
-    Route::get('/my_refunded', [CartController::class, 'refunded']);
-    Route::get('/my_cancelled', [CartController::class, 'cancelled']);
+    // Route::get('/my_purchase', [Profile_Controller::class, 'My_Purchase_Route']);
+    // Route::get('/my_purchase/{id}/delete', [CartController::class, 'destroy2']);
+    // Route::get('/my_bought', [CartController::class, 'bought']);
+    // Route::get('/my_refunded', [CartController::class, 'refunded']);
+    // Route::get('/my_cancelled', [CartController::class, 'cancelled']);
     //refunded
-    Route::get('/my_refunded/{id}/delete', [CartController::class, 'destroy3']);
+    // Route::get('/my_refunded/{id}/delete', [CartController::class, 'destroy3']);
 
-    //cancelled
-    Route::get('/my_cancelled/{id}/delete', [CartController::class, 'destroy4']);
+    // //cancelled
+    // Route::get('/my_cancelled/{id}/delete', [CartController::class, 'destroy4']);
 
-    Route::get('/profile', [Profile_Controller::class, 'Profile_Route']);
-    Route::get('/bank_and_card', [Profile_Controller::class, 'BankandCard_Route']);
-    Route::get('/add_card_details', [Profile_Controller::class, 'New_Card_Route']);
-    //Address
-    Route::get('/address', [AddressController::class, 'index']);
-    Route::get('/add_new_address', [AddressController::class, 'create']);
-    Route::post('/add_new_address', [AddressController::class, 'store']);
-    Route::get('/edit_address/{id}', [AddressController::class, 'edit']);
-    Route::put('/edit_address/{id}', [AddressController::class, 'update']);
-    Route::get('/delete_address/{id}', [AddressController::class, 'destroy']);
+    // Route::get('/profile', [Profile_Controller::class, 'Profile_Route']);
+    // Route::get('/bank_and_card', [Profile_Controller::class, 'BankandCard_Route']);
+    // Route::get('/add_card_details', [Profile_Controller::class, 'New_Card_Route']);
+    // //Address
+    // Route::get('/address', [AddressController::class, 'index']);
+    // Route::get('/add_new_address', [AddressController::class, 'create']);
+    // Route::post('/add_new_address', [AddressController::class, 'store']);
+    // Route::get('/edit_address/{id}', [AddressController::class, 'edit']);
+    // Route::put('/edit_address/{id}', [AddressController::class, 'update']);
+    // Route::get('/delete_address/{id}', [AddressController::class, 'destroy']);
 
-    Route::get('/change_passwordV', [Profile_Controller::class, 'Pass_Verification_Route']);
-    Route::post('/change_password', [Profile_Controller::class, 'New_Password_Route']);
-    Route::get('/change_email', [Profile_Controller::class, 'New_Email_Route']);
-    Route::get('/my_account/edit', [LoginController::class, 'edit'])->name('user.edit-profile');
-    Route::put('/my_account', [LoginController::class, 'update'])->name('user.update-profile');
-    Route::get('/my_account', [LoginController::class, 'Profile_Route'])->name('user.profile');
-    //product and checkout
+    // Route::get('/change_passwordV', [Profile_Controller::class, 'Pass_Verification_Route']);
+    // Route::post('/change_password', [Profile_Controller::class, 'New_Password_Route']);
+    // Route::get('/change_email', [Profile_Controller::class, 'New_Email_Route']);
+    // Route::get('/my_account/edit', [LoginController::class, 'edit'])->name('user.edit-profile');
+    // Route::put('/my_account', [LoginController::class, 'update'])->name('user.update-profile');
+    // Route::get('/my_account', [LoginController::class, 'Profile_Route'])->name('user.profile');
+    // //product and checkout
     
-    Route::get('/cart', [CartController::class,'index']);
-    Route::post('/addcart/{id}', [CartController::class,'add_cart']);
-    Route::post('/increasecart/{id}', [CartController::class,'increase']);
-    Route::get('/decreasecart/{id}', [CartController::class,'decrease']);
-    Route::get('/addcart/{id}/delete',[CartController::class,'destroy']);
-    Route::post('/buynow/{id}', [CartController::class,'buy_now']);
-    Route::post('/topurchase/{id}', [CartController::class,'checkout']);
-    Route::post('/torefund/{id}', [\App\Http\Controllers\API\ProductsController::class,'refund']);
-    Route::post('/tocancel/{id}', [\App\Http\Controllers\API\ProductsController::class,'cancel']);
-    Route::get('/checkOut', [CartController::class,'checkoutindex']);
-    Route::get('/verify', function(){return  view('Verify_Page');});
-    Route::post('/verify', function(){return  view('Verify_Page');});
+    // Route::get('/cart', [CartController::class,'index']);
+    // Route::post('/addcart/{id}', [CartController::class,'add_cart']);
+    // Route::post('/increasecart/{id}', [CartController::class,'increase']);
+    // Route::get('/decreasecart/{id}', [CartController::class,'decrease']);
+    // Route::get('/addcart/{id}/delete',[CartController::class,'destroy']);
+    // Route::post('/buynow/{id}', [CartController::class,'buy_now']);
+    // Route::post('/topurchase/{id}', [CartController::class,'checkout']);
+    // Route::post('/torefund/{id}', [\App\Http\Controllers\API\ProductsController::class,'refund']);
+    // Route::post('/tocancel/{id}', [\App\Http\Controllers\API\ProductsController::class,'cancel']);
+    // Route::get('/checkOut', [CartController::class,'checkoutindex']);
+    // Route::get('/verify', function(){return  view('Verify_Page');});
+    // Route::post('/verify', function(){return  view('Verify_Page');});
     
     
 });
@@ -127,9 +127,10 @@ Route::get('/ram_category', [Category_Controller::class, 'Ram_Category_Route']);
 Route::get('/hdd_category', [Category_Controller::class, 'HDD_Category_Route']);
 Route::get('/storage_category', [Category_Controller::class, 'SSD_Category_Route']);
 Route::get('/motherboard_category', [Category_Controller::class, 'Motherboard_Category_Route']);
-Route::get('/chassis_category', [Category_Controller::class, 'Chassis_Category_Route']);
+Route::get('/portrait_category', [Category_Controller::class, 'Portrait_Category_Route']);
 Route::get('/monitor_category', [Category_Controller::class, 'Monitor_Category_Route']);
 Route::get('/pre_built_units', [Category_Controller::class, 'PreBuilt_Category_Route']);
 Route::get('/psu_category', [Category_Controller::class, 'PSU_Category_Route']);
 
 //Route::get('/', [GalleryController::class, 'index']);
+

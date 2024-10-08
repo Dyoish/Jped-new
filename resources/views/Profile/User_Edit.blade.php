@@ -15,175 +15,127 @@
     <link href="https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin"
         rel="stylesheet">
     <style>
-    @import url(https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin);
+        @import url(https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin);
 
-    @font-face {
-        font-family: "Spoof Trial Thin";
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot");
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix")format("embedded-opentype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2")format("woff2"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff")format("woff"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf")format("truetype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin")format("svg");
-    }
+        @font-face {
+            font-family: "Spoof Trial Thin";
+            src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot");
+            src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix")format("embedded-opentype"),
+                 url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2")format("woff2"),
+                 url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff")format("woff"),
+                 url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf")format("truetype"),
+                 url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin")format("svg");
+        }
 
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        font-family: "Spoof Trial Thin";
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-    }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: "Spoof Trial Thin";
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-    .main {
-        flex: 1;
-    }
+        .main {
+            flex: 1;
+        }
 
-    footer {
-        margin-top: auto;
-    }
+        footer {
+            margin-top: auto;
+        }
 
-    table {
-        border-collapse: collapse;
-        width: 65%;
-        border: 1px solid black;
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid black;
+        }
 
-    }
+        td {
+            padding: 15px;
+            text-align: center;
+        }
 
-    td {
-        padding: 15px;
-        text-align: center;
-    }
+        .user_profile {
+            width: 30%;
+            overflow-y: hidden;
+            box-sizing: border-box;
+            border: 1px solid rgb(255, 255, 255);
+            background-color: #fff; /* Add background color */
+            border-radius: 8px; /* Rounded corners */
+            padding: 20px; /* Inner padding */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            margin-left: 460px; /* Space between profile and contents */
+        }
 
-    .table_1 td {
-        padding: 15px;
-        text-align: center;
-        cursor: pointer;
-        width: 16.66%;
-    }
+        .container {
+            margin-top: 200px;
+        }
 
-    .img {
-        max-width: 10%;
-        margin-right: 10px;
-    }
 
-    .clicked {
-        border-bottom: 2px solid rgb(0, 0, 0);
-        color: rgb(68, 0, 255);
-    }
+        .contents {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px; /* Consistent padding */
+            background-color: #fff; /* White background */
+            border-radius: 8px; /* Rounded corners */
+            margin-left: 20px; /* Space between profile and contents */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            margin-top: 50px;
+        }
 
-    .profile_images {
-        border-radius: 50%;
-        width: 7vw;
-        height: auto;
-        margin-left: 35%;
-    }
+        .profile_img {
+            border-radius: 50%;
+            width: 70%; /* Responsive width */
+            height: auto;
+            margin: 0 auto; /* Centering */
+            display: block; /* Block for centering */
+        }
 
-    .container {
-        display: flex;
-        width: 100%;
-        height: auto;
-    }
+        .user_details {
+            text-align: center; /* Centered text */
+            margin-top: 10px; /* Space above */
+            font-size: 16px; /* Slightly larger font */
+        }
 
-    .user_profile {
-        width: 30%;
-        overflow-y: hidden;
-        box-sizing: border-box;
-        border: 1px solid rgb(255, 255, 255);
-    }
+        .user_header {
+            text-align: center; /* Centered header */
+            margin-bottom: 20px; /* Space below header */
+        }
 
-    .contents {
-        width: 100%;
-        flex: 1;
-        overflow-y: auto;
-        padding-left: 20px;
-        overflow-x: hidden;
-    }
+        .input-group {
+            margin-bottom: 15px; /* Space between input fields */
+        }
 
-    .contents table {
-        width: 100%;
-        border-collapse: collapse;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        border: none;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    }
+        input[type="text"],
+        input[type="email"] {
+            width: 100%; /* Full width */
+            padding: 10px; /* Inner padding */
+            border: 1px solid #ccc; /* Border styling */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            transition: border-color 0.3s; /* Transition effect */
+        }
 
-    .table_1 {
-        margin-bottom: 10px;
-        position: sticky;
-        z-index: 2;
-        background-color: #ffffff;
-    }
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            border-color: #007bff; /* Change border color on focus */
+            outline: none; /* Remove outline */
+        }
 
-    .profile_img {
-        border-radius: 50%;
-        width: 7.5vw;
-        height: auto;
-    }
+        .custom-btn {
+            border: none; /* Remove default border */
+            background-color: #000000; /* Button background color */
+            color: #fff; /* Text color */
+            padding: 10px 20px; /* Inner padding */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Transition effect */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
 
-    .user_details {
-        text-align: left;
-        margin-left: 30%;
-        font-size: 14px;
-    }
-
-    .user_header {
-        text-align: left;
-        text-decoration: none;
-    }
-
-    .myPurchase_header {
-        margin-top: -30px;
-        text-align: left;
-        text-decoration: none;
-    }
-
-    .payment {
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-    }
-
-    .address {
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-    }
-
-    .change_pass {
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-    }
-
-    .main_content {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar-brand img {
-        transition: transform 0.3s ease-in-out;
-        /* Apply the transition to the transform property */
-    }
-
-    .navbar-brand img:hover {
-        transform: scale(1.1);
-        /* Increase the scale on hover */
-    }
-    .custom-btn{
-        border-color: #937952;
-        color: #937952;
-    }
-
-    .custom-btn:hover{
-        color: white;
-        background-color: #4d9584;
-    }
-    .custom-btn:focus{
-        color: white;
-        background-color: #4d9584;
-    }
+        .custom-btn:hover {
+            background-color: #ffffff; /* Change background color on hover */
+        }
     </style>
 </head>
 
@@ -192,122 +144,47 @@
     @include('Layouts.navbar')
 
     <!-- Header Section -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="container">
         <table class="user_profile">
             <tr>
                 <td>
-                    <a href="/my_account">
-                        <img src="images/default_profile.png" class="profile_img"
-                            style="float: left; margin-left: -120px; margin-top: -60px;">
-                    </a>
-                    <h2 style="margin-bottom: 20px; margin-top: -41px;">{{auth()->user()->name}}</h2>
+                    <h2 style="margin-bottom: 10px;">{{auth()->user()->name}}</h2>
                     <a href="my_account/edit" style="text-decoration: none; color: rgb(0, 0, 0);">
                         <p>Edit Profile <i class='bx bx-edit'></i></p>
                     </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <hr style="margin: 0 auto; width: 100%; margin-bottom: -400px; margin-left: -90px; ">
-                </td>
-            </tr>
-            <tr>
-                <div class="section">
-                    <td style="text-align: center;">
-                        <div class="user_header">
-                            <a href="/my_account"
-                                style="text-decoration: none; font-size: 30px; margin-bottom: -90px;">My
-                                Account</a>
-                        </div>
-                        <br>
-                        <div class="user_details" style="margin-left: 40px;">
-                            <a href="/my_account" style="text-decoration: none; " class="myPurchase_header">
-                                <p>Profile</p>
-                            </a>
-                            <a href="/address" style="text-decoration: none; " class="address">
-                                <p>Address</p>
-                            </a>
-                        </div>
-                    </td>
-                </div>
-            </tr>
-            <tr>
-                <td style="text-align: center;">
-                    <div class="myPurchase_header">
-                        <a href="/my_purchase" style="font-size: 30px; text-decoration: none; color: rgb(0, 0, 0);">My
-                            Purchase</a>
-                    </div>
                 </td>
             </tr>
         </table>
 
         <!-- Table Section -->
         <div class="contents">
-            <br>
-            <table class="table_2">
-                <tr>
-                    <td style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-                        <h4 style="margin: 0; margin-right: auto; padding: 10px ; font-weight: bold;">
-                            My Profile
-                        </h4>
-                        <p style="margin: 0; margin-right: auto; padding-left:10px">Manage and protect your account</p>
-                        <hr style="margin: 0 auto; width: 100%;">
-                    </td>
-                </tr>
-                <form action="{{route("user.update-profile")}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <div class="profile_picture">
-                        <tr>
-                            <td style="display: flex; align-items: center; justify-content: flex-start;">
-                                <img src="images/default_profile.png" class="profile_images">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <hr style="margin: 0 auto; width: 100%;">
-                            </td>
-                        </tr>
-                    </div>
-                    <tr class="user">
-                        <td style="display: flex; align-items: center; justify-content: flex-start;">
-                            <p style="margin-left: 10px; font-weight: bold;" >Username:</p>
-                            <input type="text" style="margin-bottom: 1.5%; margin-left:2%" name="name" id="name"
-                                value="{{$user->name}}" />
-                        </td>
-                    </tr>
-                    <tr class="email">
-                        <td style="display: flex; align-items: center; justify-content: flex-start;">
-                            <p style="margin-left: 10px; font-weight: bold;">Email:</p>
-                            <input type="email" style="margin-bottom: 1.5%; margin-left:2%" name="email" id="email"
-                                value="{{$user->email}}" />
-                        </td>
-                    </tr>
-                    <tr class="phoneN">
-                        </td>
-                    </tr>
-                    <tr style="display: flex; align-items: center; justify-content: flex-end;">
-                        <td>
-                            <button type="submit"
-                                class="btn custom-btn">Save</button>
-                        </td>
-                    </tr>
-                </form>
-            </table>
+            <h4 class="user_header">My Profile</h4>
+            <p style="text-align: center;">Manage and protect your account</p>
+            <hr>
+
+            <form action="{{route("user.update-profile")}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                <div class="input-group">
+                    <label for="name" style="font-weight: bold;">Username:</label>
+                    <input type="text" name="name" id="name" value="{{$user->name}}" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="email" style="font-weight: bold;">Email:</label>
+                    <input type="email" name="email" id="email" value="{{$user->email}}" required />
+                </div>
+
+                <div style="display: flex; justify-content: flex-end;">
+                    <button type="submit" class="btn custom-btn">Save</button>
+                </div>
+            </form>
         </div>
     </div>
-    <br>
 
-    <!-- Footer Section -->
-    @include('Layouts.footer3')
-
-    <!-- Bootstrap JS and Popper.js scripts -->
+    <!-- Footer Section 
+    @include('Layouts.footer3')-->
 
     <!-- Bootstrap JS and Popper.js scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

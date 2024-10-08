@@ -110,9 +110,6 @@
     <header style="margin-top: 70px;">
         <div class="container" id="contents" style="text-align: center;">
             <h1>J.PED</h1> 
-            @if(session()->has('error'))
-                <div class="alert alert-danger">{{ session('error') }}</div>
-            @endif
         </div>
     </header>
 
@@ -121,7 +118,7 @@
         <div class="container">
             <!-- Category Buttons -->
                 <div class="gallery-categories text-center">
-                    <a class="btn btn-primary text-center gallery-btn" href="/chassis_category">Portraits</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraits</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/processor_category">Events</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/motherboard_category">Street</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>

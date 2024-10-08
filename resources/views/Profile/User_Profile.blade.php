@@ -64,9 +64,10 @@
     }
 
     .contents {
-        margin-top: 30px;
-        padding: 30px;
-    }
+    margin-top: 30px;
+    padding: 30px;
+    text-align: center; /* Center text */
+}
 
     .contents h4 {
         font-size: 24px;
@@ -130,8 +131,8 @@
     }
 
     .edit-btn {
-        color: #fff;
-        background-color: #007bff;
+        color: #ffffff;
+        background-color: #ffffff;
         border-radius: 30px;
         padding: 8px 20px;
         margin-left: 10px;
@@ -139,13 +140,14 @@
     }
 
     .edit-btn:hover {
-        background-color: #0056b3;
+        background-color: #000000;
     }
 
     .profile_section {
-        display: flex;
-        align-items: center;
-    }
+    display: flex;
+    justify-content: center; /* Center contents horizontally */
+    align-items: center; /* Center contents vertically */
+}
     </style>
 </head>
 
@@ -160,22 +162,21 @@
         <!-- User Profile Section -->
         <div class="user_profile">
             <a href="/my_account">
-                <img src="images/default_profile.png" class="profile_img" alt="Profile Image">
             </a>
             <h2>{{auth()->user()->name}}</h2>
             <p>Edit Profile <a href="my_account/edit" class="edit-btn"><i class='bx bx-edit'></i></a></p>
 
-            <hr>
 
-            <!-- Account Links -->
+
+            <!-- Account Links
             <div class="user_details">
                 <a href="/my_account" class="myPurchase_header">
                     <p>Profile</p>
                 </a>
-                <a href="/address" class="address">
+                 <a href="/address" class="address">
                     <p>Address</p>
-                </a>
-            </div>
+                </a> 
+            </div> -->
         </div>
 
         <!-- Purchase Section -->
@@ -185,7 +186,6 @@
             <hr>
 
             <div class="profile_section">
-                <img src="images/default_profile.png" class="profile_images">
                 <div>
                     <p><strong>Username:</strong> {{auth()->user()->name}}</p>
                     <p><strong>Email:</strong> {{auth()->user()->email}}</p>
@@ -198,8 +198,8 @@
 
     <br><br><br>
 
-    <!-- Footer Section -->
-    @include('Layouts.footer3')
+    <!-- Footer Section 
+    @include('Layouts.footer3')-->
 
     <!-- Bootstrap JS and Popper.js scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

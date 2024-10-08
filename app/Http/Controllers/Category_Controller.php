@@ -35,9 +35,9 @@ class Category_Controller extends Controller
         return view('Categories.PSU',compact('PSU'));
     }
 
-    public function Chassis_Category_Route(){
-        $Case = Products::where("category","Case")->get();
-        return view('Categories.Chassis',compact('Case'));
+    public function Portrait_Category_Route(){
+        $Portrait = Products::where("category","Portrait")->get();
+        return view('Categories.Portrait',compact('Portrait'));
     }
 
     public function Monitor_Category_Route(){
