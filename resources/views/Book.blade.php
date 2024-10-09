@@ -109,50 +109,13 @@
     <!-- Header Section -->
     <header style="margin-top: 70px;">
         <div class="container" id="contents" style="text-align: center;">
-            <h1>J.PED</h1> 
+            <h1>BOOK PAGE
+                
+            </h1> 
         </div>
     </header>
 
-    <!-- Image Gallery Section -->
-    <section class="gallery-container">
-        <div class="container">
-            <!-- Category Buttons -->
-                <div class="gallery-categories text-center">
-                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraits</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/events_category">Events</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/motherboard_category">Street</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a>
-                </div>
-                <br>
-            <div class="row">
-                <!-- Gallery item 1 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 1" class="img-fluid">
-                </div>
-                <!-- Gallery item 2 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 2" class="img-fluid">
-                </div>
-                <!-- Gallery item 3 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 3" class="img-fluid">
-                </div>
-                <!-- Gallery item 4 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 4" class="img-fluid">
-                </div>
-                <!-- Gallery item 5 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 5" class="img-fluid">
-                </div>
-                <!-- Gallery item 6 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 6" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Footer Section
     @include('Layouts.footer2') -->

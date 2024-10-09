@@ -13,9 +13,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 
-            <!--<li class="nav-item" style="margin-right: 40px; margin-top: 5px;">
-                <a href="/cart"><img src="images/cart.png" style="width: 25px;"></a>
-            </li>-->
+        <li class="nav-item" style="margin-right: 40px; margin-top: 5px;">
+            <a href="/book" style="text-decoration: none; color: white;">Book</a>
+        </li>
 
             <!-- mx-auto to center the content -->
             <!--<li class="nav-item" style="margin-right: 1.5vw;">
@@ -49,8 +49,6 @@
                         style="margin-left: -2.5vw;">
                         <!-- Dropdown content goes here -->
                         <a class=" dropdown-item text-center" href="/profile">My account</a>
-                        <a class=" dropdown-item text-center" href="/profile">Book Now</a>
-                        <!-- <a class="dropdown-item text-center" href="/my_purchase">My Purchase</a> -->
                         <a class="dropdown-item text-center" href="{{route('logout')}}">Log out</a>
                     </div>
 

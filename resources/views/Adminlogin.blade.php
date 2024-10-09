@@ -50,7 +50,7 @@
 
     /* Increase right margin for the content */
     .custom-container {
-        margin-right: -350px;
+        margin-right: 10px;
         /* Adjust as needed */
     }
 
@@ -59,7 +59,7 @@
     #loginForm {
         border: 1px solid #ccc;
         border-radius: 50px;
-        padding: 105px;
+        padding: 60px;
         /* Adjust as needed */
     }
 
@@ -105,7 +105,7 @@
 
 
     <!-- Content Section -->
-    <section style="margin-top: 15px; margin-bottom: 20px;">
+    <section style="margin-top: 100px; margin-bottom: 20px;">
         <div class="container custom-container text-center">
             <!-- Login Form Row -->
             <div class="row">
@@ -154,7 +154,7 @@
     </section>
 
 
-    <!-- Footer Section -->
+    <!-- Footer Section 
     <footer class="bg-black text-light text-center py-3 fixed-bottom">
         <div class="row">
             <div class="col-md text-left ml-md-5">
@@ -167,7 +167,7 @@
                 <p><a href="https://www.facebook.com/yourpage" class="text-light">Follow us on Facebook</a></p>
             </div>
         </div>
-    </footer>
+    </footer>-->
 
     <!-- Bootstrap JS and Popper.js scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

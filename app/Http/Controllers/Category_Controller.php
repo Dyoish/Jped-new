@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class Category_Controller extends Controller
 {
-    public function Cpu_Category_Route(){
-        $CPU = Products::where("category","CPU")->get();
-        return view('Categories.Processor',compact('CPU'));
+    public function Events_Category_Route(){
+        $Events = Products::where("category","Events")->get();
+        return view('Categories.Events',compact('Events'));
     }
 
     public function Ram_Category_Route(){

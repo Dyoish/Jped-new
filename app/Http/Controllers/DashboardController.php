@@ -44,16 +44,7 @@ class DashboardController extends Controller
         $user = User::orderBy('id','desc')->get();
         $usercount = User::count();
         $products = Products::count();
-        $boughtquant = BoughtProducts::sum('quantity');
-        $boughtcount = BoughtProducts::count();
-        $bought = BoughtProducts::all();
         $boughtTotal=0;
-        foreach($bought as $boughts){
-            $boughtTotal += $boughts -> quantity * $boughts -> price;
-        }
-        $refunded = RefundedProducts::sum('quantity');
-        $cancelled = CancelledProducts::sum('quantity');
-        return view('Admindashboards', compact('user','products','refunded','cancelled','boughtquant','usercount','boughtcount','boughtTotal'));
     }
     public function adminanalytics(){
         $user = User::count();
