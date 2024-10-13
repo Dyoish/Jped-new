@@ -80,11 +80,11 @@
                     <span class="text">
                         <h3>Products</h3>
                         <p>Total For Sale: {{number_format($products)}}</p>
-                        @if($boughtcount != 0)
+
                         <p>Total Sales: ₱{{number_format($boughtTotal)}}</p>
-                        @else
+                    
                             <p>Total Sales:₱0</p>
-                        @endif
+                    
                     </span>
                 </li>
                 <li>
@@ -97,10 +97,6 @@
                 <li>
                     <i class="bx bxs-cart-add"></i>
                     <span class="text">
-                        <h3>Purchased Products</h3>
-                        <p>Total Units Bought: {{number_format($boughtquant)}}</p>
-                        <p>Total Units Refunded: {{number_format($refunded)}}</p>
-                        <p>Total Units Cancelled: {{number_format($cancelled)}}</p>
                     </span>
                 </li>
             </ul>

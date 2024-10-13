@@ -15,16 +15,8 @@ class DashboardController extends Controller
         return view('DashBoard');
     }
 
-    public function index(){
-        $products = Products::get();
-        $CPU = Products::where("category","CPU")->get();
-        $Motherboard = Products::where("category","Motherboard")->get();
-        $RAM = Products::where("category","RAM")->get();
-        $GPU = Products::where("category","GPU")->get();
-        $PSU = Products::where("category","PSU")->get();
-        $Case = Products::where("category","Case")->get();
-        $Storage = Products::where("category","Storage")->get();
-        return view('DashBoard', compact('products','CPU','Motherboard','GPU','RAM','PSU','Storage','Case'));
+    public function index(){    
+        return view('DashBoard');
     }
 
     
@@ -45,6 +37,7 @@ class DashboardController extends Controller
         $usercount = User::count();
         $products = Products::count();
         $boughtTotal=0;
+        return view('Admindashboards',compact('user','usercount','products','boughtTotal'));
     }
     public function adminanalytics(){
         $user = User::count();

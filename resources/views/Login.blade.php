@@ -42,17 +42,26 @@
         /* Left panel (Login) */
         .login-panel {
             background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
             padding: 50px;
             width: 50%;
             color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-left: 230px;
+            
         }
 
         .login-panel h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            margin-left: 25px;
+        }
+
+        .login-panel p {
+            margin-bottom: 20px;
+            margin-left: 60px;
         }
 
         .login-panel .form-group {
@@ -127,6 +136,14 @@
                 width: 100%;
             }
         }
+        .btn-white {
+            color: white;
+            border: 1px solid black;
+        }
+
+        .btn-white:hover {
+        background-color: #f1f1f1; /* Slight hover effect */
+        }
     </style>
 </head>
 
@@ -134,36 +151,35 @@
 
     <!-- Content Section -->
     <div class="container">
-        <!-- Login Form -->
-        <div class="login-panel">
-            <h1>Log in to JPED</h1>
-            <p> use your email account:</p>
+    <!-- Login Form -->
+    <div class="login-panel">
+        <h1>Sign in to JPED</h1>
 
-            <form id="loginForm" action="{{route('Login.post')}}" method="post">
-                @csrf
-                <div class="form-group">
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-                    @error('email') <span class="text-danger">{{$message}}</span> @enderror
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                    @error('password') <span class="text-danger">{{$message}}</span> @enderror
-                </div>
+        <form id="loginForm" action="{{ route('Login.post') }}" method="post">
+            @csrf
+            <div class="form-group">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                @error('email') 
+                    <span class="text-danger">{{ $message }}</span> 
+                @enderror
+            </div>
 
-                <!--<p><a href="#" class="black-link">Forgot your password?</a></p>-->
-                
-                <button type="submit" class="btn btn-block black-button grey-hover">Log in</button> 
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                @error('password') 
+                    <span class="text-danger">{{ $message }}</span> 
+                @enderror
+            </div>
 
-            </form>
-        </div>
+            <button type="submit" class="btn btn-block black-button grey-hover">Log in</button>
+        </form>
 
-        <!-- Signup Prompt -->
-        <div class="signup-panel">
-            <h2>Hello, friend!</h2>
-            <p>Enter your personal details and start your journey with us</p>
-            <a href="/signup" class="btn btn-black black-button">Sign up</a>
-        </div>
+        <!-- Signup Prompt (merged into login container) -->
+        <br>
+        <p>Start your journey with us.</p>
+        <a href="/signup" class="btn btn-white">Sign up</a>
     </div>
+</div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -1,175 +1,73 @@
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>J.PED</title>
-    <link rel="stylesheet" href="dashboard.css">
-    <!-- Bootstrap CSS link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin"
-        rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <style>
-    @import url(https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin);
-
-    @font-face {
-        font-family: "Spoof Trial Thin";
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot");
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix")format("embedded-opentype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2")format("woff2"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff")format("woff"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf")format("truetype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin")format("svg");
-    }
-
-    body {
-        font-family: "Spoof Trial Thin", sans-serif;
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        overflow-x: hidden;
-    }
-
-    h1 {
-        font-weight: bold;
-    }
-
-    a {
-        text-decoration: none;
-        font-size: 18px;
-        color: inherit;
-    }
-
-    main {
-        flex: 1;
-    }
-
-    footer {
-        margin-top: auto;
-    }
-
-    /* Image gallery */
-    .gallery-container {
-        padding: 40px 0;
-    }
-
-    .gallery-item {
-        margin-bottom: 30px;
-    }
-
-    .gallery-item img {
-        border-radius: 10px;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        transition: transform 0.2s ease-in-out;
-    }
-
-    .gallery-item img:hover {
-        transform: scale(1.05);
-        /* Slight zoom on hover */
-    }
-
-    .gallery-title {
-        margin-bottom: 20px;
-        font-size: 36px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .gallery-btn {
-        background-color: black;  /* Default background color */
-        color: white;             /* Text color */
-        border-color: black;      /* Button border color */
-        margin: 5px;
-    }
-
-    .gallery-btn:hover {
-        background-color: #4d9584; /* Highlight color on hover */
-        color: white;              /* Keep text white on hover */
-    }
-
-    .gallery-btn.active {
-        background-color: #4d9584; /* Highlight color for active button */
-        color: white;              /* Keep text white */
-    }
-
-    </style>
+    <title>Photography Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
-
 <body>
+
     <!-- Navigation Bar -->
     @include('Layouts.navbar')
+
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
 
-    <!-- Header Section -->
-    <header style="margin-top: 70px;">
-        <div class="container" id="contents" style="text-align: center;">
-            <h1>BOOK PAGE
-                
-            </h1> 
-        </div>
-    </header>
+    <div class="container mt-5">
+        <h2>Book a Photography Session</h2>
+        
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
-    
+        <form action="/booking" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
 
-    <!-- Footer Section
-    @include('Layouts.footer2') -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
 
-    <!-- Scripts -->
+            <div class="mb-3">
+                <label for="service_id" class="form-label">Select Service</label>
+                <select name="service_id" class="form-select" required>
+                    <option value="">Choose a service...</option>
+                    <option value="1">Wedding Photography </option>
+                    <option value="2">Portrait Photography </option>
+                    <option value="3">Event Photography </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="booking_date" class="form-label">Select Date</label>
+                <input type="text" class="form-control" id="booking_date" name="booking_date" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="booking_time" class="form-label">Select Time</label>
+                <input type="time" class="form-control" name="booking_time" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Book Now</button>
+        </form>
+    </div>
+
     <script>
-    // Automatic slideshow
-    document.addEventListener("DOMContentLoaded", function() {
-        const slideContainer = document.querySelector(".slide-images");
-        const slideImages = document.querySelector(".slide-images");
-        let currentIndex = 0;
-
-        function showSlide(index) {
-            const translateValue = -index * 100 + "%";
-            slideImages.style.transform = "translateX(" + translateValue + ")";
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % 5;
-            showSlide(currentIndex);
-        }
-
-        setInterval(nextSlide, 5000);
-    });
-
-    $(document).ready(function() {
-        var previousScroll = 0;
-
-        // Listen for the scroll event
-        $(window).scroll(function() {
-            var currentScroll = $(this).scrollTop();
-            var scrollingDown = currentScroll > previousScroll;
-
-            if (currentScroll > 0) {
-                if (scrollingDown) {
-                    $('.navbar').addClass('navbar-hidden');
-                } else if (currentScroll < 50) {
-                    $('.navbar').removeClass('navbar-hidden');
-                }
-            }
-
-            previousScroll = currentScroll;
+        $(function() {
+            $("#booking_date").datepicker({ dateFormat: 'yy-mm-dd' });
         });
-    });
-    
-    </script>
 
-    <!-- Bootstrap JS and Popper.js scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 </body>
-
 </html>
