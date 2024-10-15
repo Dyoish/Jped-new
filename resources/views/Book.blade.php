@@ -21,14 +21,20 @@
     <div class="container mt-5">
         <h2>Book a Photography Session</h2>
         
-        @if(session('success'))
+        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
-        <form action="/booking" method="POST">
-            @csrf
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <form action="{{ url('add_booking') }}" method="POST">
+        @csrf 
             <div class="mb-3">
                 <label for="name" class="form-label">Your Name</label>
                 <input type="text" class="form-control" name="name" required>
@@ -43,9 +49,9 @@
                 <label for="service_id" class="form-label">Select Service</label>
                 <select name="service_id" class="form-select" required>
                     <option value="">Choose a service...</option>
-                    <option value="1">Wedding Photography </option>
-                    <option value="2">Portrait Photography </option>
-                    <option value="3">Event Photography </option>
+                    <option value="1">Wedding Photography</option>
+                    <option value="2">Portrait Photography</option>
+                    <option value="3">Event Photography</option>
                 </select>
             </div>
 
@@ -65,9 +71,12 @@
 
     <script>
         $(function() {
-            $("#booking_date").datepicker({ dateFormat: 'yy-mm-dd' });
+            // Set the minimum date to today to disable past dates
+            $("#booking_date").datepicker({
+                dateFormat: 'yy-mm-dd',
+                minDate: 0 // Prevents selecting any date before today
+            });
         });
-
     </script>
 </body>
 </html>

@@ -18,9 +18,7 @@
     <!-- SIDEBAR -->
     <section id="sidebar">
     <a href="/" class="brand">
-            <img src="images/black 2.png" alt="Cyber Cartel Icon"
-                style="width: 50px; height: 50px; margin-left: 30px; margin-top: 20px;">
-            <span class="text" style="margin-top: 20px;">Cyber Cartel</span>
+            <span class="text" style="margin-top: 20px; margin-left: 100px;">J.PED</span>
         </a>
         <ul class="side-menu top">
             <li class="active">
@@ -75,28 +73,11 @@
             </div>
 
             <ul class="box-info">
-            <li>
-                    <i class="bx bxs-calendar-check" ></i>
-                    <span class="text">
-                        <h3>Products</h3>
-                        <p>Total For Sale: {{number_format($products)}}</p>
-
-                        <p>Total Sales: ₱{{number_format($boughtTotal)}}</p>
-                    
-                            <p>Total Sales:₱0</p>
-                    
-                    </span>
-                </li>
                 <li>
                     <i class="bx bxs-group"></i>
                     <span class="text">
                         <h3>Users</h3>
                         <p>Total Users: {{number_format($usercount)}}</p>
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-cart-add"></i>
-                    <span class="text">
                     </span>
                 </li>
             </ul>

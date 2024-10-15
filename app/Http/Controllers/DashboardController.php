@@ -35,9 +35,9 @@ class DashboardController extends Controller
     public function admindashboard(){
         $user = User::orderBy('id','desc')->get();
         $usercount = User::count();
-        $products = Products::count();
+        // $products = Products::count();
         $boughtTotal=0;
-        return view('Admindashboards',compact('user','usercount','products','boughtTotal'));
+        return view('Admindashboards',compact('user','usercount','boughtTotal'));
     }
     public function adminanalytics(){
         $user = User::count();
