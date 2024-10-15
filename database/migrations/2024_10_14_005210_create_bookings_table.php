@@ -12,10 +12,9 @@ class CreateBookingsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->unsignedInteger('service_id');
+            $table->unsignedBigInteger('service_id');
             $table->date('booking_date');
             $table->time('booking_time');
-            $table->enum('status', ['pending', 'confirmed', 'rejected'])->default('pending');  // Add status
             $table->timestamps();
         });
     }
@@ -25,3 +24,4 @@ class CreateBookingsTable extends Migration
         Schema::dropIfExists('bookings');
     }
 }
+

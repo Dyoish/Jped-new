@@ -11,12 +11,14 @@ class BookController extends Controller
     /**
      * Display the booking form with services.
      */
-    public function showForm()
-    {
-        // Fetch all services to populate the dropdown
-        $services = Service::all();
-        return view('Book', compact('services'));
-    }
+    
+     public function showBookingForm()
+     {
+         // Fetch all services from the services table
+         $services = Service::all(); 
+         // Pass the $services variable to the booking_form view
+         return view('booking_form', compact('services'));
+     }
 
     /**
      * Store a new booking.
@@ -24,12 +26,12 @@ class BookController extends Controller
     public function store(Request $request)
     {
         // Validate the request data
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'service_id' => 'required|integer|exists:services,id', // Ensures valid service
+            'email' => 'required|email',
+            'service_id' => 'required|exists:services,id',  // Ensure the service_id exists in the services table
             'booking_date' => 'required|date',
-            'booking_time' => 'required',
+            'booking_time' => 'required|date_format:H:i',
         ]);
 
         // Check if a booking already exists for this user at the same date and time
@@ -42,17 +44,26 @@ class BookController extends Controller
             return redirect()->back()->with('error', 'You already have a booking for this date and time.');
         }
 
-        // Create a new booking record
-        Booking::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'service_id' => $request->service_id,
-            'booking_date' => $request->booking_date,
-            'booking_time' => $request->booking_time,
-        ]);
+        // Create a new booking
+        $booking = new Booking();
+        $booking->name = $validated['name'];
+        $booking->email = $validated['email'];
+        $booking->service_id = $validated['service_id'];
+        $booking->booking_date = $validated['booking_date'];
+        $booking->booking_time = $validated['booking_time'];
+        $booking->save();
 
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Your booking has been successfully submitted!');
+        // Redirect with a success message
+        return redirect()->back()->with('success', 'Your booking has been added successfully!');
+    }
+
+    public function showAllBookings()
+    {
+        // Fetch all bookings from the database
+        $bookings = Booking::with('service')->get(); // Ensure 'service' relationship is defined
+        
+        // Pass the bookings to the view
+        return view('bookings.index', compact('bookings'));
     }
 
     /**

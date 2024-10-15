@@ -30,10 +30,11 @@
                 </header>
             @endif
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+             <!-- Content Section -->
+    <div class="content">
+        @yield('content') <!-- Ensures content is injected from child views -->
+    </div>
+
         </div>
 
         @stack('modals')

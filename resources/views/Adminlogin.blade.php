@@ -25,6 +25,7 @@
 
     /* Additional styles for responsiveness */
     body {
+        background: black;
         font-family: "Spoof Trial Thin";
         padding-top: 60px;
         overflow: hidden;

@@ -116,3 +116,9 @@ Route::post('/books', [BookController::class, 'store']);
 
 Route::post('/add_booking/{id}', [BookController::class, 'add_booking']);
 Route::post('/add_booking', [BookController::class, 'store'])->name('add_booking');
+
+
+Route::get('/booking-form', [BookController::class, 'showBookingForm'])->name('show_booking_form');
+
+Route::get('/booking', [BookController::class, 'showAllBookings'])->name('show_all_bookings');
+

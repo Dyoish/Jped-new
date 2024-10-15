@@ -14,8 +14,12 @@
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 
         <li class="nav-item" style="margin-right: 40px; margin-top: 5px;">
-            <a href="/book" style="text-decoration: none; color: white;">Book</a>
+            <a href="/booking-form" style="text-decoration: none; color: white;">Book</a>
         </li>
+
+        <li class="nav-item" style="margin-right: 40px; margin-top: 5px;">
+    <a href="{{ route('show_all_bookings') }}" style="text-decoration: none; color: white;">Book info</a>
+</li>
 
             <!-- mx-auto to center the content -->
             <!--<li class="nav-item" style="margin-right: 1.5vw;">
