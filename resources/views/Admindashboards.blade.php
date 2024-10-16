@@ -27,12 +27,12 @@
                     <span class="text">Dashboards</span>
                 </a>
             </li>
-            <!-- <li>
+            <li>
                 <a href="{{ url('/adminanalytics') }}">
                     <i class="bx bxs-analyse"></i>
                     <span class="text">Analytics</span>
                 </a>
-            </li> -->
+            </li>
             <li>
                 <a href="{{ url('/admincustomers') }}">
                     <i class="bx bxs-group"></i>

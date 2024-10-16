@@ -2,283 +2,106 @@
 <html lang="en">
 
 <head>
-    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="{{ asset ('assests/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="assets/css/analytics.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{ asset('assests/js/jquery.js') }}"></script>    
-
-    <title>Analytics</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
-    <!-- SIDEBAR -->
-    <section id="sidebar">
-    <a href="/" class="brand">
-            <img src="images/black 2.png" alt="Cyber Cartel Icon"
-                style="width: 50px; height: 50px; margin-left: 30px; margin-top: 20px;">
-            <span class="text" style="margin-top: 20px;">Cyber Cartel</span>
-        </a>
-        <ul class="side-menu top">
-            <li>
-                <a href="{{ url('/admindashboards') }}">
-                    <i class="bx bxs-dashboard"></i>
-                    <span class="text">Dashboards</span>
-                </a>
-            </li>
-            <li class="active">
-                <a href="{{ url('/adminanalytics') }}">
-                    <i class="bx bxs-analyse"></i>
-                    <span class="text">Analytics</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/admincustomers') }}">
-                    <i class="bx bxs-group"></i>
-                    <span class="text">Customers</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/adminmanagements') }}">
-                    <i class="bx bxs-data"></i>
-                    <span class="text">Product Management</span>
-                </a>
-            </li>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <li>
-                <a class="dropdown-item text-center" href="{{route('logout')}}"  style="color: red;">
-                    <i class="bx bxs-log-out"></i> Log out
-                </a>
+
+@if(session('success'))
+    <div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; margin-bottom: 20px;">
+        {{ session('success') }}
+    </div>
+@endif
+
+<!-- SIDEBAR -->
+<section id="sidebar" style="width: 250px; height: 100vh; background-color: #333; color: #fff; position: fixed; padding-top: 20px;">
+    <a href="/" class="brand" style="text-decoration: none; color: #fff;">
+        <span class="text" style="font-size: 24px; display: block; text-align: center; margin-top: 20px;">J.PED</span>
+    </a>
+    <ul class="side-menu" style="list-style-type: none; padding: 0; margin-top: 50px;">
+        <li class="active" style="margin-bottom: 15px;">
+            <a href="{{ url('/admindashboards') }}" style="text-decoration: none; color: #fff; padding: 10px 20px; display: block;">
+                <i class="bx bxs-dashboard"></i>
+                <span class="text">Dashboards</span>
+            </a>
+        </li>
+        <li style="margin-bottom: 15px;">
+            <a href="{{ url('/admincustomers') }}" style="text-decoration: none; color: #fff; padding: 10px 20px; display: block;">
+                <i class="bx bxs-group"></i>
+                <span class="text">Customers</span>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item text-center" href="{{route('logout')}}" style="text-decoration: none; color: red; padding: 10px 20px; display: block; text-align: center;">
+                <i class="bx bxs-log-out"></i> Log out
+            </a>
+        </li>
+    </ul>
+</section>
+<!-- SIDEBAR -->
+
+<!-- CONTENT -->
+<section id="content" style="margin-left: 250px; padding: 40px;">
+    <!-- MAIN -->
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
+
+        <!-- Box info for Total Users -->
+        <ul class="box-info" style="list-style: none; padding: 0; display: flex;">
+            <li style="background-color: #f5f5f5; padding: 20px; margin-right: 20px; flex: 1; border-radius: 8px;">
+                <i class="bx bxs-group" style="font-size: 40px;"></i>
+                <span class="text">
+                    <h3>Users</h3>
+                    <p>Total Users: {{number_format($usercount)}}</p>
+                </span>
             </li>
         </ul>
-    </section>
-    <!-- SIDEBAR -->
 
-    <!-- CONTENT -->
-    <section id="content">
-
-        <!-- MAIN -->
-        <main>
-            <div class="head-title">
-                <div class="left">
-                    <h1>Analytics</h1>
-                    <ul class="breadcrumb"></ul>
-                </div>
-            </div>
-
-            <ul class="box-info">
-                <li>
-                    <i class="bx bxs-calendar-check" 
-                    style ="background: var(--light-blue);
-                    color: var(--blue);"></i>
-                    <span class="text">
-                        <h3>Products</h3>
-                        <p>Total For Sale: {{number_format($products)}}</p>
-                        @if($boughtcount != 0)
-                        <p>Total Sales: ₱{{number_format($boughtTotal)}}</p>
-                        @else
-                            <p>Total Sales:₱0</p>
-                        @endif
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-group"
-                    style="background: var(--light-yellow);"></i>
-                    <span class="text">
-                        <h3>Users</h3>
-                        <p>Total Users: {{number_format($user)}}</p>
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-cart-add"
-                    style ="background: var(--light-orange);"></i>
-                    <span class="text">
-                        <h3>Purchased Products</h3>
-                        <p>Total Units Bought: {{number_format($boughtquant)}}</p>
-                        <p>Total Units Refunded: {{number_format($refunded)}}</p>
-                        <p>Total Units Cancelled: {{number_format($cancelled)}}</p>
-                    </span>
-                </li>
-            </ul>
-            <ul class="box-info">
-                <li><canvas id="myChart" style="width:200; height:200;"></canvas></li>
-                <li><canvas id="chart2" style="width:200; height:200;"></canvas></li>
-            </ul>
-            <ul class="box-info">
-                <li>
-                    <i class="bx bxs-chip" class='bx-fw'></i>
-                    <span class="text">
-                        <h3>Processor</h3>
-                        @if($CPUCount != 0)
-                        <p>Total Sales: ₱{{number_format($CPUTotal)}}</p>
-                        @else
-                            <p>Total Sales:₱0</p>
-                        @endif
-                        <p>Total Units Sold: {{number_format($CPUquant)}}</p>
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-microchip"></i>
-                    <span class="text">
-                        <h3>Motherboard</h3>
-                        @if($MotherboardCount != 0)
-                        <p>Total Sales: ₱{{number_format($MotherboardTotal)}}</p>
-                        @else
-                            <p>Total Sales: ₱0</p>
-                        @endif
-                        <p>Total Units Sold: {{number_format($Motherboardquant)}}</p>
-                        
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-ruler"></i>
-                    <span class="text">
-                        <h3>RAM</h3>
-                        @if($RAMCount != 0)
-                        <p>Total Sales: ₱{{number_format($RAMTotal)}}</p>
-                        @else
-                            <p>Total Sales: ₱0</p>
-                        @endif
-                        <p>Total Units Sold: {{number_format($RAMquant)}}</p>
-                    </span>
-                </li>
-            </ul>
-            <ul class="box-info">
-            <li>
-                    <i class="bx bxs-buoy"></i>
-                    <span class="text">
-                        <h3>GPU</h3>
-                        @if($GPUCount != 0)
-                        <p>Total Sales: ₱{{number_format($GPUTotal)}}</p>
-                        @else
-                            <p>Total Sales: ₱0</p>
-                        @endif
-                        <p>Total Units Sold: {{number_format($GPUquant)}}</p>
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-checkbox"></i>
-                    <span class="text">
-                        <h3>PSU</h3>
-                        @if($PSUCount != 0)
-                        <p>Total Sales: ₱{{number_format($PSUTotal)}}</p>
-                        @else
-                            <p>Total Sales: ₱0</p>
-                        @endif
-                        <p>Total Units Sold: {{number_format($PSUquant)}}</p>
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-rectangle"></i>
-                    <span class="text">
-                        <h3>Storage</h3>
-                        @if($StorageCount != 0)
-                        <p>Total Sales: ₱{{number_format($StorageTotal)}}</p>
-                        @else
-                            <p>Total Sales: ₱0</p>
-                        @endif
-                        <p>Total Units Sold: {{number_format($Storagequant)}}</p>
-                    </span>
-                </li>
-                
-            </ul>
-            <ul class="box-info-end">
-                <li style="visibility: hidden;"></li>
-
-                <li>
-                    <i class="bx bxs-disc"></i>
-                    <span class="text">
-                        <h3>Chassis</h3>
-                        @if($CaseCount != 0)
-                        <p>Total Sales: ₱{{number_format($CaseTotal)}}</p>
-                        @else
-                        <p>Total Sales: ₱0</p>
-                        @endif
-                        <p>Total Units Sold: {{number_format($Casequant)}}</p>
-                    </span>
-                </li>
-
-                <li style="visibility: hidden;"></li>
-            </ul>
-    </section>
-    
-
+        <!-- Box info for New Customers -->
+        <ul class="box-info" style="list-style: none; padding: 0; display: flex; flex-direction: column;">
+            <li style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+                <h3>New Customers</h3>
+                <table class="table" style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #007bff; color: #fff; text-align: left;">
+                            <th style="padding: 10px;">ID</th>
+                            <th style="padding: 10px;">Name</th>
+                            <th style="padding: 10px;">Email</th>
+                            <th style="padding: 10px;">Booking Date</th>
+                            <th style="padding: 10px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($user->slice(0,5) as $item)
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 10px;">{{$item -> id }}</td>
+                            <td style="padding: 10px;">{{$item -> name}}</td>
+                            <td style="padding: 10px;">{{$item -> email}}</td>
+                            <td style="padding: 10px;">{{ $item->booking_date }}</td>
+                            <td style="padding: 10px;">
+                                <form method="POST" action="{{ route('approveBooking', $item->id) }}" style="display:inline-block;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success" style="background-color: green; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer;">Approve</button>
+                                </form>
+                                <form method="POST" action="{{ route('rejectBooking', $item->id) }}" style="display:inline-block;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger" style="background-color: red; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer;">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </main>
+</section>
 </body>
-<script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['GPU', 'Motherboard', 'RAM','CPU','PSU','Storage','Chassis'],
-            datasets: [{
-                label: 'Total Units Sold',
-                data: [{{$GPUCount}}, {{$MotherboardCount}}, {{$RAMCount}},{{$CPUCount}},{{$PSUCount}},{{$StorageCount}},{{$CaseCount}}],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-
-    var ctx = document.getElementById('chart2').getContext('2d');
-    var chart2 = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['GPU', 'Motherboard', 'RAM','CPU','PSU','Storage','Chassis'],
-            datasets: [{
-                label: 'Total Sales',
-                data: [{{$GPUTotal}}, {{$MotherboardTotal}}, {{$RAMTotal}},{{$CPUTotal}},{{$PSUTotal}},{{$StorageTotal}},{{$CaseTotal}}],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-</script>
 
 </html>

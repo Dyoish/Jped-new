@@ -122,3 +122,10 @@ Route::get('/booking-form', [BookController::class, 'showBookingForm'])->name('s
 
 Route::get('/booking', [BookController::class, 'showAllBookings'])->name('show_all_bookings');
 
+
+Route::get('/dashboard/bookings/pending', [DashboardController::class, 'pendingBookings'])->name('dashboard.bookings.pending');
+Route::patch('/dashboard/bookings/confirm/{id}', [DashboardController::class, 'confirmBooking'])->name('dashboard.bookings.confirm');
+Route::patch('/dashboard/bookings/reject/{id}', [DashboardController::class, 'rejectBooking'])->name('dashboard.bookings.reject');
+
+Route::post('/booking/{id}/approve', [DashboardController::class, 'approveBooking'])->name('approveBooking');
+Route::post('/booking/{id}/reject', [DashboardController::class, 'rejectBooking'])->name('rejectBooking');
