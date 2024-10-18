@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Booking;
+use Illuminate\Support\Facades\Auth; // Import this
 
 class BookController extends Controller
 {
@@ -46,11 +47,16 @@ class BookController extends Controller
 
         // Create a new booking
         $booking = new Booking();
+
         $booking->name = $validated['name'];
         $booking->email = $validated['email'];
         $booking->service_id = $validated['service_id'];
         $booking->booking_date = $validated['booking_date'];
         $booking->booking_time = $validated['booking_time'];
+
+        // Assign the user ID from the currently logged-in user
+        $booking->user_id = Auth::id();
+
         $booking->save();
 
         // Redirect with a success message
@@ -74,5 +80,25 @@ class BookController extends Controller
         // Fetch all bookings
         $bookings = Booking::all();
         return view('Book', compact('bookings'));
+    }
+
+    public function cancel(Request $request, $id)
+    {
+        $booking = Booking::find($id);
+    
+        // Check if the booking exists
+        if (!$booking) {
+            return redirect()->back()->with('error', 'Booking not found.');
+        }
+    
+        // Ensure the authenticated user is the owner of the booking
+        if ($booking->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Unauthorized action.');
+        }
+    
+        // Perform the cancellation (delete the booking)
+        $booking->delete();
+    
+        return redirect()->back()->with('success', 'Booking canceled successfully.');
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class Category_Controller extends Controller
 {
     public function Events_Category_Route(){
-        return view('Categories.Events',compact('Events'));
+        return view('Categories.Events');
     }
 
     public function Ram_Category_Route(){
@@ -38,8 +38,8 @@ class Category_Controller extends Controller
         return view('Categories.Monitor');
     }
 
-    public function Motherboard_Category_Route(){
-        return view('Categories.Motherboard',compact('Motherboard'));
+    public function Street_Category_Route(){
+        return view('Categories.Street');
     }
 
     public function PreBuilt_Category_Route(){

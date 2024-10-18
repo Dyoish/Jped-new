@@ -48,6 +48,10 @@
         flex: 1;
     }
 
+    .navbar {
+    transition: top 0.5s ease; /* 0.5s duration for a smooth effect */
+}
+
     footer {
         margin-top: auto;
     }
@@ -119,36 +123,36 @@
             <!-- Category Buttons -->
                 <div class="gallery-categories text-center">
                     <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraits</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/processor_category">Events</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/motherboard_category">Street</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/events_category">Events</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/street_category">Street</a>
+                    <!-- <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a> -->
                 </div>
                 <br>
             <div class="row">
                 <!-- Gallery item 1 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 1" class="img-fluid">
+                    <img src="images/portraits/kape.jpg" alt="Gallery Image 1" class="img-fluid">
                 </div>
                 <!-- Gallery item 2 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 2" class="img-fluid">
+                    <img src="images/portraits/DSC_0375_1 (1).jpg" alt="Gallery Image 2" class="img-fluid">
                 </div>
                 <!-- Gallery item 3 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 3" class="img-fluid">
+                    <img src="images/events/no2.jpg" alt="Gallery Image 3" class="img-fluid">
                 </div>
                 <!-- Gallery item 4 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 4" class="img-fluid">
+                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 4" class="img-fluid">
                 </div>
                 <!-- Gallery item 5 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 5" class="img-fluid">
+                    <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 5" class="img-fluid">
                 </div>
                 <!-- Gallery item 6 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 6" class="img-fluid">
+                    <img src="images/events/DSC_0301.jpg" alt="Gallery Image 6" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -206,6 +210,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Scroll Down - Hide Navbar
+                navbar.style.top = "-80px"; // Adjust depending on your navbar's height
+            } else {
+                // Scroll Up - Show Navbar
+                navbar.style.top = "0";
+            }
+            lastScrollTop = scrollTop;
+        });
     </script>
 </body>
 

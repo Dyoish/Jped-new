@@ -197,9 +197,9 @@
                 <div class="gallery-categories text-center">
                     <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraits</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/events_category">Events</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/motherboard_category">Street</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/street_category">Street</a>
+                    <!-- <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a> -->
                 </div>
                 <br>
             <div class="row">

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>Dashboard</title>
 </head>
 
@@ -17,9 +18,9 @@
 
 <!-- SIDEBAR -->
 <section id="sidebar" style="width: 250px; height: 100vh; background-color: #333; color: #fff; position: fixed; padding-top: 20px;">
-    <a href="/" class="brand" style="text-decoration: none; color: #fff;">
-        <span class="text" style="font-size: 24px; display: block; text-align: center; margin-top: 20px;">J.PED</span>
-    </a>
+    <a class="brand">
+            <span class="text" style="margin-top: 20px; margin-left: 100px;">J.PED</span>
+        </a>
     <ul class="side-menu" style="list-style-type: none; padding: 0; margin-top: 50px;">
         <li class="active" style="margin-bottom: 15px;">
             <a href="{{ url('/admindashboards') }}" style="text-decoration: none; color: #fff; padding: 10px 20px; display: block;">
@@ -28,9 +29,9 @@
             </a>
         </li>
         <li style="margin-bottom: 15px;">
-            <a href="{{ url('/admincustomers') }}" style="text-decoration: none; color: #fff; padding: 10px 20px; display: block;">
+            <a href="{{ url('/adminanalytics') }}" style="text-decoration: none; color: #fff; padding: 10px 20px; display: block;">
                 <i class="bx bxs-group"></i>
-                <span class="text">Customers</span>
+                <span class="text">Booking</span>
             </a>
         </li>
         <li>
@@ -52,17 +53,6 @@
             </div>
         </div>
 
-        <!-- Box info for Total Users -->
-        <ul class="box-info" style="list-style: none; padding: 0; display: flex;">
-            <li style="background-color: #f5f5f5; padding: 20px; margin-right: 20px; flex: 1; border-radius: 8px;">
-                <i class="bx bxs-group" style="font-size: 40px;"></i>
-                <span class="text">
-                    <h3>Users</h3>
-                    <p>Total Users: {{number_format($usercount)}}</p>
-                </span>
-            </li>
-        </ul>
-
         <!-- Box info for New Customers -->
         <ul class="box-info" style="list-style: none; padding: 0; display: flex; flex-direction: column;">
             <li style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
@@ -74,28 +64,29 @@
                             <th style="padding: 10px;">Name</th>
                             <th style="padding: 10px;">Email</th>
                             <th style="padding: 10px;">Booking Date</th>
+                            <th style="padding: 10px;">Booking Time</th>
                             <th style="padding: 10px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($user->slice(0,5) as $item)
-                        <tr style="border-bottom: 1px solid #ddd;">
-                            <td style="padding: 10px;">{{$item -> id }}</td>
-                            <td style="padding: 10px;">{{$item -> name}}</td>
-                            <td style="padding: 10px;">{{$item -> email}}</td>
-                            <td style="padding: 10px;">{{ $item->booking_date }}</td>
-                            <td style="padding: 10px;">
-                                <form method="POST" action="{{ route('approveBooking', $item->id) }}" style="display:inline-block;">
+                    @foreach($bookings as $booking)
+                    <tr>
+                        <td>{{ $booking->name }}</td>
+                        <td>{{ $booking->email }}</td>
+                        <td>{{ $booking->service->name }}</td> <!-- Assuming a relationship between booking and service -->
+                        <td>{{ $booking->booking_date }}</td>
+                        <td>{{ $booking->booking_time }}</td>
+                        <td>
+                            @if (Auth::check() && Auth::user()->id == $booking->user_id)
+                                <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" style="display:inline;">
                                     @csrf
-                                    <button type="submit" class="btn btn-success" style="background-color: green; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer;">Approve</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
                                 </form>
-                                <form method="POST" action="{{ route('rejectBooking', $item->id) }}" style="display:inline-block;">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger" style="background-color: red; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer;">Reject</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+                <a href="{{ route('export.bookings') }}" class="btn btn-primary">Export Bookings to CSV</a>
                     </tbody>
                 </table>
             </li>

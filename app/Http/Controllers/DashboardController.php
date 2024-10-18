@@ -6,8 +6,10 @@ use App\Models\CancelledProducts;
 use App\Models\Products;
 use App\Models\RefundedProducts;
 use App\Models\User;
+use App\Models\booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laracsv\Export; // Ensure this line is added to import the correct Export class
 
 class DashboardController extends Controller
 {
@@ -43,7 +45,25 @@ class DashboardController extends Controller
         return view('Admindashboards',compact('user','usercount','boughtTotal'));
     }
     public function adminanalytics(){
-        $user = User::count();
+        $bookings = Booking::with('service')->get(); 
+        return view('adminanalytics', compact('bookings'));
+    }
+
+    public function exportBookings()
+    {
+        // Fetch all the bookings data
+        $bookings = Booking::all();
+
+        // Create a new instance of Laracsv Export class
+        $csvExporter = new Export();
+
+        // Build the CSV with the selected columns and then download
+        $csvExporter->build($bookings, ['name',
+        'email',
+        'service_id',
+        'booking_date',
+        'booking_time',])->download();
+    }
         //COMMENT KO LANG TO FOR CHECKING PURPOSES
     //     $products = Products::count();
     //     //bought
@@ -115,11 +135,10 @@ class DashboardController extends Controller
     //     return view('Adminanalytics', compact('GPUquant','GPUTotal','GPUCount','CPUquant','CPUTotal','Motherboardquant',
     //     'MotherboardTotal','PSUquant','PSUTotal','Storagequant','StorageTotal','Casequant','CaseTotal','RAMquant','RAMTotal','user',
     //     'MotherboardCount','RAMCount','CPUCount','PSUCount','StorageCount','CaseCount','bought','refunded','cancelled','products','boughtTotal','boughtcount','boughtquant'));
-    }
+    
     public function admincustomers(){
         $user = User::get();
-        $count = BoughtProducts::get();
-        return view('Admincustomers', compact('user','count',));
+        return view('Admincustomers', compact('user'));
     }
     public function adminmanagement(){
         return view('Adminmanagements');
@@ -149,7 +168,7 @@ class DashboardController extends Controller
     public function pendingBookings()
     {
         $bookings = Booking::where('status', 'pending')->get(); // Get all pending bookings
-        return view('admin.bookings.pending', compact('bookings'));
+        return view('adminanalytics', compact('bookings'));
     }
 
     // // Confirm a booking
@@ -182,31 +201,33 @@ class DashboardController extends Controller
     //     return redirect()->route('dashboard.bookings.pending')->with('error', 'Booking not found.');
     // }
 
-    public function approveBooking($id)
-{
-    // Find the booking by ID
-    $booking = Booking::findOrFail($id);
+        public function approveBooking($id)
+    {
+        // Find the booking by ID
+        $booking = Booking::findOrFail($id);
 
-    // Update the booking status to 'approved'
-    $booking->status = 'approved';
-    $booking->save();
+        // Update the booking status to 'approved'
+        $booking->status = 'approved';
+        $booking->save();
 
-    // Redirect back with a success message
-    return redirect()->back()->with('success', 'Booking approved successfully.');
-}
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Booking approved successfully.');
+    }
 
-public function rejectBooking($id)
-{
-    // Find the booking by ID
-    $booking = Booking::findOrFail($id);
+    public function rejectBooking($id)
+    {
+        // Find the booking by ID
+        $booking = Booking::findOrFail($id);
 
-    // Update the booking status to 'rejected'
-    $booking->status = 'rejected';
-    $booking->save();
+        // Update the booking status to 'rejected'
+        $booking->status = 'rejected';
+        $booking->save();
 
-    // Redirect back with a success message
-    return redirect()->back()->with('success', 'Booking rejected successfully.');
-}
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Booking rejected successfully.');
+    }
+
+    
 }
 
     

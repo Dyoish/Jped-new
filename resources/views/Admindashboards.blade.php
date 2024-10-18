@@ -17,7 +17,7 @@
 <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-    <a href="/" class="brand">
+    <a class="brand">
             <span class="text" style="margin-top: 20px; margin-left: 100px;">J.PED</span>
         </a>
         <ul class="side-menu top">
@@ -30,15 +30,15 @@
             <li>
                 <a href="{{ url('/adminanalytics') }}">
                     <i class="bx bxs-analyse"></i>
-                    <span class="text">Analytics</span>
+                    <span class="text">Booking</span>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="{{ url('/admincustomers') }}">
                     <i class="bx bxs-group"></i>
                     <span class="text">Customers</span>
                 </a>
-            </li>
+            </li> -->
             <!-- <li>
                 <a href="{{ url('/adminmanagements') }}">
                     <i class="bx bxs-data"></i>

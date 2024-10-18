@@ -183,7 +183,7 @@
             <div class="container" id="contents">
             <header class="d-flex justify-content-center align-items-center text-center" style="margin-bottom: -50px;">
                 <h2>
-                    <p>Portraits</p>
+                    <p>Events</p>
                 </h2>
             </header>
             </div>
@@ -197,35 +197,35 @@
                 <div class="gallery-categories text-center">
                     <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraits</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/events_category">Events</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/motherboard_category">Street</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/street_category">Street</a>
+                    <!-- <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a> -->
                 </div>
                 <br>
             <div class="row">
                 <!-- Gallery item 1 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 1" class="img-fluid">
+                    <img src="images/events/DSC_0301.jpg" alt="Gallery Image 1" class="img-fluid">
                 </div>
                 <!-- Gallery item 2 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 2" class="img-fluid">
+                    <img src="images/events/no2.jpg" alt="Gallery Image 2" class="img-fluid">
                 </div>
                 <!-- Gallery item 3 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 3" class="img-fluid">
+                    <img src="images/events/no1.jpg" alt="Gallery Image 3" class="img-fluid">
                 </div>
                 <!-- Gallery item 4 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 4" class="img-fluid">
+                    <img src="images/events/DSC_0543.jpg" alt="Gallery Image 4" class="img-fluid">
                 </div>
                 <!-- Gallery item 5 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 5" class="img-fluid">
+                    <img src="images/events/DSC_0575.jpg" alt="Gallery Image 5" class="img-fluid">
                 </div>
                 <!-- Gallery item 6 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0105 (1).jpg" alt="Gallery Image 6" class="img-fluid">
+                    <img src="images/events/no3.jpg" alt="Gallery Image 6" class="img-fluid">
                 </div>
             </div>
         </div>

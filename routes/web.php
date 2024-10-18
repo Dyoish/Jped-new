@@ -16,6 +16,10 @@ use App\Http\Controllers\Profile_Controller;
 use App\Http\Controllers\BookController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
+use App\Exports\BookingsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 use App\Http\Controllers\GalleryController;
 
 /*
@@ -81,12 +85,12 @@ Route::get('/admindashboards',[DashboardController::class,'admindashboard'])->na
 Route::get('/adminanalytics',[DashboardController::class,'adminanalytics']);
 Route::get('/admincustomers',[DashboardController::class,'admincustomers']);
 Route::get('/admincustomers/{id}/delete',[UserController::class,'destroy']);
-Route::get('/adminmanagements',[App\Http\Controllers\productController::class,'index']);
-Route::get('productmanagements/create',[App\Http\Controllers\productController::class,'create']);
-Route::post('productmanagements/create',[App\Http\Controllers\productController::class,'store']);
-Route::get('productmanagements/{id}/edit',[App\Http\Controllers\productController::class,'edit']);
-Route::put('productmanagements/{id}/edit',[App\Http\Controllers\productController::class,'update']);
-Route::get('productmanagements/{id}/delete',[App\Http\Controllers\productController::class,'destroy']);
+// Route::get('/adminmanagements',[App\Http\Controllers\productController::class,'index']);
+// Route::get('productmanagements/create',[App\Http\Controllers\productController::class,'create']);
+// Route::post('productmanagements/create',[App\Http\Controllers\productController::class,'store']);
+// Route::get('productmanagements/{id}/edit',[App\Http\Controllers\productController::class,'edit']);
+// Route::put('productmanagements/{id}/edit',[App\Http\Controllers\productController::class,'update']);
+// Route::get('productmanagements/{id}/delete',[App\Http\Controllers\productController::class,'destroy']);
 });
 
 //products
@@ -99,7 +103,7 @@ Route::get('/gpu_category', [Category_Controller::class, 'Gpu_Category_Route']);
 Route::get('/ram_category', [Category_Controller::class, 'Ram_Category_Route']);
 Route::get('/hdd_category', [Category_Controller::class, 'HDD_Category_Route']);
 Route::get('/storage_category', [Category_Controller::class, 'SSD_Category_Route']);
-Route::get('/motherboard_category', [Category_Controller::class, 'Motherboard_Category_Route']);
+Route::get('/street_category', [Category_Controller::class, 'Street_Category_Route']);
 Route::get('/portrait_category', [Category_Controller::class, 'Portrait_Category_Route']);
 Route::get('/monitor_category', [Category_Controller::class, 'Monitor_Category_Route']);
 Route::get('/pre_built_units', [Category_Controller::class, 'PreBuilt_Category_Route']);
@@ -122,10 +126,26 @@ Route::get('/booking-form', [BookController::class, 'showBookingForm'])->name('s
 
 Route::get('/booking', [BookController::class, 'showAllBookings'])->name('show_all_bookings');
 
-
+//admin button (?)
 Route::get('/dashboard/bookings/pending', [DashboardController::class, 'pendingBookings'])->name('dashboard.bookings.pending');
 Route::patch('/dashboard/bookings/confirm/{id}', [DashboardController::class, 'confirmBooking'])->name('dashboard.bookings.confirm');
 Route::patch('/dashboard/bookings/reject/{id}', [DashboardController::class, 'rejectBooking'])->name('dashboard.bookings.reject');
 
+//admin button
 Route::post('/booking/{id}/approve', [DashboardController::class, 'approveBooking'])->name('approveBooking');
 Route::post('/booking/{id}/reject', [DashboardController::class, 'rejectBooking'])->name('rejectBooking');
+
+//booking info button *website)
+Route::post('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
+
+//export data
+// Route::get('bookings/export', function () {
+//     return Excel::download(new BookingsExport, 'bookings.xlsx');
+// })->name('bookings.export');
+
+Route::get('bookings/export/csv', function () {
+    $exporter = new BookingsExport();
+    return $exporter->exportCSV();
+})->name('bookings.export.csv');
+
+Route::get('/export-bookings', [DashboardController::class, 'exportBookings'])->name('export.bookings');
