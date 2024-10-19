@@ -35,14 +35,21 @@ class BookController extends Controller
             'booking_time' => 'required|date_format:H:i',
         ]);
 
-        // Check if a booking already exists for this user at the same date and time
-        $existingBooking = Booking::where('email', $request->email)
-            ->where('booking_date', $request->booking_date)
-            ->where('booking_time', $request->booking_time)
-            ->first();
+        // Check if another user has booked the same date for the same service
+        $existingBooking = Booking::where('service_id', $validated['service_id'])
+        ->where('booking_date', $validated['booking_date'])
+        ->where('user_id', '!=', Auth::id()) // Check for bookings by other users
+        ->first();
 
-        if ($existingBooking) {
-            return redirect()->back()->with('error', 'You already have a booking for this date and time.');
+        // Check if the user has already booked the same date
+        $userBooking = Booking::where('service_id', $validated['service_id'])
+        ->where('booking_date', $validated['booking_date'])
+        ->where('user_id', Auth::id()) // Check for bookings by the same user
+        ->first();
+
+        // If the current user has already booked the same date, return an error
+        if ($userBooking) {
+            return back()->withErrors(['booking_date' => 'Other Clients has already booked the same date, please choose other date.']);
         }
 
         // Create a new booking
@@ -62,6 +69,7 @@ class BookController extends Controller
         // Redirect with a success message
         return redirect()->back()->with('success', 'Your booking has been added successfully!');
     }
+    
 
     public function showAllBookings()
     {
