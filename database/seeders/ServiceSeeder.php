@@ -10,7 +10,7 @@ class ServiceSeeder extends Seeder
     public function run()
     {
         Service::create(['name' => 'Wedding Photography']);
-        Service::create(['name' => 'Portrait Photography']);
         Service::create(['name' => 'Event Photography']);
+        Service::create(['name' => 'Portrait Photography']);
     }
 }

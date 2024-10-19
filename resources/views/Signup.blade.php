@@ -173,9 +173,9 @@
                     <div class="input-group">
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="Enter your password">
-                        <div class="input-group-append">
+                        <!-- <div class="input-group-append">
                             <button type="button" class="toggle-btn" onclick="togglePassword()">👁️</button>
-                        </div>
+                        </div> -->
                     </div>
                     @error('password') <span class="text-danger">{{$message}}</span> @enderror
                 </div>
@@ -184,9 +184,9 @@
                     <div class="input-group">
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
                             placeholder="Confirm your password">
-                        <div class="input-group-append">
+                        <!-- <div class="input-group-append">
                             <button type="button" class="toggle-btn" onclick="toggleConfirmPassword()">👁️</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="button-container" style="text-align: center;">

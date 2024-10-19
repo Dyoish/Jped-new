@@ -14,6 +14,7 @@ class Booking extends Model
         'email',
         'service_id',
         'booking_date',
+        'user_id',
         'booking_time',
     ];
 

@@ -9,7 +9,7 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price']; // Make sure you define these fields
+    protected $fillable = ['name']; // Make sure you define these fields
     
     public function showBookingForm()
     {
