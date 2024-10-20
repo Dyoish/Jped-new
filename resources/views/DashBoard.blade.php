@@ -110,7 +110,7 @@
     }
 
      
-     .modal-content {
+    .modal-content {
             
             border-radius: 10px; /* Rounded corners for the modal */
         }
@@ -121,16 +121,18 @@
         }
 
         .modal-body {
-            display: flex;
-            flex-direction: row; 
-            padding: 20px;
-        }
+    display: flex; /* Keep elements in a row */
+    align-items: center; /* Center the items vertically */
+    overflow: hidden; /* Prevent overflow */
+}
+
 
         .modal-img {
-            max-width: 1280px; 
-            max-height: 800px; 
-            object-fit: contain; 
-        }
+    max-width: 60%; /* Set width to control space taken by image */
+    max-height: 80vh; /* Limit height to keep it within modal */
+    object-fit: contain; /* Maintain aspect ratio */
+    margin-right: 20px; /* Add some spacing between image and details */
+}
 
         .modal-description {
             max-width: 45%;
@@ -138,13 +140,8 @@
         }
 
         .modal-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: flex-start; /* Align items to the start for left alignment */
-    max-width: 45%;
-    padding-left: 20px;
-    text-align: left; /* Align text to the left */
+    max-width: 40%; /* Control width of text details */
+    overflow-y: auto; /* Allow scrolling if content is too tall */
 }
 
 .modal-title {
@@ -240,8 +237,8 @@
         </div>
     </section>
 
-<!-- Image Preview Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+ <!-- Image Preview Modal -->
+ <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl"> 
         <div class="modal-content">
             <div class="modal-header">
@@ -265,7 +262,6 @@
         </div>
     </div>
 </div>
-
 
 
     <script>
