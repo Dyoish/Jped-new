@@ -102,6 +102,28 @@
         color: white;              /* Keep text white */
     }
 
+     
+     .modal-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-body {
+            display: flex;
+        }
+
+        .modal-img {
+            max-width: 1280px; 
+            max-height: 800px; 
+            object-fit: contain; 
+        }
+
+        .modal-description {
+            max-width: 45%;
+            padding-left: 20px;
+        }
+
     </style>
 </head>
 
@@ -157,6 +179,39 @@
             </div>
         </div>
     </section>
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img id="modalImage" class="modal-img" src="" alt="Image Preview">
+                    <div class="modal-description">
+                        <p id="modalDescription"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show the modal with the clicked image and its description
+        $(document).ready(function () {
+            $('.gallery-item img').click(function () {
+                const imgSrc = $(this).attr('src');
+                const imgDescription = $(this).data('description');
+                
+                $('#modalImage').attr('src', imgSrc);
+                $('#modalDescription').text(imgDescription);
+                
+                $('#imageModal').modal('show');
+            });
+        });
+    </script>
+
 
     <!-- Footer Section
     @include('Layouts.footer2') -->
