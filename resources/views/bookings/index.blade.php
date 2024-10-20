@@ -60,7 +60,7 @@
                         <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-primary">Update</a>
                         <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" onsubmit="return confirmCancel()">
                             @csrf
-                            @method('DELETE') <!-- This will spoof the DELETE method -->
+                            <!-- Remove @method('DELETE') -->
                             <button type="submit" class="btn btn-danger">Cancel Booking</button>
                         </form>
                     @endif

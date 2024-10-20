@@ -253,11 +253,13 @@
         <div class="container">
             <!-- Category Buttons -->
                 <div class="gallery-categories text-center">
-                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraits</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/events_category">Events</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/street_category">Street</a>
-                    <!-- <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a> -->
+                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraiture</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/concert_category">Concert</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/cosplay_category">Cosplay</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/products_category">Products</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/companion_category">Companion</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/model_category">Model</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/documentary_category">Documentary</a>  
                 </div>
                 <br>
             <div class="row">

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    // UPDATES THE NAME AND PHOTO OF PROFILE
+    // UPDATES THE NAME OF PROFILE
     public function update_profile(Request $request){
         $validator = Validator::make($request->all(), [
             'name'=>'required|min:2|max:100',

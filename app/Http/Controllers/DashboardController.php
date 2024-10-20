@@ -10,7 +10,9 @@ use App\Models\User;
 use App\Models\booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laracsv\Export; // Ensure this line is added to import the correct Export class
+
+use Laracsv\Export; // Export para kay kay ma'am Veron
+
 
 class DashboardController extends Controller
 {
@@ -21,7 +23,6 @@ class DashboardController extends Controller
     public function index(){    
         return view('DashBoard');
     }
-
     
     public function signup(){
         return view('Signup');
@@ -30,19 +31,29 @@ class DashboardController extends Controller
     public function terms(){
         return view('terms');
     }
+    
+    public function adminlogin(){
+        return view('Adminlogin');
+    }
 
     public function admindashboard(){
         $user = User::orderBy('id','desc')->get();
         $usercount = User::count();
-        // $products = Products::count();
-        $boughtTotal=0;
-        return view('Admindashboards',compact('user','usercount','boughtTotal'));
+        return view('Admindashboards',compact('user','usercount'));
     }
+
     public function adminanalytics(){
         $bookings = Booking::with('service')->get(); 
         return view('adminanalytics', compact('bookings'));
     }
+    
+    //customer count
+    public function admincustomers(){
+        $user = User::get();
+        return view('Admincustomers', compact('user'));
+    }
 
+    //pang export
     public function exportBookings()
     {
         // Fetch all the bookings data
@@ -60,15 +71,7 @@ class DashboardController extends Controller
         'booking_time',])->download();
     }
     
-    public function admincustomers(){
-        $user = User::get();
-        return view('Admincustomers', compact('user'));
-    }
-
-    public function adminlogin(){
-        return view('Adminlogin');
-    }
-
+    //Admin Authentication
     public function adminAuth(Request $request) {
 
         $request->validate([
@@ -94,7 +97,7 @@ class DashboardController extends Controller
         return view('adminanalytics', compact('bookings'));
     }
 
-    
+    //Approve booking
     public function approve($id)
     {
         // Find the booking by ID
@@ -113,15 +116,15 @@ class DashboardController extends Controller
         // If booking doesn't exist or is not pending
         return redirect()->back()->with('error', 'Booking cannot be approved.');
     }
-    
+    //Reject/Cancel booking
     public function cancel($id)
     {
         $booking = Booking::find($id);
         if ($booking) {
-            $booking->status = 'canceled';
+            $booking->status = 'Rejected';
             $booking->save();
         }
-        return redirect()->back()->with('success', 'Booking canceled successfully!');
+        return redirect()->back()->with('success', 'Booking reject successfully!');
     }
     
 }

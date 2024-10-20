@@ -102,17 +102,17 @@ Route::get('/admincustomers/{id}/delete',[UserController::class,'destroy']);
 Route::get('/product_demo/{id}',[DashboardController::class,'details']);
 Route::get('/terms',[DashboardController::class,'terms']);
 
-//CATEGORIES
-Route::get('/events_category', [Category_Controller::class, 'Events_Category_Route']);
-Route::get('/gpu_category', [Category_Controller::class, 'Gpu_Category_Route']);
-Route::get('/ram_category', [Category_Controller::class, 'Ram_Category_Route']);
-Route::get('/hdd_category', [Category_Controller::class, 'HDD_Category_Route']);
-Route::get('/storage_category', [Category_Controller::class, 'SSD_Category_Route']);
-Route::get('/street_category', [Category_Controller::class, 'Street_Category_Route']);
+//Photography Categories/Services
 Route::get('/portrait_category', [Category_Controller::class, 'Portrait_Category_Route']);
+Route::get('/concert_category', [Category_Controller::class, 'Concert_Category_Route']);
+Route::get('/events_category', [Category_Controller::class, 'Events_Category_Route']);
+Route::get('/companion_category', [Category_Controller::class, 'Companion_Category_Route']);
+Route::get('/cosplay_category', [Category_Controller::class, 'Cosplay_Category_Route']);
+Route::get('/model_category', [Category_Controller::class, 'Model_Category_Route']);
+Route::get('/products_category', [Category_Controller::class, 'Products_Category_Route']);
 Route::get('/monitor_category', [Category_Controller::class, 'Monitor_Category_Route']);
 Route::get('/pre_built_units', [Category_Controller::class, 'PreBuilt_Category_Route']);
-Route::get('/psu_category', [Category_Controller::class, 'PSU_Category_Route']);
+Route::get('/documentary_category', [Category_Controller::class, 'Documentary_Category_Route']);
 
 //Route::get('/', [GalleryController::class, 'index']);
 
@@ -166,7 +166,9 @@ Route::get('/bookings', [BookController::class, 'index'])->name('bookings.index'
 Route::post('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
 
 Route::delete('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
+Route::post('/bookings/cancel/{id}', [BookController::class, 'cancel'])->name('bookings.cancel');
 
 //admin: approve and reject
 Route::post('/bookings/approve/{id}', [DashboardController::class, 'approve'])->name('bookings.approve');
 Route::post('/bookings/cancel/{id}', [DashboardController::class, 'cancel'])->name('bookings.cancel');
+

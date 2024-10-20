@@ -15,33 +15,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-
-    //RELATION TO CART // PRODUCTS
-    public function carts(){
-        return $this->hasMany(Cart::class);
-    }
-    
-    //RELATION TO ADDRESSES
-    public function addresses(){
-        return $this->hasMany(Address::class);
-    }
-
-    //RELATION TO BOUGHT PRODUCTS
-    public function bought_products(){
-        return $this->hasMany(BoughtProducts::class);
-    }
-
-    //RELATION TO CANCELLED PRODUCTS
-    public function cancelled_products(){
-        return $this->hasMany(CancelledProducts::class);
-    }
-
-    //RELATION TO REFUNDED PRODUCTS
-    public function refunded_products(){
-        return $this->hasMany(RefundedProducts::class);
-    }
-
-
     /**
      * The attributes that are mass assignable.
      *

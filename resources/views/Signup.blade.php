@@ -54,18 +54,23 @@
         .create-account {
             color: white;
             padding: 40px;
-            width: 55%;
+            width: 33%;
+            border: 2px solid rgba(255, 255, 255, .2);
+            border-radius: 10px;
         }
 
         h1 {
-            font-size: 32px;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            margin-left: 35px;
         }
 
         .form-control {
-            background: rgba(255, 255, 255, 0.1);
+            background: transparent;
             border: none;
             color: white;
+            border: 2px solid rgba(255, 255, 255, .2);
+            border-radius: 30px;
         }
 
         .form-control::placeholder {
@@ -73,7 +78,7 @@
         }
 
         .form-group label {
-            color: #aaa;
+            color: white;
         }
 
         .form-group {
@@ -110,6 +115,7 @@
             border: none;
             color: white;
             cursor: pointer;
+            
         }
 
         .toggle-btn:focus {
@@ -124,7 +130,7 @@
             margin-top: 30px;
         }
 
-        @media (max-width: 768px) {
+        /* @media (max-width: 768px) {
             .container {
                 flex-direction: column;
                 width: 100%;
@@ -141,18 +147,18 @@
             .welcome-back {
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
-            }
+            } */
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <!-- <div class="container">
         <div class="welcome-back">
             <h1>Welcome Back!</h1>
             <p>To keep connected with us please log in with your personal info</p>
             <a href="/login" class="btn btn-black black-button">Log in</a>
-        </div>
+        </div> -->
 
         <div class="create-account">
             <h1>Create Account</h1>

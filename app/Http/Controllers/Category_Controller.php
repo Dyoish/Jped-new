@@ -5,44 +5,32 @@ use App\Models\Products;
 use Illuminate\Http\Request;
 
 class Category_Controller extends Controller
-{
-    public function Events_Category_Route(){
-        return view('Categories.Events');
-    }
-
-    public function Ram_Category_Route(){
-        return view('Categories.Ram',compact('RAM'));
-    }
-
-    public function SSD_Category_Route(){
-        return view('Categories.SSD',compact('Storage'));
-    }
-
-    public function Gpu_Category_Route(){
-        return view('Categories.Gpu',compact('GPU'));
-    }
-
-    public function HDD_Category_Route(){
-        return view('Categories.HDD');
-    }
-
-    public function PSU_Category_Route(){
-        return view('Categories.PSU',compact('PSU'));
-    }
-
+{   
     public function Portrait_Category_Route(){
         return view('Categories.Portrait',);
     }
 
-    public function Monitor_Category_Route(){
-        return view('Categories.Monitor');
+    public function Concert_Category_Route(){
+        return view('Categories.Concert');
     }
-
-    public function Street_Category_Route(){
-        return view('Categories.Street');
+    
+    public function Cosplay_Category_Route(){
+        return view('Categories.Cosplay');
     }
-
-    public function PreBuilt_Category_Route(){
-        return view('Categories.Pre-Built');
+    
+    public function Products_Category_Route(){
+        return view('Categories.Products');
+    }
+    
+    public function Companion_Category_Route(){
+        return view('Categories.Companion');
+    }
+    
+    public function Model_Category_Route(){
+        return view('Categories.Model');
+    }
+    
+    public function Documentary_Category_Route(){
+        return view('Categories.Documentary');
     }
 }

@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Service;
-use App\Models\Booking;
-use Illuminate\Support\Facades\Auth; // Import this
+use Illuminate\Http\Request; // Req importation
+use App\Models\Service; // Service importation
+use App\Models\Booking; // Booking importation
+use Illuminate\Support\Facades\Auth; // Import Auth
 
 class BookController extends Controller
 {
-    /**
-     * Display all bookings for the authenticated user.
-     */
+    //Display bookings for the authenticated user.
     public function index()
     {
-        // Fetch all bookings for the authenticated user
-        $bookings = Booking::where('user_id', Auth::id())->get(); // Filter by the logged-in user
+        // Fetch bookings for the authenticated user
+        $bookings = Booking::where('user_id', Auth::id())->get();
         return view('bookings.index', compact('bookings'));
     }
-    /**
-     * Display the booking form with services.
-     */
-    
-     public function showBookingForm()
+
+    //Display the booking form with services.
+    public function showBookingForm()
      {
          // Fetch all services from the services table
          $services = Service::all(); 
@@ -30,9 +26,8 @@ class BookController extends Controller
          return view('booking_form', compact('services'));
      }
 
-    /**
-     * Store a new booking.
-     */
+
+    //Store a new booking.
     public function store(Request $request)
     {
         // Validate the request data
@@ -63,39 +58,31 @@ class BookController extends Controller
 
         // Create a new booking
         $booking = new Booking();
-
         $booking->name = $validated['name'];
         $booking->email = $validated['email'];
         $booking->service_id = $validated['service_id'];
         $booking->booking_date = $validated['booking_date'];
         $booking->booking_time = $validated['booking_time'];
-
         // Assign the user ID from the currently logged-in user
         $booking->user_id = Auth::id();
-
         $booking->save();
 
         // Redirect with a success message
         return redirect()->back()->with('success', 'Your booking has been added successfully!');
     }
     
-
-    /**
-     * Show all bookings for the authenticated user.
-     */
+    //Show all bookings for the authenticated user.
     public function showAllBookings()
     {
         // Fetch all bookings for the authenticated user
         $bookings = Booking::with('service')->where('user_id', Auth::id())->get(); // Filter by the logged-in user
-
-        // Pass the bookings to the view
-        return view('bookings.index', compact('bookings'));
+        return view('bookings.index', compact('bookings')); // Pass the bookings to the view
     }
 
-        public function update(Request $request, $id)
+    //Update button function in website (updated output)
+    public function update(Request $request, $id)
     {
         $booking = Booking::find($id);
-
         if (!$booking) {
             return redirect()->back()->with('error', 'Booking not found.');
         }
@@ -105,11 +92,11 @@ class BookController extends Controller
 
         // Validate the input fields
         $request->validate([
-            'name' => 'required', // Update this line
+            'name' => 'required',
             'email' => 'required|email',
-            'service_id' => 'required|exists:services,id', // Ensure the service exists
+            'service_id' => 'required|exists:services,id',
             'booking_date' => 'required|date',
-            'booking_time' => 'required', // Ensure it matches H:i format
+            'booking_time' => 'required',
         ]);
 
         // Update the booking details
@@ -123,22 +110,22 @@ class BookController extends Controller
         return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
     }
 
-
+    //Update button function in website
     public function edit($id)
-{
-    $booking = Booking::find($id);
+    {
+        $booking = Booking::find($id);
 
-    if (!$booking) {
-        return redirect()->back()->with('error', 'Booking not found.');
+        if (!$booking) {
+            return redirect()->back()->with('error', 'Booking not found.');
+        }
+
+        // Fetch all services to display in the dropdown
+        $services = Service::all(); // Adjust this if your Service model has a different name
+
+        return view('bookings.edit', compact('booking', 'services'));
     }
 
-    // Fetch all services to display in the dropdown
-    $services = Service::all(); // Adjust this if your Service model has a different name
-
-    return view('bookings.edit', compact('booking', 'services'));
-}
-
-
+    //Cancel button function in website
     public function cancel(Request $request, $id)
     {
         $booking = Booking::find($id);
@@ -155,7 +142,7 @@ class BookController extends Controller
     
         // Perform the cancellation (delete the booking)
         $booking->delete();
-    
+
         return redirect()->back()->with('success', 'Booking canceled successfully.');
     }
 }

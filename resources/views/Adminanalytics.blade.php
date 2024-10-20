@@ -2,9 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+<meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="{{ asset ('assests/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="assets/css/analytics.css" />
+    <script src="{{ asset('assests/js/jquery.js') }}"></script>
     <title>Dashboard</title>
 </head>
 
@@ -17,46 +23,50 @@
 @endif
 
 <!-- SIDEBAR -->
-<section id="sidebar" style="width: 250px; height: 100vh; background-color: #333; color: #fff; position: fixed; padding-top: 20px;">
+    <section id="sidebar">
     <a class="brand">
             <span class="text" style="margin-top: 20px; margin-left: 100px;">J.PED</span>
         </a>
-    <ul class="side-menu" style="list-style-type: none; padding: 0; margin-top: 50px;">
-        <li class="active" style="margin-bottom: 15px;">
-            <a href="{{ url('/admindashboards') }}" style="text-decoration: none; color: #fff; padding: 10px 20px; display: block;">
+        <ul class="side-menu top">
+        <li>
+            <a href="{{ url('/admindashboards') }}">
                 <i class="bx bxs-dashboard"></i>
                 <span class="text">Dashboards</span>
             </a>
         </li>
-        <li style="margin-bottom: 15px;">
-            <a href="{{ url('/adminanalytics') }}" style="text-decoration: none; color: #fff; padding: 10px 20px; display: block;">
-                <i class="bx bxs-group"></i>
+        <li class="active">
+            <a href="{{ url('/adminanalytics') }}">
+                <i class="bx bxs-analyse"></i>
                 <span class="text">Booking</span>
             </a>
         </li>
-        <li>
-            <a class="dropdown-item text-center" href="{{route('logout')}}" style="text-decoration: none; color: red; padding: 10px 20px; display: block; text-align: center;">
-                <i class="bx bxs-log-out"></i> Log out
-            </a>
-        </li>
-    </ul>
-</section>
-<!-- SIDEBAR -->
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <li>
+                <a class="dropdown-item text-center" href="{{route('logout')}}"  style="color: red;">
+                    <i class="bx bxs-log-out"></i> Log out
+                </a>
+            </li>
+        </ul>
+    </section>
+    
 <!-- CONTENT -->
-<section id="content" style="margin-left: 250px; padding: 40px;">
+<section id="content" style="padding: 30px;">
     <!-- MAIN -->
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Dashboard</h1>
+                <h1>Booking</h1>
             </div>
         </div>
 
         <!-- Box info for New Customers -->
         <ul class="box-info" style="list-style: none; padding: 0; display: flex; flex-direction: column;">
             <li style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
-                <h3>New Customers</h3>
                 <table class="table" style="width: 100%; margin-top: 20px; border-collapse: collapse;">
                     <thead>
                         <tr style="background-color: #007bff; color: #fff; text-align: left;">

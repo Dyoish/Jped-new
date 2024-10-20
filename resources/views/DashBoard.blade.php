@@ -109,57 +109,54 @@
         color: white;              /* Keep text white */
     }
 
-     
     .modal-content {
             
-            border-radius: 10px; /* Rounded corners for the modal */
-        }
+        border-radius: 10px; /* Rounded corners for the modal */
+    }
 
-        .modal-dialog {
-            max-width: 90%; /* Set a percentage for responsiveness */
-            width: 850px; /* Set a fixed width if desired */
-        }
+    .modal-dialog {
+         max-width: 90%; /* Set a percentage for responsiveness */
+        width: 850px; /* Set a fixed width if desired */
+    }
 
-        .modal-body {
-    display: flex; /* Keep elements in a row */
-    align-items: center; /* Center the items vertically */
-    overflow: hidden; /* Prevent overflow */
-}
+    .modal-body {
+        display: flex; /* Keep elements in a row */
+        align-items: center; /* Center the items vertically */
+        overflow: hidden; /* Prevent overflow */
+    }
 
+    .modal-img {
+        max-width: 60%; /* Set width to control space taken by image */
+        max-height: 80vh; /* Limit height to keep it within modal */
+        object-fit: contain; /* Maintain aspect ratio */
+        margin-right: 20px; /* Add some spacing between image and details */
+    }
 
-        .modal-img {
-    max-width: 60%; /* Set width to control space taken by image */
-    max-height: 80vh; /* Limit height to keep it within modal */
-    object-fit: contain; /* Maintain aspect ratio */
-    margin-right: 20px; /* Add some spacing between image and details */
-}
+    .modal-description {
+        max-width: 45%;
+        padding-left: 20px;
+    }
 
-        .modal-description {
-            max-width: 45%;
-            padding-left: 20px;
-        }
+    .modal-details {
+        max-width: 40%; /* Control width of text details */
+        overflow-y: auto; /* Allow scrolling if content is too tall */
+    }
 
-        .modal-details {
-    max-width: 40%; /* Control width of text details */
-    overflow-y: auto; /* Allow scrolling if content is too tall */
-}
+    .modal-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .modal-comments {
+        width: 100%; /* Ensures comments take the full width of the parent */
+    }
 
-.modal-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.modal-comments {
-    width: 100%; /* Ensures comments take the full width of the parent */
-}
-
-    
     .modal-comments .comment-item {
         margin-bottom: 10px;
         padding: 10px; 
-    border: 1px solid #ddd; 
-    border-radius: 5px; 
-    background-color: #f9f9f9; 
+        border: 1px solid #ddd; 
+        border-radius: 5px; 
+        background-color: #f9f9f9; 
     }
 
     </style>
@@ -182,42 +179,44 @@
         <div class="container">
             <!-- Category Buttons -->
                 <div class="gallery-categories text-center">
-                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraits</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/events_category">Events</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/street_category">Street</a>
-                    <!-- <a class="btn btn-primary text-center gallery-btn" href="/ram_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/gpu_category">Products</a> -->
-                </div>
+                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraiture</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/concert_category">Concert</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/cosplay_category">Cosplay</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/products_category">Products</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/companion_category">Companion</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/model_category">Model</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/documentary_category">Documentary</a>                    
+                <br>
                 <br>
             <div class="row">
                 <!-- Gallery item 1 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
                 <img src="images/portraits/kape.jpg" alt="Gallery Image 1" class="img-fluid"
-     data-title="Kape" 
-     data-description="masarap mag kape" 
-     data-rating="4.5"  
-     data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                data-title="Kape" 
+                data-description="masarap mag kape" 
+                data-rating="4.5"  
+                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 2 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
                     <img src="images/portraits/DSC_0375_1 (1).jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape" 
-     data-description="A serene portrait of a person enjoying coffee." 
-     data-rating="4.5" 
-     data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                data-description="A serene portrait of a person enjoying coffee." 
+                data-rating="4.5" 
+                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 3 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
                     <img src="images/events/no2.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape" 
-     data-description="A serene portrait of a person enjoying coffee." 
-     data-rating="4.5" 
-     data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                data-description="A serene portrait of a person enjoying coffee." 
+                data-rating="4.5" 
+                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 4 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
                     <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape" 
-    data-description="A serene portrait of a person enjoying coffee." 
-     data-rating="4.5" 
-     data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                data-description="A serene portrait of a person enjoying coffee." 
+                data-rating="4.5" 
+                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 5 -->  
                 <div class="col-md-4 col-sm-6 gallery-item">

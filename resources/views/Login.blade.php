@@ -17,6 +17,7 @@
                 url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff") format("woff"),
                 url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf") format("truetype"),
                 url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin") format("svg");
+                
         }
 
         body {
@@ -28,6 +29,12 @@
             justify-content: center;
             align-items: center;
             background-color: #121212;
+
+            /* Add your background image */
+            background-image: url('images/bg/hmp.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Two-panel layout */
@@ -41,7 +48,7 @@
 
         /* Left panel (Login) */
         .login-panel {
-            background: rgba(0, 0, 0, 0.8);
+            background: transparent;
             border-radius: 10px;
             padding: 50px;
             width: 50%;
@@ -50,7 +57,8 @@
             flex-direction: column;
             justify-content: center;
             margin-left: 230px;
-            
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(20px);
         }
 
         .login-panel h1 {
@@ -69,12 +77,13 @@
         }
 
         .login-panel .form-group input {
-            background-color: #2c2c2c;
+            background-color: transparent;
             color: white;
             border-radius: 30px;
             padding: 10px 20px;
             border: none;
             width: 100%;
+            border: 2px solid rgba(255, 255, 255, .2);
         }
 
         .login-panel .black-button {
@@ -82,9 +91,14 @@
             color: white;
             border-radius: 30px;
             padding: 10px;
-            border: 2px solid white; /* Add a border to make the button more visible */
+            border: 2px solid rgba(255, 255, 255, .2);
             margin-top: 10px;
-            transition: background-color 0.3s ease; /* Add a smooth transition for hover effect */
+            transition: background-color 0.3s ease;
+        }
+
+        .login-panel .black-button:hover {
+            background-color: #f1f1f1;
+            color: #212529
         }
 
         .login-panel .black-link {
@@ -119,9 +133,9 @@
             border-radius: 30px;
             padding-right: 50px;
             padding-left: 50px;
-            border: 2px solid white; /* Add a border to make the button more visible */
+            border: 2px solid white;
             margin-top: 10px;
-            transition: background-color 0.3s ease; /* Add a smooth transition for hover effect */
+            transition: background-color 0.3s ease;
         }
 
         /* Adjustments for responsiveness */
@@ -136,13 +150,14 @@
                 width: 100%;
             }
         }
+
         .btn-white {
             color: white;
-            border: 1px solid black;
+            border: 2px solid rgba(255, 255, 255, .2);
         }
 
         .btn-white:hover {
-        background-color: #f1f1f1; /* Slight hover effect */
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -151,40 +166,40 @@
 
     <!-- Content Section -->
     <div class="container">
-    <!-- Login Form -->
-    <div class="login-panel">
-        <h1>Sign in to JPED</h1>
+        <!-- Login Form -->
+        <div class="login-panel">
+            <h1>Sign in to JPED</h1>
 
-        <form id="loginForm" action="{{ route('Login.post') }}" method="post">
-            @csrf
-            <div class="form-group">
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-                @error('email') 
-                    <span class="text-danger">{{ $message }}</span> 
-                @enderror
-            </div>
+            <form id="loginForm" action="{{ route('Login.post') }}" method="post">
+                @csrf
+                <div class="form-group">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                    @error('email') 
+                        <span class="text-danger">{{ $message }}</span> 
+                    @enderror
+                </div>
 
-            <div class="form-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                @error('password') 
-                    <span class="text-danger">{{ $message }}</span> 
-                @enderror
-            </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    @error('password') 
+                        <span class="text-danger">{{ $message }}</span> 
+                    @enderror
+                </div>
 
-            <!-- Forgot Password Link -->
-            <div class="form-group">
-                <a href="{{ route('forget.password') }}" class="text-white">Forgot Password?</a>
-            </div>
+                <!-- Forgot Password Link -->
+                <div class="form-group">
+                    <a href="{{ route('forget.password') }}" class="text-white">Forgot Password?</a>
+                </div>
 
-            <button type="submit" class="btn btn-block black-button grey-hover">Log in</button>
-        </form>
+                <button type="submit" class="btn btn-block black-button grey-hover">Log in</button>
+            </form>
 
-        <!-- Signup Prompt (merged into login container) -->
-        <br>
-        <p>Start your journey with us.</p>
-        <a href="/signup" class="btn btn-white">Sign up</a>
+            <!-- Signup Prompt (merged into login container) -->
+            <br>
+            <p>Start your journey with us.</p>
+            <a href="/signup" class="btn btn-white">Sign up</a>
+        </div>
     </div>
-</div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
