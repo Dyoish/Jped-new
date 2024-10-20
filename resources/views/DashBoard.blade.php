@@ -268,50 +268,6 @@ try {
 
     <!-- Scripts -->
     <script>
-    // Automatic slideshow
-    document.addEventListener("DOMContentLoaded", function() {
-        const slideContainer = document.querySelector(".slide-images");
-        const slideImages = document.querySelector(".slide-images");
-        let currentIndex = 0;
-
-        function showSlide(index) {
-            const translateValue = -index * 100 + "%";
-            slideImages.style.transform = "translateX(" + translateValue + ")";
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % 5;
-            showSlide(currentIndex);
-        }
-
-        setInterval(nextSlide, 5000);
-    });
-
-    $(document).ready(function() {
-        var previousScroll = 0;
-
-        // Listen for the scroll event
-        $(window).scroll(function() {
-            var currentScroll = $(this).scrollTop();
-            var scrollingDown = currentScroll > previousScroll;
-
-            if (currentScroll > 0) {
-                if (scrollingDown) {
-                    $('.navbar').addClass('navbar-hidden');
-                } else if (currentScroll < 50) {
-                    $('.navbar').removeClass('navbar-hidden');
-                }
-            }
-
-            previousScroll = currentScroll;
-        });
-    });
-    
-    </script>
-<!-- trial -->
-
-
-    <script>
         let lastScrollTop = 0;
         const navbar = document.querySelector('.navbar');
 
