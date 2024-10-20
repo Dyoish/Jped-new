@@ -63,30 +63,39 @@
                             <th style="padding: 10px;">ID</th>
                             <th style="padding: 10px;">Name</th>
                             <th style="padding: 10px;">Email</th>
+                            <th style="padding: 10px;">Service</th>
                             <th style="padding: 10px;">Booking Date</th>
                             <th style="padding: 10px;">Booking Time</th>
+                            <th style="padding: 10px;">Status</th> <!-- Add Status Column -->
                             <th style="padding: 10px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($bookings as $booking)
-                    <tr>
-                        <td>{{ $booking->name }}</td>
-                        <td>{{ $booking->email }}</td>
-                        <td>{{ $booking->service->name }}</td> <!-- Assuming a relationship between booking and service -->
-                        <td>{{ $booking->booking_date }}</td>
-                        <td>{{ $booking->booking_time }}</td>
-                        <td>
-                            @if (Auth::check() && Auth::user()->id == $booking->user_id)
-                                <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
-                                </form>
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-                <a href="{{ route('export.bookings') }}" class="btn btn-primary">Export Bookings to CSV</a>
+                        <tr>
+                            <td>{{ $booking->id }}</td>
+                            <td>{{ $booking->name }}</td>
+                            <td>{{ $booking->email }}</td>
+                            <td>{{ $booking->service->name }}</td> <!-- Assuming relationship between booking and service -->
+                            <td>{{ $booking->booking_date }}</td>
+                            <td>{{ $booking->booking_time }}</td>
+                            <td>{{ ucfirst($booking->status) }}</td> <!-- Display status -->
+                            <td>
+                                @if($booking->status == 'pending')
+                                    <form action="{{ route('bookings.approve', $booking->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit">Approve</button>
+                                    </form>
+                                    <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                                    </form>
+                                    @else
+                                        {{ ucfirst($booking->status) }} <!-- Display final status -->
+                                    @endif
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </li>

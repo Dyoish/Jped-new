@@ -18,6 +18,10 @@ class Booking extends Model
         'booking_time',
     ];
 
+    protected $attributes = [
+        'status' => 'pending',
+    ];
+
     public function service()
     {
         return $this->belongsTo(Service::class);

@@ -58,9 +58,10 @@
                 <div class="card-footer">
                     @if (Auth::check() && Auth::user()->id == $booking->user_id)
                         <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-primary">Update</a>
-                        <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" onsubmit="return confirmCancel()">
                             @csrf
-                            <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                            @method('DELETE') <!-- This will spoof the DELETE method -->
+                            <button type="submit" class="btn btn-danger">Cancel Booking</button>
                         </form>
                     @endif
                 </div>
@@ -68,4 +69,11 @@
         @endforeach
     @endif
 </div>
+
+<script>
+    function confirmCancel() {
+        return confirm('Are you sure you want to cancel this booking? This action cannot be undone.');
+    }
+</script>
+
 @endsection

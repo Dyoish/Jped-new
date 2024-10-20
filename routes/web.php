@@ -156,3 +156,12 @@ Route::post('/bookings/update/{id}', [BookController::class, 'update'])->name('b
 Route::get('/bookings/{id}/edit', [BookController::class, 'edit'])->name('bookings.edit');
 
 Route::get('/bookings', [BookController::class, 'index'])->name('bookings.index');
+
+// cancel button
+Route::post('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
+
+Route::delete('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
+
+//admin: approve and reject
+Route::post('/bookings/approve/{id}', [DashboardController::class, 'approve'])->name('bookings.approve');
+Route::post('/bookings/cancel/{id}', [DashboardController::class, 'cancel'])->name('bookings.cancel');

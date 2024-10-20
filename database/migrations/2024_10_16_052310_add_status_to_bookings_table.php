@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     public function up()
-{
-    Schema::table('bookings', function (Blueprint $table) {
-        $table->string('status')->default('pending');
-    });
-}
+    {
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->string('status')->default('pending'); // Add a 'status' field with 'pending' as the default value
+        });
+    }
 
 public function down()
 {
