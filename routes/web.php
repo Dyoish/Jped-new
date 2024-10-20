@@ -149,3 +149,10 @@ Route::get('bookings/export/csv', function () {
 })->name('bookings.export.csv');
 
 Route::get('/export-bookings', [DashboardController::class, 'exportBookings'])->name('export.bookings');
+
+//update button
+Route::post('/bookings/update/{id}', [BookController::class, 'update'])->name('bookings.update');
+
+Route::get('/bookings/{id}/edit', [BookController::class, 'edit'])->name('bookings.edit');
+
+Route::get('/bookings', [BookController::class, 'index'])->name('bookings.index');

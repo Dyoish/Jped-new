@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Auth; // Import this
 class BookController extends Controller
 {
     /**
+     * Display all bookings for the authenticated user.
+     */
+    public function index()
+    {
+        // Fetch all bookings for the authenticated user
+        $bookings = Booking::where('user_id', Auth::id())->get(); // Filter by the logged-in user
+        return view('bookings.index', compact('bookings'));
+    }
+    /**
      * Display the booking form with services.
      */
     
@@ -71,24 +80,64 @@ class BookController extends Controller
     }
     
 
+    /**
+     * Show all bookings for the authenticated user.
+     */
     public function showAllBookings()
     {
-        // Fetch all bookings from the database
-        $bookings = Booking::with('service')->get(); // Ensure 'service' relationship is defined
-        
+        // Fetch all bookings for the authenticated user
+        $bookings = Booking::with('service')->where('user_id', Auth::id())->get(); // Filter by the logged-in user
+
         // Pass the bookings to the view
         return view('bookings.index', compact('bookings'));
     }
 
-    /**
-     * Display all bookings (for admin or management views).
-     */
-    public function index()
+        public function update(Request $request, $id)
     {
-        // Fetch all bookings
-        $bookings = Booking::all();
-        return view('Book', compact('bookings'));
+        $booking = Booking::find($id);
+
+        if (!$booking) {
+            return redirect()->back()->with('error', 'Booking not found.');
+        }
+
+        // Log the request data to see what's being submitted
+        \Log::info('Request Data:', $request->all());
+
+        // Validate the input fields
+        $request->validate([
+            'name' => 'required', // Update this line
+            'email' => 'required|email',
+            'service_id' => 'required|exists:services,id', // Ensure the service exists
+            'booking_date' => 'required|date',
+            'booking_time' => 'required', // Ensure it matches H:i format
+        ]);
+
+        // Update the booking details
+        $booking->name = $request->input('name');
+        $booking->email = $request->input('email');
+        $booking->service_id = $request->input('service_id');
+        $booking->booking_date = $request->input('booking_date');
+        $booking->booking_time = $request->input('booking_time');
+        $booking->save();
+
+        return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
     }
+
+
+    public function edit($id)
+{
+    $booking = Booking::find($id);
+
+    if (!$booking) {
+        return redirect()->back()->with('error', 'Booking not found.');
+    }
+
+    // Fetch all services to display in the dropdown
+    $services = Service::all(); // Adjust this if your Service model has a different name
+
+    return view('bookings.edit', compact('booking', 'services'));
+}
+
 
     public function cancel(Request $request, $id)
     {

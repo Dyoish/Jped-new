@@ -4,44 +4,15 @@
 @include('Layouts.navbar')
 
 <style>
-    /* Styling the table */
-    .table {
-        margin-top: 20px;
-        border-collapse: collapse;
-        width: 100%;
-        font-family: Arial, sans-serif;
-    }
-
-    .table thead {
-        background-color: #007bff;
-        color: white;
-    }
-
-    .table thead th {
-        padding: 10px;
-        text-align: left;
-    }
-
-    .table tbody td {
-        padding: 10px;
-    }
-
-    .table tbody tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    .table tbody tr:hover {
-        background-color: #e9ecef;
-    }
-
-    /* Alert message */
-    .alert {
-        margin-top: 20px;
-    }
-
     /* Container styling */
     .container {
         margin-top: 40px;
+    }
+
+    /* Card styling */
+    .card {
+        margin-bottom: 20px; /* Space between cards */
+        text-align: center; /* Center content in cards */
     }
 
     /* Heading styling */
@@ -49,6 +20,18 @@
         font-size: 2rem;
         color: #333;
         margin-bottom: 20px;
+        text-align: center; /* Center the main heading */
+    }
+
+    /* Alert message */
+    .alert {
+        margin-top: 20px;
+        text-align: center; /* Center alert messages */
+    }
+
+    /* Button styling */
+    .btn {
+        margin: 5px; /* Space between buttons */
     }
 </style>
 
@@ -61,37 +44,28 @@
             No bookings found.
         </div>
     @else
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>User Name</th>
-                    <th>Email</th>
-                    <th>Service</th>
-                    <th>Booking Date</th>
-                    <th>Booking Time</th>
-                    <th>Action</th> <!-- Added Action column -->
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($bookings as $booking)
-                    <tr>
-                        <td>{{ $booking->name }}</td>
-                        <td>{{ $booking->email }}</td>
-                        <td>{{ $booking->service->name }}</td> <!-- Assuming a relationship between booking and service -->
-                        <td>{{ $booking->booking_date }}</td>
-                        <td>{{ $booking->booking_time }}</td>
-                        <td>
-                            @if (Auth::check() && Auth::user()->id == $booking->user_id)
-                                <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
-                                </form>
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        @foreach($bookings as $booking)
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $booking->name }}</h5>
+                    <p class="card-text">
+                        <strong>Email:</strong> {{ $booking->email }}<br>
+                        <strong>Service:</strong> {{ $booking->service->name }}<br>
+                        <strong>Booking Date:</strong> {{ $booking->booking_date }}<br>
+                        <strong>Booking Time:</strong> {{ $booking->booking_time }}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    @if (Auth::check() && Auth::user()->id == $booking->user_id)
+                        <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-primary">Update</a>
+                        <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                        </form>
+                    @endif
+                </div>
+            </div>
+        @endforeach
     @endif
 </div>
 @endsection
