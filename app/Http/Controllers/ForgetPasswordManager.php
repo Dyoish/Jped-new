@@ -18,7 +18,7 @@ class ForgetPasswordManager extends Controller
 
     public function forgetPasswordPost(Request $request){
         $request->validate([
-            'email' => "required|email|exists: users",
+            'email' => "required|email|exists:users",
         ]);
 
         $token = Str::random(64);

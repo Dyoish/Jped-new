@@ -87,9 +87,8 @@
                     <!-- Back Button -->
                     <a href="/login" class="btn btn-outline-secondary mb-3">Back</a>
 
-                    <form id="loginForm" action="/verify" method="post"
-                        style="border: 1px solid #ccc; border-radius: 50px; padding: 80px;">
-                        @csrf
+                    <form id="loginForm" action="/verify" method="post" style="border: 1px solid #ccc; border-radius: 50px; padding: 80px;">
+                        @csrf <!-- Ensure CSRF token is included -->
 
                         <header class="py-5 text-center">
                             <h1>Reset Password</h1>
@@ -97,21 +96,17 @@
                         </header>
 
                         <div class="form-group" style="margin-bottom: 20px;">
-
-                            <input type="email" class="form-control" id="enterEmail" name="enterEmail"
-                                placeholder="Email">
+                            <input type="email" class="form-control" id="enterEmail" name="enterEmail" placeholder="Email" required>
                         </div>
 
-                        <button type="submit"
-                            class="btn btn-primary btn-block black-button btn-black-button">Next</button>
-
+                        <button type="submit" class="btn btn-primary btn-block black-button btn-black-button">Next</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Footer Section
     <footer class="bg-black text-light text-center py-3 fixed-bottom">
         <div class="row">
             <div class="col-md text-left ml-md-5">
@@ -124,7 +119,7 @@
                 <p><a href="https://www.facebook.com/yourpage" class="text-light">Follow us on Facebook</a></p>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- Bootstrap JS and Popper.js scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

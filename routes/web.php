@@ -68,13 +68,18 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/verify', function(){return  view('Verify_Page');});
     Route::post('/verify', function(){return  view('Verify_Page');});
     
-    
 });
+
+
 Route::get('/enterEmail', [ForgetPasswordManager::class, 'forgetPassword'])->name("forget.password");
 Route::post('/enterEmail', [ForgetPasswordManager::class, 'forgetPasswordPost'])->name("forget.password.post");
 Route::get('/conPass/{token}',  [ForgetPasswordManager::class, 'resetPassword'])->name("resetPassword")->name("reset.password");
 Route::post('/conPass',  [ForgetPasswordManager::class, 'resetPasswordPost'])->name("resetPassword")->name("reset.password.post");
 
+Route::get('/forget-password', [ForgetPasswordManager::class, 'forgetPassword'])->name('forget.password');
+Route::post('/forget-password', [ForgetPasswordManager::class, 'forgetPasswordPost']);
+Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'resetPassword'])->name('reset.password');
+Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost']);
 
 Route::get('/adminlogin',[DashboardController::class,'adminlogin']);
 Route::post('/adminlogin', [DashboardController::class,'adminAuth'])->name('adminpost');

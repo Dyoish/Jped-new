@@ -171,6 +171,11 @@
                 @enderror
             </div>
 
+            <!-- Forgot Password Link -->
+            <div class="form-group">
+                <a href="{{ route('forget.password') }}" class="text-white">Forgot Password?</a>
+            </div>
+
             <button type="submit" class="btn btn-block black-button grey-hover">Log in</button>
         </form>
 
