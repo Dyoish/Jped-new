@@ -114,6 +114,10 @@ Route::get('/monitor_category', [Category_Controller::class, 'Monitor_Category_R
 Route::get('/pre_built_units', [Category_Controller::class, 'PreBuilt_Category_Route']);
 Route::get('/documentary_category', [Category_Controller::class, 'Documentary_Category_Route']);
 
+Route::get('/gallery', function () {
+    return view('Gallery'); 
+});
+
 //Route::get('/', [GalleryController::class, 'index']);
 
 Route::get('/book', [BookController::class,'index']);

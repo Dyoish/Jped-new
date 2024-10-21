@@ -18,29 +18,10 @@
         </li>
 
         <li class="nav-item" style="margin-right: 40px; margin-top: 5px;">
-    <a href="{{ route('show_all_bookings') }}" style="text-decoration: none; color: white;">Book info</a>
-</li>
+            <a href="{{ route('show_all_bookings') }}" style="text-decoration: none; color: white;">Book info</a>
+        </li>
 
-            <!-- mx-auto to center the content -->
-            <!--<li class="nav-item" style="margin-right: 1.5vw;">
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="color: white; ">
-                        Categories
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="categoriesDropdown" style="margin-left: -2vw;">
-                        <!-- Dropdown content goes here
-                        <a class="dropdown-item text-center" href="/chassis_category">Chassis</a>
-                        <a class="dropdown-item text-center" href="/processor_category">Processor</a>
-                        <a class="dropdown-item text-center" href="/motherboard_category">Motherboard</a>
-                        <a class="dropdown-item text-center" href="/ram_category">Ram</a>
-                        <a class="dropdown-item text-center" href="/gpu_category">Graphics Card</a>
-                        <a class="dropdown-item text-center" href="/psu_category">Power Supply Unit</a>
-                        <a class="dropdown-item text-center" href="/storage_category">Storage</a>
-                    </div>
-                </div>
-            </li>-->
+           
 
             <li class="nav-item" style="margin-right: 3vw;">
                 <div class=" nav-item dropdown">
@@ -68,6 +49,15 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
         <div class="container-fluid">
             <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item"
+                    style="margin-left: 50px; margin-right: 0px; margin-top: 3px; color: white; ">
+                    <a class="nav-link" aria-current="page" href="/" style="color: white;">Home</a>
+                </li>
+                <li class="nav-item"
+                    style="margin-left: 50px; margin-right: 0px; margin-top: 3px; color: white; ">
+                    <a class="nav-link" aria-current="page" href="/gallery" style="color: white;">Gallery</a>
+                </li>
+
                 <li class="nav-item"
                     style="margin-left: 50px; margin-right: 50px; margin-top: 3px; color: white; ">
                     <a class="nav-link" aria-current="page" href="login" style="color: white;">Login</a>

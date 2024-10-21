@@ -159,26 +159,119 @@
         background-color: #f9f9f9; 
     }
 
+    .header-image {
+    background-image: url('images/bg/hmpp.jpg'); /* Path to your cover image */
+    background-size: cover; /* Ensures the image covers the entire div */
+    background-position: center top; /* Center the image horizontally, align it to the top vertically */
+    height: 100%; /* Set to half of the image height (1080px / 2) */
+    width: 100%;  
+    }
+
+    /* CSS to position the new image in the bottom left corner */
+    .corner-image {
+        position: absolute;
+        bottom: -400px; /* Adjust the spacing from the bottom */
+        left: 30px;   /* Adjust the spacing from the left */
+        width: 68%; /* Adjust the size of the image as needed */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .corner-text {
+    margin-left: 900px; /* Adds space between image and text */
+    flex-grow: 1; /* Allows the text to take up remaining space */
+    color: #000;
+    max-width: 50px; /* Prevent text from taking up too much space */
+    }
+
+    .corner-text h3, .corner-text p {
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    .corner-image-one {
+        position: relative;
+        bottom: -248px; /* Adjust the spacing from the bottom */
+        right: -450px;   /* Adjust the spacing from the left */
+        width: 51%; /* Adjust the size of the image as needed */
+        height: 50%; /* Maintain aspect ratio */
+    }
+
+    .corner-image-two {
+        position: relative;
+        bottom: -100px; /* Adjust the spacing from the bottom */
+        right: -650px;   /* Adjust the spacing from the left */
+        width: 50%; /* Adjust the size of the image as needed */
+        height: 60%; /* Maintain aspect ratio */
+    }
+
+    .corner-text-one {
+        position: relative;
+        bottom: -200px; /* Adjust the spacing from the bottom */
+        right: -500px; /* Align with corner-image-one */
+        color: #000; /* Text color */
+
+    }
+
+    .corner-text-two {
+        position: absolute;
+        bottom: -200px; /* Adjust the spacing from the bottom */
+        right: -350px; /* Align with corner-image-two */
+        color: #000; /* Text color */
+        font-size: 20px;
+    }
+
+    
     </style>
 </head>
 
 <body>
     <!-- Navigation Bar -->
     @include('Layouts.navbar')
-    <br>
 
-    <!-- Header Section -->
+
+    <!-- Cover Image Section -->
+    <div class="container-fluid p-0 header-image">
+    </div>
+
+    <div class="corner-image">
+    <!-- Add image in the bottom left corner -->
+    <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image">
+
+    <div class="corner-image-one">
+        <!-- Add the text above the first image -->
+        <div class="corner-text-one">
+        <h3>AMAZING TEAM WORK WITH PHOTOGRAPHER</h3>
+        <br>
+        <p>JPED is a photography website designed for photographers to showcase their portfolios and engage with clients. It allows photographers to upload, organize, and present their work in a sleek, modern UI.</p>
+        </div>
+        <!-- Image in the bottom right corner -->
+        <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image-one">
+    </div>
+
+    <div class="corner-image-two">
+        <!-- Add the text above the second image -->
+        <div class="corner-text-two">
+             <p>"Taking an image, freezing a moment, reveals how rich reality truly is."</p>
+        </div>
+        <!-- Image in the bottom right corner -->
+        <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image-two">
+    </div>
+</div>
+</div>
+
+
+    <!-- Header Section 
     <header style="margin-top: 70px;">
         <div class="container" id="contents" style="text-align: center;">
             <h1>J.PED</h1> 
         </div>
-    </header>
+    </header>-->
 
     <!-- Image Gallery Section -->
-    <section class="gallery-container">
-        <div class="container">
+    <!-- <section class="gallery-container"> -->
+        <!-- <div class="container"> -->
             <!-- Category Buttons -->
-                <div class="gallery-categories text-center">
+                <!-- <div class="gallery-categories text-center">
                     <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraiture</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/concert_category">Concert</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/cosplay_category">Cosplay</a>
@@ -186,55 +279,55 @@
                     <a class="btn btn-primary text-center gallery-btn" href="/companion_category">Companion</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/model_category">Model</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/documentary_category">Documentary</a>                    
-                <br>
-                <br>
-            <div class="row">
+                <br> -->
+                <!-- <br>
+            <div class="row"> -->
                 <!-- Gallery item 1 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
+                <!-- <div class="col-md-4 col-sm-6 gallery-item">
                 <img src="images/portraits/kape.jpg" alt="Gallery Image 1" class="img-fluid"
                 data-title="Kape" 
                 data-description="masarap mag kape" 
                 data-rating="4.5"  
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div>
+                </div> -->
                 <!-- Gallery item 2 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
+                <!-- <div class="col-md-4 col-sm-6 gallery-item">
                     <img src="images/portraits/DSC_0375_1 (1).jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div>
+                </div> -->
                 <!-- Gallery item 3 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
+                <!-- <div class="col-md-4 col-sm-6 gallery-item">
                     <img src="images/events/no2.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div>
+                </div> -->
                 <!-- Gallery item 4 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
+                <!-- <div class="col-md-4 col-sm-6 gallery-item">
                     <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div>
+                </div> -->
                 <!-- Gallery item 5 -->  
-                <div class="col-md-4 col-sm-6 gallery-item">
+                <!-- <div class="col-md-4 col-sm-6 gallery-item">
                     <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape" 
                         data-description="A serene portrait of a person enjoying coffee." 
                         data-rating="4.5" 
                         data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div> 
+                </div>  -->
                 <!-- Gallery item 6 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
+                <!-- <div class="col-md-4 col-sm-6 gallery-item">
                     <img src="images/events/DSC_0301.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
      data-description="A serene portrait of a person enjoying coffee." 
      data-rating="4.5" 
      data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div>
         </div>
-    </section>
+    </section> -->
 
  <!-- Image Preview Modal -->
  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -300,10 +393,6 @@
 });
 
     </script>
-
-
-    <!-- Footer Section
-    @include('Layouts.footer2') -->
 
     <!-- Scripts -->
     <script>
