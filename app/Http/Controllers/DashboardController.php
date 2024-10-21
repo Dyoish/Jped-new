@@ -98,33 +98,30 @@ class DashboardController extends Controller
     }
 
     //Approve booking
+// Approve booking
     public function approve($id)
     {
-        // Find the booking by ID
         $booking = Booking::find($id);
 
-        // Ensure booking exists and status is pending
         if ($booking && $booking->status === 'pending') {
-            // Change status to approved
-            $booking->status = 'approved';
+            $booking->status = 'approved'; // Set to approved
             $booking->save();
 
-            // Redirect back with success message
             return redirect()->back()->with('success', 'Booking approved successfully!');
         }
 
-        // If booking doesn't exist or is not pending
         return redirect()->back()->with('error', 'Booking cannot be approved.');
     }
-    //Reject/Cancel booking
+
+    // Reject/Cancel booking
     public function cancel($id)
     {
         $booking = Booking::find($id);
         if ($booking) {
-            $booking->status = 'Rejected';
+            $booking->status = 'rejected'; // Set to rejected (lowercase)
             $booking->save();
         }
-        return redirect()->back()->with('success', 'Booking reject successfully!');
+        return redirect()->back()->with('success', 'Booking rejected successfully!');
     }
     
 }
