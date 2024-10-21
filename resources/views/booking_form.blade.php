@@ -86,7 +86,7 @@
 
     <div class="mb-3">
         <label for="booking_date" class="form-label">Select Date</label>
-        <input type="text" class="form-control" id="booking_date" name="booking_date" required>
+        <input type="date" class="form-control" id="booking_date" name="booking_date" required>
     </div>
 
     <div class="mb-3">
