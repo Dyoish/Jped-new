@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
-    style="background-color: black; box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);">
+    style="background-color: rgba(0, 0, 0, 0.6); box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);">
     <!-- Added border-radius here -->
 
      <div class="container-fluid">
@@ -38,16 +38,21 @@
                         style="color: white; ">
                         {{auth()->user()->name}}
                     </a>
-                    <div class="dropdown-menu ml-auto mr-auto" aria-labelledby="userDropdown"
-                        style="margin-left: -2.5vw;">
+                    <div class="dropdown-menu ml-auto mr-auto" aria-labelledby="userDropdown" style="margin-left: -2.5vw;">
                         <!-- Dropdown content goes here -->
-                        <a class=" dropdown-item text-center" href="/profile">My account</a>
-                        <a class="dropdown-item text-center" href="{{route('logout')}}">Log out</a>
+                        <a class="dropdown-item text-center" href="/profile">My account</a>
+
+                        <!-- Logout Form (hidden) -->
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+                        <!-- Update the Logout Link -->
+                        <a class="dropdown-item text-center" href="#" onclick="event.preventDefault(); logout();">Log out</a>
                     </div>
 
                 </div>
             </li>
-
 
         </ul>
     </div>
@@ -86,4 +91,18 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         </div>
+
+
+        <script>
+    function logout() {
+        // Submit the logout form
+        document.getElementById('logout-form').submit();
+
+        // Optionally, you can show a loading spinner here or a message
+        // Set a timeout to refresh the page after logout
+        setTimeout(() => {
+            window.location.reload(); // Refresh the page
+        }, 1000); // Adjust the time as needed (in milliseconds)
+    }
+</script>
 </nav>

@@ -75,4 +75,6 @@ class LoginController extends Controller
 
         return view('Profile.User_Profile');;
     }
+
+    
 }

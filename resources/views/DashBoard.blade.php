@@ -158,6 +158,8 @@
     width: 100%;  
     }
 
+    
+
     /* CSS to position the new image in the bottom left corner */
     .corner-image {
         position: absolute;
@@ -211,66 +213,74 @@
         font-size: 20px;
     }
 
-    /* Styling for the container with logo, contacts, and services */
-.info-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    margin-top: 900px;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.info-container .logo {
-    flex: 1;
-    text-align: center;
-}
-
-.info-container .logo img {
-    width: 150px; /* Adjust the size of your logo as needed */
-    height: auto;
-}
-
-.info-container .contacts, .info-container .services {
-    flex: 1;
-    padding: 0 20px;
-}
-
-.info-container h3 {
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.info-container p, .info-container li {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.info-container ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.info-container li {
-    margin-bottom: 8px;
-}
-
-/* Make it responsive */
-@media (max-width: 768px) {
+        /* Styling for the container with logo, contacts, and services */
     .info-container {
-        flex-direction: column;
-        align-items: center;
+        background-image: url('images/bg/footer.png'); /* Path to your cover image */
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin-top: 900px;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .info-container .logo, .info-container .contacts, .info-container .services {
-        padding: 10px;
+    .info-container .logo {
+        flex: 1;
         text-align: center;
     }
-}
 
-    
+    .info-container .logo img {
+        width: 150px; /* Adjust the size of your logo as needed */
+        height: auto;
+    }
+
+    .info-container .contacts, .info-container .services {
+        flex: 1;
+        padding: 0 20px;
+    }
+
+    .info-container h3 {
+        font-weight: 600;
+        margin-bottom: 15px;
+        margin-left: 210px;
+    }
+
+    .info-container p, .info-container li {
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-left: 210px;
+    }
+
+    .info-container ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .info-container li {
+        margin-bottom: 8px;
+    }
+    .services {
+        margin-right: 130px;
+    }
+
+    .contacts {
+        margin-right: -70px;
+    }
+
+    /* Make it responsive */
+    @media (max-width: 768px) {
+        .info-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-container .logo, .info-container .contacts, .info-container .services {
+            padding: 10px;
+            text-align: center;
+        }
+    }
     </style>
 </head>
 
@@ -278,196 +288,129 @@
     <!-- Navigation Bar -->
     @include('Layouts.navbar')
 
-
     <!-- Cover Image Section -->
-    <div class="container-fluid p-0 header-image">
-    </div>
+    <div class="container-fluid p-0 header-image"></div>
 
     <div class="corner-image">
-    <!-- Add image in the bottom left corner -->
-    <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image">
+        <!-- Add image in the bottom left corner -->
+        <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image">
 
-    <div class="corner-image-one">
-        <!-- Add the text above the first image -->
-        <div class="corner-text-one">
-        <h3>AMAZING TEAM WORK WITH PHOTOGRAPHER</h3>
-        <br>
-        <p>JPED is a photography website designed for photographers to showcase their portfolios and engage with clients. It allows photographers to upload, organize, and present their work in a sleek, modern UI.</p>
-        </div>
-        <!-- Image in the bottom right corner -->
+            <div class="corner-image-one">
+                <!-- Add the text above the first image -->
+                <div class="corner-text-one">
+                    <h3>AMAZING TEAM WORK WITH PHOTOGRAPHER</h3>
+                    <br>
+                    <p>JPED is a photography website designed for photographers to showcase their portfolios and engage with clients. It allows photographers to upload, organize, and present their work in a sleek, modern UI.</p>
+                 </div>
+            <!-- Image in the bottom right corner -->
         <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image-one">
     </div>
 
     <div class="corner-image-two">
         <!-- Add the text above the second image -->
         <div class="corner-text-two">
-             <p>"Taking an image, freezing a moment, reveals how rich reality truly is."</p>
+            <p>"Taking an image, freezing a moment, reveals how rich reality truly is."</p>
         </div>
-        <!-- Image in the bottom right corner -->
-        <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image-two">
-    </div>
-</div>
-</div>
-
-<!-- New container for logo, contacts, and services -->
-<div class="info-container">
-    <div class="logo">
-        <img src="images/logo.png" alt="Company Logo" class="company-logo">
-    </div>
-    <div class="contacts">
-        <h3>Contact Us</h3>
-        <p>Email: info@jped.com</p>
-        <p>Phone: +123-456-7890</p>
-        <p>Address: 123 Photography St., Imageland</p>
-    </div>
-    <div class="services">
-        <h3>Our Services</h3>
-        <ul>
-            <li>Portrait Photography</li>
-            <li>Concert Photography</li>
-            <li>Cosplay Photography</li>
-            <li>Product Photography</li>
-            <li>Documentary Photography</li>
-        </ul>
-    </div>
-</div>
-
-
-    <!-- Header Section 
-    <header style="margin-top: 70px;">
-        <div class="container" id="contents" style="text-align: center;">
-            <h1>J.PED</h1> 
+            <!-- Image in the bottom right corner -->
+            <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image-two">
         </div>
-    </header>-->
+    </div>
 
-    <!-- Image Gallery Section -->
-    <!-- <section class="gallery-container"> -->
-        <!-- <div class="container"> -->
-            <!-- Category Buttons -->
-                <!-- <div class="gallery-categories text-center">
-                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraiture</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/concert_category">Concert</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/cosplay_category">Cosplay</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/products_category">Products</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/companion_category">Companion</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/model_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/documentary_category">Documentary</a>                    
-                <br> -->
-                <!-- <br>
-            <div class="row"> -->
-                <!-- Gallery item 1 -->
-                <!-- <div class="col-md-4 col-sm-6 gallery-item">
-                <img src="images/portraits/kape.jpg" alt="Gallery Image 1" class="img-fluid"
-                data-title="Kape" 
-                data-description="masarap mag kape" 
-                data-rating="4.5"  
-                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div> -->
-                <!-- Gallery item 2 -->
-                <!-- <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0375_1 (1).jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape" 
-                data-description="A serene portrait of a person enjoying coffee." 
-                data-rating="4.5" 
-                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div> -->
-                <!-- Gallery item 3 -->
-                <!-- <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/events/no2.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape" 
-                data-description="A serene portrait of a person enjoying coffee." 
-                data-rating="4.5" 
-                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div> -->
-                <!-- Gallery item 4 -->
-                <!-- <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape" 
-                data-description="A serene portrait of a person enjoying coffee." 
-                data-rating="4.5" 
-                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div> -->
-                <!-- Gallery item 5 -->  
-                <!-- <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape" 
-                        data-description="A serene portrait of a person enjoying coffee." 
-                        data-rating="4.5" 
-                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div>  -->
-                <!-- Gallery item 6 -->
-                <!-- <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/events/DSC_0301.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
-     data-description="A serene portrait of a person enjoying coffee." 
-     data-rating="4.5" 
-     data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                </div> -->
-            <!-- </div>
+
+    <!-- New container for logo, contacts, and services -->
+    <div class="info-container">
+            <a class="logo" href="/about">
+            <br>
+            <br>
+            <br>
+            <img src="images/blogo.png" alt="About Us Logo" style="width: 200px; height: auto; margin-right: -250px; margin-top: -50px;">
+            </a>
+        <div class="contacts">
+            <h3>Contact Us</h3>
+            <p>Email: info@jped.com</p>
+            <p>Phone: +123-456-7890</p>
+            <p>Address: 123 Photography St., Imageland</p>
         </div>
-    </section> -->
+        <div class="services">
+            <h3>Our Services</h3>
+            <ul>
+                <li>Portrait Photography</li>
+                <li>Concert Photography</li>
+                <li>Cosplay Photography</li>
+                <li>Product Photography</li>
+                <li>Companion Photography</li>
+                <li>Model Photography</li>
+            </ul>
+        </div>
+    </div>
 
- <!-- Image Preview Modal -->
- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl"> 
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-flex">
-                <img id="modalImage" class="modal-img" src="" alt="Image Preview">
-                <div class="modal-details ms-4">
-                    <h3 id="modalTitle" class="modal-title"></h3>
-                    <p id="modalDescription" class="modal-description"></p>
-                    <div class="modal-ratings">
-                        <strong>Rating:</strong> <span id="modalRating"></span> / 5
-                    </div>
-                    <div class="modal-comments mt-3">
-                        <strong>Comments:</strong>
-                        <div id="modalComments"></div> 
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl"> 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex">
+                    <img id="modalImage" class="modal-img" src="" alt="Image Preview">
+                    <div class="modal-details ms-4">
+                        <h3 id="modalTitle" class="modal-title"></h3>
+                        <p id="modalDescription" class="modal-description"></p>
+                        <div class="modal-ratings">
+                            <strong>Rating:</strong> <span id="modalRating"></span> / 5
+                        </div>
+                        <div class="modal-comments mt-3">
+                            <strong>Comments:</strong>
+                            <div id="modalComments"></div> 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-    <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
     // Modal trigger logic
-    $('.gallery-item img').click(function () {
-        const imgSrc = $(this).attr('src');
-        const imgTitle = $(this).data('title');
-        const imgDescription = $(this).data('description');
-        const imgRating = $(this).data('rating');
-        let imgComments = [];
-        try {
-            const rawComments = $(this).data('comments');
-            imgComments = typeof rawComments === 'string' ? JSON.parse(rawComments) : rawComments;
-        } catch (error) {
-            console.error('Error parsing comments:', error);
-        }
+        $('.gallery-item img').click(function () {
+            const imgSrc = $(this).attr('src');
+            const imgTitle = $(this).data('title');
+            const imgDescription = $(this).data('description');
+            const imgRating = $(this).data('rating');
+            let imgComments = [];
+            try {
+                const rawComments = $(this).data('comments');
+                imgComments = typeof rawComments === 'string' ? JSON.parse(rawComments) : rawComments;
+            } catch (error) {
+                console.error('Error parsing comments:', error);
+            }
 
-        // Set modal content 
-        $('#modalImage').attr('src', imgSrc);
-        $('#modalTitle').text(imgTitle || 'No title');
-        $('#modalDescription').text(imgDescription || 'No description available.');
-        
-        // Correctly format the rating
-        $('#modalRating').text(imgRating || 'No rating');
+            // Set modal content 
+            $('#modalImage').attr('src', imgSrc);
+            $('#modalTitle').text(imgTitle || 'No title');
+            $('#modalDescription').text(imgDescription || 'No description available.');
+            
+            // Correctly format the rating
+            $('#modalRating').text(imgRating || 'No rating');
 
-        // Populate comments
-        let commentsHtml = '';
-        imgComments.forEach(comment => {
-            commentsHtml += `<div class="comment-item">${comment}</div>`;
+            // Populate comments
+            let commentsHtml = '';
+            imgComments.forEach(comment => {
+                commentsHtml += `<div class="comment-item">${comment}</div>`;
+            });
+            $('#modalComments').html(commentsHtml || 'No comments');
+
+            // Show the modal
+            $('#imageModal').modal('show');
         });
-        $('#modalComments').html(commentsHtml || 'No comments');
-
-        // Show the modal
-        $('#imageModal').modal('show');
     });
-});
+</script>
 
-    </script>
 
-    <!-- Scripts -->
+<!-- Scripts -->
     <script>
         let lastScrollTop = 0;
         const navbar = document.querySelector('.navbar');

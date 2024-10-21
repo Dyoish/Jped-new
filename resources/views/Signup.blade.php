@@ -29,6 +29,13 @@
             justify-content: center;
             align-items: center;
             background-color: #121212;
+
+            /* Add your background image */
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/bg/login.png') center / cover no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
         }
 
         .container {
@@ -52,17 +59,23 @@
         }
 
         .create-account {
-            color: white;
-            padding: 40px;
-            width: 33%;
-            border: 2px solid rgba(255, 255, 255, .2);
+            background: transparent;
             border-radius: 10px;
+            padding: 50px;
+            width: 30%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(30px);
         }
 
         h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            margin-left: 35px;
+            margin-left: 50px;
+            font-weight: bold; /* This makes the text bold */
         }
 
         .form-control {
@@ -85,10 +98,10 @@
             margin-bottom: 20px;
         }
 
-        .btn-primary {
+        /* .btn-primary {
             background-color: #4d9584;
             border: none;
-            padding: 10px 20px;
+            padding: 20px;
             border-radius: 20px;
         }
 
@@ -101,33 +114,38 @@
             color: white;
             border-radius: 30px;
             padding: 10px;
-            border: 2px solid white; /* Add a border to make the button more visible */
+            border: 2px solid white; /* Add a border to make the button more visible 
             margin-top: 10px;
-            transition: background-color 0.3s ease; /* Add a smooth transition for hover effect */
+            transition: background-color 0.3s ease; /* Add a smooth transition for hover effect 
         }
 
         .btn-black-active {
             background-color: #ffffff;
-        }
+        } */
 
         .toggle-btn {
             background: transparent;
             border: none;
             color: white;
             cursor: pointer;
-            
         }
 
         .toggle-btn:focus {
             outline: none;
         }
 
-        footer {
-            text-align: center;
-            color: #aaa;
-            font-size: 12px;
-            padding: 10px;
-            margin-top: 30px;
+
+        .btn-white {
+            color: white;
+            border: 2px solid rgba(255, 255, 255, .2);
+            padding-right: 20px;
+            padding-left: 20px;
+            border-radius: 90px;
+            
+        }
+
+        .btn-white:hover {
+            background-color: white;
         }
 
         /* @media (max-width: 768px) {
@@ -147,8 +165,8 @@
             .welcome-back {
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
-            } */
-        }
+            } 
+        }*/
     </style>
 </head>
 
@@ -196,7 +214,7 @@
                     </div>
                 </div>
                 <div class="button-container" style="text-align: center;">
-                    <button type="submit" class="btn btn-black black-button">Sign-Up</button>
+                    <button type="submit" class="btn btn-white">Sign-Up</button>
                 </div>
             </form>
         </div>

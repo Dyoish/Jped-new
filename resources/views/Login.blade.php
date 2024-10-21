@@ -31,10 +31,11 @@
             background-color: #121212;
 
             /* Add your background image */
-            background-image: url('images/bg/hmp.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/bg/login.png') center / cover no-repeat;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            
         }
 
         /* Two-panel layout */
@@ -65,6 +66,7 @@
             font-size: 2.5rem;
             margin-bottom: 20px;
             margin-left: 25px;
+            font-weight: bold; /* This makes the text bold */
         }
 
         .login-panel p {
@@ -74,6 +76,7 @@
 
         .login-panel .form-group {
             margin-bottom: 20px;
+            
         }
 
         .login-panel .form-group input {
@@ -116,6 +119,7 @@
             justify-content: center;
             align-items: center;
             color: white;
+            
         }
 
         .signup-panel h2 {
@@ -154,10 +158,11 @@
         .btn-white {
             color: white;
             border: 2px solid rgba(255, 255, 255, .2);
+            
         }
 
         .btn-white:hover {
-            background-color: #f1f1f1;
+            background-color: transparent   ;
         }
     </style>
 </head>
@@ -169,6 +174,7 @@
         <!-- Login Form -->
         <div class="login-panel">
             <h1>Sign in to JPED</h1>
+            <br>
 
             <form id="loginForm" action="{{ route('Login.post') }}" method="post">
                 @csrf
@@ -187,7 +193,7 @@
                 </div>
 
                 <!-- Forgot Password Link -->
-                <div class="form-group">
+                <div class="form-group d-flex justify-content-center" style="align-items: center;">
                     <a href="{{ route('forget.password') }}" class="text-white">Forgot Password?</a>
                 </div>
 
@@ -197,7 +203,7 @@
             <!-- Signup Prompt (merged into login container) -->
             <br>
             <p>Start your journey with us.</p>
-            <a href="/signup" class="btn btn-white">Sign up</a>
+            <a href="/signup" class="btn btn-white" style='border: transparent; margin-top: -10px;'>Sign up</a>
         </div>
     </div>
 

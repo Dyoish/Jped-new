@@ -64,12 +64,19 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/my_account/edit', [LoginController::class, 'edit'])->name('user.edit-profile');
     Route::put('/my_account', [LoginController::class, 'update'])->name('user.update-profile');
     Route::get('/my_account', [LoginController::class, 'Profile_Route'])->name('user.profile');
+    Route::get('/verify', function () {
+        return view('Verify_Page');
+    });
+    Route::post('/verify', function () {
+        return view('Verify_Page');
+    });
 
-    Route::get('/verify', function(){return  view('Verify_Page');});
-    Route::post('/verify', function(){return  view('Verify_Page');});
+  
     
 });
-
+Route::get('/verify', function(){return  view('Verify_Page');});
+Route::post('/verify', function(){return  view('Verify_Page');});
+Route::post('/verify', [ForgetPasswordManager::class, 'forgotPassword'])->name('Verify_Page');
 
 Route::get('/enterEmail', [ForgetPasswordManager::class, 'forgetPassword'])->name("forget.password");
 Route::post('/enterEmail', [ForgetPasswordManager::class, 'forgetPasswordPost'])->name("forget.password.post");
@@ -116,6 +123,10 @@ Route::get('/documentary_category', [Category_Controller::class, 'Documentary_Ca
 
 Route::get('/gallery', function () {
     return view('Gallery'); 
+});
+
+Route::get('/about', function () {
+    return view('aboutus'); 
 });
 
 //Route::get('/', [GalleryController::class, 'index']);

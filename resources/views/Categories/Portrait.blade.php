@@ -65,7 +65,6 @@
     }
 
     .gallery-item img {
-        border-radius: 10px;
         width: 100%;
         height: auto;
         object-fit: cover;
@@ -192,13 +191,13 @@
                 <a class="btn btn-primary text-center gallery-btn {{ Request::is('products_category') ? 'active' : '' }}" href="/products_category">Products</a>
                 <a class="btn btn-primary text-center gallery-btn {{ Request::is('companion_category') ? 'active' : '' }}" href="/companion_category">Companion</a>
                 <a class="btn btn-primary text-center gallery-btn {{ Request::is('model_category') ? 'active' : '' }}" href="/model_category">Model</a>
-                <a class="btn btn-primary text-center gallery-btn {{ Request::is('documentary_category') ? 'active' : '' }}" href="/documentary_category">Documentary</a>                    
+                
                 <br>
                 <br>
-            <div class="row">
+                <div class="row">
                 <!-- Gallery item 1 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                <img src="images/portraits/kape.jpg" alt="Gallery Image 1" class="img-fluid"
+                <img src="images/gallery/chaven.jpg" alt="Gallery Image 1" class="img-fluid"
                 data-title="Kape" 
                 data-description="masarap mag kape" 
                 data-rating="4.5"  
@@ -206,38 +205,59 @@
                 </div>
                 <!-- Gallery item 2 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0375_1 (1).jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape" 
+                    <img src="images/gallery/ibons.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 3 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/events/no2.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape" 
+                    <img src="images/gallery/france.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 4 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape" 
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/gi (1).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 5 -->  
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape" 
+                    <img src="images/gallery/bino.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape" 
                         data-description="A serene portrait of a person enjoying coffee." 
                         data-rating="4.5" 
                         data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div> 
                 <!-- Gallery item 6 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/rafa.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 7 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/cato.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 8 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/events/DSC_0301.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
-     data-description="A serene portrait of a person enjoying coffee." 
-     data-rating="4.5" 
-     data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    <img src="images/gallery/katsu.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 9 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/cat.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
             </div>
         </div>

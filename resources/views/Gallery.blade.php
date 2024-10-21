@@ -194,8 +194,7 @@
                     <a class="btn btn-primary text-center gallery-btn" href="/cosplay_category">Cosplay</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/products_category">Products</a>
                     <a class="btn btn-primary text-center gallery-btn" href="/companion_category">Companion</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/model_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/documentary_category">Documentary</a>                    
+                    <a class="btn btn-primary text-center gallery-btn" href="/model_category">Model</a>                
                 <br>
                 <br>
             <div class="row">
