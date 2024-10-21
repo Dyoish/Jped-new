@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>J.PED</title>
     <link rel="stylesheet" href="dashboard.css">
+    
     <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin"
-        rel="stylesheet">
-
+    
+    <!-- Load Poppins font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Ensure jQuery is loaded first -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
@@ -19,22 +21,12 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
-
     <style>
-    @import url(https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin);
-
-    @font-face {
-        font-family: "Spoof Trial Thin";
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot");
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix")format("embedded-opentype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2")format("woff2"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff")format("woff"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf")format("truetype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin")format("svg");
-    }
+        
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
     body {
-        font-family: "Spoof Trial Thin", sans-serif;
+        font-family: 'Poppins', sans-serif;
         display: flex;
         flex-direction: column;
         margin: 0;
@@ -167,10 +159,9 @@
 }
 
     .gallery-btn.active {
-        text-decoration: underline; /* Adds underline */
-        background-color: transparent;
-        color: black;
-        border-color: transparent;
+        background-color: black;
+        color: white;
+        border-color: black;
     
     }
     </style>

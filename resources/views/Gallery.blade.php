@@ -9,9 +9,10 @@
     <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin"
-        rel="stylesheet">
-
+    
+    <!-- Load Poppins font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Ensure jQuery is loaded first -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
@@ -19,22 +20,12 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
-
     <style>
-    @import url(https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin);
-
-    @font-face {
-        font-family: "Spoof Trial Thin";
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot");
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix")format("embedded-opentype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2")format("woff2"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff")format("woff"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf")format("truetype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin")format("svg");
-    }
+        
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
     body {
-        font-family: "Spoof Trial Thin", sans-serif;
+        font-family: 'Poppins', sans-serif;
         display: flex;
         flex-direction: column;
         margin: 0;
@@ -68,12 +59,19 @@
         padding: 0px 0;
     }
 
+
     .gallery-item {
         margin-bottom: 30px;
+        
+    }
+
+    .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+    grid-gap: 0; /* No gaps between images */
     }
 
     .gallery-item img {
-        border-radius: 10px;
         width: 100%;
         height: auto;
         object-fit: cover;
@@ -203,7 +201,7 @@
             <div class="row">
                 <!-- Gallery item 1 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                <img src="images/portraits/kape.jpg" alt="Gallery Image 1" class="img-fluid"
+                <img src="images/gallery/chaven.jpg" alt="Gallery Image 1" class="img-fluid"
                 data-title="Kape" 
                 data-description="masarap mag kape" 
                 data-rating="4.5"  
@@ -211,38 +209,59 @@
                 </div>
                 <!-- Gallery item 2 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0375_1 (1).jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape" 
+                    <img src="images/gallery/ibons.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 3 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/events/no2.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape" 
+                    <img src="images/gallery/france.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 4 -->
-                <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0176 (5).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape" 
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/gi (1).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape" 
                 data-description="A serene portrait of a person enjoying coffee." 
                 data-rating="4.5" 
                 data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
                 <!-- Gallery item 5 -->  
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/portraits/DSC_0159.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape" 
+                    <img src="images/gallery/bino.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape" 
                         data-description="A serene portrait of a person enjoying coffee." 
                         data-rating="4.5" 
                         data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div> 
                 <!-- Gallery item 6 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/rafa.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 7 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/cato.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 8 -->
                 <div class="col-md-4 col-sm-6 gallery-item">
-                    <img src="images/events/DSC_0301.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
-     data-description="A serene portrait of a person enjoying coffee." 
-     data-rating="4.5" 
-     data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    <img src="images/gallery/katsu.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 9 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/cat.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                 </div>
             </div>
         </div>

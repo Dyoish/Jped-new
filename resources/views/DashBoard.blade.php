@@ -9,9 +9,10 @@
     <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin"
-        rel="stylesheet">
-
+    
+    <!-- Load Poppins font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Ensure jQuery is loaded first -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     
@@ -19,22 +20,12 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
-
     <style>
-    @import url(https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin);
-
-    @font-face {
-        font-family: "Spoof Trial Thin";
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot");
-        src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix")format("embedded-opentype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2")format("woff2"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff")format("woff"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf")format("truetype"),
-            url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin")format("svg");
-    }
+        
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
     body {
-        font-family: "Spoof Trial Thin", sans-serif;
+        font-family: 'Poppins', sans-serif;
         display: flex;
         flex-direction: column;
         margin: 0;
@@ -220,6 +211,65 @@
         font-size: 20px;
     }
 
+    /* Styling for the container with logo, contacts, and services */
+.info-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 900px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-container .logo {
+    flex: 1;
+    text-align: center;
+}
+
+.info-container .logo img {
+    width: 150px; /* Adjust the size of your logo as needed */
+    height: auto;
+}
+
+.info-container .contacts, .info-container .services {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.info-container h3 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.info-container p, .info-container li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.info-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-container li {
+    margin-bottom: 8px;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+    .info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-container .logo, .info-container .contacts, .info-container .services {
+        padding: 10px;
+        text-align: center;
+    }
+}
+
     
     </style>
 </head>
@@ -257,6 +307,29 @@
         <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image-two">
     </div>
 </div>
+</div>
+
+<!-- New container for logo, contacts, and services -->
+<div class="info-container">
+    <div class="logo">
+        <img src="images/logo.png" alt="Company Logo" class="company-logo">
+    </div>
+    <div class="contacts">
+        <h3>Contact Us</h3>
+        <p>Email: info@jped.com</p>
+        <p>Phone: +123-456-7890</p>
+        <p>Address: 123 Photography St., Imageland</p>
+    </div>
+    <div class="services">
+        <h3>Our Services</h3>
+        <ul>
+            <li>Portrait Photography</li>
+            <li>Concert Photography</li>
+            <li>Cosplay Photography</li>
+            <li>Product Photography</li>
+            <li>Documentary Photography</li>
+        </ul>
+    </div>
 </div>
 
 
