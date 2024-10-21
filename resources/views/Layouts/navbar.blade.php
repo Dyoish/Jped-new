@@ -9,6 +9,7 @@
 
         <br>
     </div>
+    
     @auth
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
@@ -22,7 +23,6 @@
         </li>
 
            
-
             <li class="nav-item" style="margin-right: 3vw;">
                 <div class=" nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"

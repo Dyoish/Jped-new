@@ -65,7 +65,7 @@
 
     /* Image gallery */
     .gallery-container {
-        padding: 40px 0;
+        padding: 0px 0;
     }
 
     .gallery-item {
@@ -93,24 +93,23 @@
     }
 
     .gallery-btn {
-        background-color: black;  /* Default background color */
-        color: white;             /* Text color */
-        border-color: black;      /* Button border color */
+        background-color: transparent;  /* Default background color */
+        color: black;             /* Text color */
+        border-color: transparent;      /* Button border color */
         margin: 5px;
     }
 
     .gallery-btn:hover {
-        background-color: #4d9584; /* Highlight color on hover */
+        background-color: black;
+        border-color: black; 
         color: white;              /* Keep text white on hover */
     }
 
     .gallery-btn.active {
-        background-color: #4d9584; /* Highlight color for active button */
         color: white;              /* Keep text white */
     }
 
     .modal-content {
-            
         border-radius: 10px; /* Rounded corners for the modal */
     }
 
@@ -166,6 +165,14 @@
     height: 540px; /* Set to half of the image height (1080px / 2) */
     width: 100%;
 }
+
+    .gallery-btn.active {
+        text-decoration: underline; /* Adds underline */
+        background-color: transparent;
+        color: black;
+        border-color: transparent;
+    
+    }
     </style>
 </head>
 
@@ -173,42 +180,28 @@
     <!-- Navigation Bar -->
     @include('Layouts.navbar')
 
-
     <!-- Cover Image Section -->
-    <div class="container-fluid p-0 header-image">
-    </div>
+    <div class="container-fluid p-0 header-image"></div>
 
     <!-- Header Section -->
-    <header style="margin-top: 70px;">
+    <header style="margin-top: 40px;">
         <div class="container" id="contents" style="text-align: center;">
             <h1>J.PED</h1> 
         </div>
     </header>
-
-    <div class="container mt-1">
-        <div class="row">
-            <div class="container" id="contents">
-            <header class="d-flex justify-content-center align-items-center text-center" style="margin-bottom: -50px;">
-                <h2>
-                    <p>Portraiture</p>
-                </h2>
-            </header>
-            </div>
-        </div>
-    </div>
 
     <!-- Image Gallery Section -->
     <section class="gallery-container">
         <div class="container">
             <!-- Category Buttons -->
                 <div class="gallery-categories text-center">
-                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraiture</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/concert_category">Concert</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/cosplay_category">Cosplay</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/products_category">Products</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/companion_category">Companion</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/model_category">Model</a>
-                    <a class="btn btn-primary text-center gallery-btn" href="/documentary_category">Documentary</a>                    
+                <a class="btn btn-primary text-center gallery-btn {{ Request::is('portrait_category') ? 'active' : '' }}" href="/portrait_category">Portraiture</a>
+                <a class="btn btn-primary text-center gallery-btn {{ Request::is('concert_category') ? 'active' : '' }}" href="/concert_category">Concert</a>
+                <a class="btn btn-primary text-center gallery-btn {{ Request::is('cosplay_category') ? 'active' : '' }}" href="/cosplay_category">Cosplay</a>
+                <a class="btn btn-primary text-center gallery-btn {{ Request::is('products_category') ? 'active' : '' }}" href="/products_category">Products</a>
+                <a class="btn btn-primary text-center gallery-btn {{ Request::is('companion_category') ? 'active' : '' }}" href="/companion_category">Companion</a>
+                <a class="btn btn-primary text-center gallery-btn {{ Request::is('model_category') ? 'active' : '' }}" href="/model_category">Model</a>
+                <a class="btn btn-primary text-center gallery-btn {{ Request::is('documentary_category') ? 'active' : '' }}" href="/documentary_category">Documentary</a>                    
                 <br>
                 <br>
             <div class="row">

@@ -65,7 +65,7 @@
 
     /* Image gallery */
     .gallery-container {
-        padding: 40px 0;
+        padding: 0px 0;
     }
 
     .gallery-item {
@@ -93,21 +93,22 @@
     }
 
     .gallery-btn {
-        background-color: black;  /* Default background color */
-        color: white;             /* Text color */
-        border-color: black;      /* Button border color */
+        background-color: transparent;  /* Default background color */
+        color: black;             /* Text color */
+        border-color: transparent;      /* Button border color */
         margin: 5px;
     }
 
     .gallery-btn:hover {
-        background-color: #4d9584; /* Highlight color on hover */
+        background-color: black;
+        border-color: black; 
         color: white;              /* Keep text white on hover */
     }
 
     .gallery-btn.active {
-        background-color: #4d9584; /* Highlight color for active button */
         color: white;              /* Keep text white */
     }
+    
 
     .modal-content {
             
@@ -179,23 +180,11 @@
     </div>
 
     <!-- Header Section -->
-    <header style="margin-top: 70px;">
+    <header style="margin-top: 40px;">
         <div class="container" id="contents" style="text-align: center;">
             <h1>J.PED</h1> 
         </div>
     </header>
-
-    <div class="container mt-1">
-        <div class="row">
-            <div class="container" id="contents">
-            <header class="d-flex justify-content-center align-items-center text-center" style="margin-bottom: -50px;">
-                <h2>
-                    <p>Portraiture</p>
-                </h2>
-            </header>
-            </div>
-        </div>
-    </div>
 
     <!-- Image Gallery Section -->
     <section class="gallery-container">
