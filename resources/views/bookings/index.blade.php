@@ -23,7 +23,8 @@
     <style>
         body {
             background-color: #f5f5f5;
-            font-family: 'Poppins', sans-serif; /* Use Poppins font */
+            font-family: 'Poppins', sans-serif;
+            /* Use Poppins font */
             display: flex;
             flex-direction: column;
             margin: 0;
@@ -111,18 +112,18 @@
                         <h5 class="card-title">{{ $booking->name }}</h5>
                         <p class="card-text">
                             <strong>Email:</strong> {{ $booking->email }}<br>
-                            <strong>Service:</strong> {{ $booking->service->name }}<br>
+                            <strong>Service:</strong> {{ $booking->service ? $booking->service->name : 'N/A' }}<br>
                             <strong>Booking Date:</strong> {{ $booking->booking_date }}<br>
                             <strong>Booking Time:</strong> {{ $booking->booking_time }}<br>
                             <strong>Status:</strong> {{ ucfirst($booking->status) }}
                         </p>
                     </div>
 
-                    <div 
+                    <div
                         class="card-footer 
-                        {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
-                        {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
-                        {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
+                                                {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
+                                                {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
+                                                {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
 
                         @if (trim(strtolower($booking->status)) === 'approved')
                             Accepted
@@ -137,7 +138,8 @@
                 </div>
 
                 @if ($booking->status !== 'pending')
-                    <div class="modal fade" id="seeMoreModal{{ $booking->id }}" tabindex="-1" aria-labelledby="seeMoreModalLabel{{ $booking->id }}" aria-hidden="true">
+                    <div class="modal fade" id="seeMoreModal{{ $booking->id }}" tabindex="-1"
+                        aria-labelledby="seeMoreModalLabel{{ $booking->id }}" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">

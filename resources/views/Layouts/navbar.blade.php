@@ -18,19 +18,18 @@
             style="margin-left: 50px; margin-right: -10px; margin-top: 0px; color: white; ">
             <a class="nav-link" aria-current="page" href="/" style="color: white;">Home</a>
         </li>
-        <li class="nav-item" style="margin-left: 50px; margin-right: 50px; margin-top: 0px; color: white; ">
+        <li class="nav-item" style="margin-left: 50px; margin-right: 45px; margin-top: 0px; color: white; ">
             <a class="nav-link active" aria-current="page" href="/gallery" style="color: white;">Gallery</a>
         </li>
 
-        <li class="nav-item" style="margin-right: 50px; margin-top: 6px;">
-            <a href="/booking-form" style="text-decoration: none; color: white;">Book</a>
+        <li class="nav-item" style="margin-right: 55px; margin-top: 7.5px;">
+            <a href="/booking-form" style="text-decoration: none; color: white; font-size: 17px;">Book</a>
         </li>
 
-        <li class="nav-item" style="margin-right: 30px; margin-top: 6px;">
-            <a href="{{ route('show_all_bookings') }}" style="text-decoration: none; color: white;">BookInfo</a>
+        <li class="nav-item" style="margin-right: 40px; margin-top: 8px;">
+            <a href="{{ route('show_all_bookings') }}" style="text-decoration: none; color: white; font-size: 16px;">BookInfo</a>
         </li>
 
-           
             <li class="nav-item" style="margin-right: 3vw;">
                 <div class=" nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -62,14 +61,7 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
         <div class="container-fluid">
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item"
-                    style="margin-left: 50px; margin-right: 0px; margin-top: 3px; color: white; ">
-                    <a class="nav-link" aria-current="page" href="/" style="color: white;">Home</a>
-                </li>
-                <li class="nav-item"
-                    style="margin-left: 50px; margin-right: 0px; margin-top: 3px; color: white; ">
-                    <a class="nav-link" aria-current="page" href="/gallery" style="color: white;">Gallery</a>
-                </li>
+                
 
                 <li class="nav-item"
                     style="margin-left: 50px; margin-right: 50px; margin-top: 3px; color: white; ">

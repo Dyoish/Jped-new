@@ -159,7 +159,7 @@
     }
 
     .header-image {
-    background-image: url('images/bg/hmpp.jpg'); /* Path to your cover image */
+    background-image: url('images/model/11.png'); /* Path to your cover image */
     background-size: cover; /* Ensures the image covers the entire div */
     background-position: center top; /* Center the image horizontally, align it to the top vertically */
     height: 540px; /* Set to half of the image height (1080px / 2) */

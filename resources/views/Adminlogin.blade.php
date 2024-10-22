@@ -32,7 +32,7 @@
             justify-content: center;
             align-items: center;
             background-color: #121212;
-            background-image: url('images/bg/hmp.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/bg/asd.png') center / cover no-repeat;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -63,7 +63,8 @@
         .login-panel h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            margin-left: 25px;
+            margin-left: 50px;
+            font-weight: bold; /* This makes the text bold */
         }
 
         .login-panel p {

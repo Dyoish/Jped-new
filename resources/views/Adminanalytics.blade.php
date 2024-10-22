@@ -84,12 +84,12 @@
                     @foreach($bookings as $booking)
                         <tr>
                             <td>{{ $booking->id }}</td>
-                            <td>{{ $booking->name }}</td>
-                            <td>{{ $booking->email }}</td>
-                            <td>{{ $booking->service->name }}</td> <!-- Assuming relationship between booking and service -->
-                            <td>{{ $booking->booking_date }}</td>
-                            <td>{{ $booking->booking_time }}</td>
-                            <td>{{ ucfirst($booking->status) }}</td> <!-- Display status -->
+                            <td>{{ $booking->name ?? 'N/A' }}</td> <!-- Safeguard for missing booking name -->
+                            <td>{{ $booking->email ?? 'N/A' }}</td>
+                            <td>{{ optional($booking->service)->name ?? 'N/A' }}</td> <!-- Safeguard for missing service relationship -->
+                            <td>{{ $booking->booking_date ?? 'N/A' }}</td>
+                            <td>{{ $booking->booking_time ?? 'N/A' }}</td>
+                            <td>{{ ucfirst($booking->status ?? 'N/A') }}</td> <!-- Safeguard for missing status -->
                             <td>
                                 @if($booking->status == 'pending')
                                     <form action="{{ route('bookings.approve', $booking->id) }}" method="POST">
@@ -100,12 +100,13 @@
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
                                     </form>
-                                    @else
-                                        {{ ucfirst($booking->status) }} <!-- Display final status -->
-                                    @endif
+                                @else
+                                    {{ ucfirst($booking->status ?? 'N/A') }} <!-- Display final status -->
+                                @endif
                             </td>
                         </tr>
                     @endforeach
+
                     </tbody>
                 </table>
             </li>

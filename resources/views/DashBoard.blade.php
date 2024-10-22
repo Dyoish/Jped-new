@@ -56,15 +56,22 @@
 
     /* Image gallery */
     .gallery-container {
-        padding: 40px 0;
+        padding: 0px 0;
     }
+
 
     .gallery-item {
         margin-bottom: 30px;
+        
+    }
+
+    .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+    grid-gap: 0; /* No gaps between images */
     }
 
     .gallery-item img {
-        border-radius: 10px;
         width: 100%;
         height: auto;
         object-fit: cover;
@@ -84,21 +91,22 @@
     }
 
     .gallery-btn {
-        background-color: black;  /* Default background color */
-        color: white;             /* Text color */
-        border-color: black;      /* Button border color */
+        background-color: transparent;  /* Default background color */
+        color: black;             /* Text color */
+        border-color: transparent;      /* Button border color */
         margin: 5px;
     }
 
     .gallery-btn:hover {
-        background-color: #4d9584; /* Highlight color on hover */
+        background-color: black;
+        border-color: black; 
         color: white;              /* Keep text white on hover */
     }
 
     .gallery-btn.active {
-        background-color: #4d9584; /* Highlight color for active button */
         color: white;              /* Keep text white */
     }
+    
 
     .modal-content {
             
@@ -151,75 +159,20 @@
     }
 
     .header-image {
-    background-image: url('images/bg/hmpp.jpg'); /* Path to your cover image */
+    background-image: url('images/bg/header.png'); /* Path to your cover image */
     background-size: cover; /* Ensures the image covers the entire div */
     background-position: center top; /* Center the image horizontally, align it to the top vertically */
-    height: 100%; /* Set to half of the image height (1080px / 2) */
-    width: 100%;  
+    height: 540px; /* Set to half of the image height (1080px / 2) */
+    width: 100%;
     }
 
-    
-
-    /* CSS to position the new image in the bottom left corner */
-    .corner-image {
-        position: absolute;
-        bottom: -400px; /* Adjust the spacing from the bottom */
-        left: 30px;   /* Adjust the spacing from the left */
-        width: 68%; /* Adjust the size of the image as needed */
-        height: auto; /* Maintain aspect ratio */
-    }
-
-    .corner-text {
-    margin-left: 900px; /* Adds space between image and text */
-    flex-grow: 1; /* Allows the text to take up remaining space */
-    color: #000;
-    max-width: 50px; /* Prevent text from taking up too much space */
-    }
-
-    .corner-text h3, .corner-text p {
-        margin: 0;
-        padding: 5px 0;
-    }
-
-    .corner-image-one {
-        position: relative;
-        bottom: -248px; /* Adjust the spacing from the bottom */
-        right: -450px;   /* Adjust the spacing from the left */
-        width: 51%; /* Adjust the size of the image as needed */
-        height: 50%; /* Maintain aspect ratio */
-    }
-
-    .corner-image-two {
-        position: relative;
-        bottom: -100px; /* Adjust the spacing from the bottom */
-        right: -650px;   /* Adjust the spacing from the left */
-        width: 50%; /* Adjust the size of the image as needed */
-        height: 60%; /* Maintain aspect ratio */
-    }
-
-    .corner-text-one {
-        position: relative;
-        bottom: -200px; /* Adjust the spacing from the bottom */
-        right: -500px; /* Align with corner-image-one */
-        color: #000; /* Text color */
-
-    }
-
-    .corner-text-two {
-        position: absolute;
-        bottom: -200px; /* Adjust the spacing from the bottom */
-        right: -350px; /* Align with corner-image-two */
-        color: #000; /* Text color */
-        font-size: 20px;
-    }
-
-        /* Styling for the container with logo, contacts, and services */
+    /* Styling for the container with logo, contacts, and services */
     .info-container {
         background-image: url('images/bg/footer.png'); /* Path to your cover image */
         display: flex;
         justify-content: space-around;
         align-items: flex-start;
-        margin-top: 900px;
+        margin-top: 80px;
         padding: 20px;
         background-color: #f4f4f4;
         border-radius: 10px;
@@ -260,13 +213,16 @@
 
     .info-container li {
         margin-bottom: 8px;
+        
     }
     .services {
         margin-right: 130px;
+        margin-top: 10px;
     }
 
     .contacts {
-        margin-right: -70px;
+        margin-right: -100px;
+        margin-top: 50px;
     }
 
     /* Make it responsive */
@@ -288,37 +244,128 @@
     <!-- Navigation Bar -->
     @include('Layouts.navbar')
 
+
     <!-- Cover Image Section -->
-    <div class="container-fluid p-0 header-image"></div>
-
-    <div class="corner-image">
-        <!-- Add image in the bottom left corner -->
-        <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image">
-
-            <div class="corner-image-one">
-                <!-- Add the text above the first image -->
-                <div class="corner-text-one">
-                    <h3>AMAZING TEAM WORK WITH PHOTOGRAPHER</h3>
-                    <br>
-                    <p>JPED is a photography website designed for photographers to showcase their portfolios and engage with clients. It allows photographers to upload, organize, and present their work in a sleek, modern UI.</p>
-                 </div>
-            <!-- Image in the bottom right corner -->
-        <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image-one">
+    <div class="container-fluid p-0 header-image">
     </div>
 
-    <div class="corner-image-two">
-        <!-- Add the text above the second image -->
-        <div class="corner-text-two">
-            <p>"Taking an image, freezing a moment, reveals how rich reality truly is."</p>
+    <!-- Header Section -->
+    <header style="margin-top: 40px;">
+        <div class="container" id="contents" style="text-align: center;">
+            <h1>J.PED</h1> 
         </div>
-            <!-- Image in the bottom right corner -->
-            <img src="images/bg/gi.jpg" alt="Left corner image" class="corner-image-two">
+    </header>
+
+    <!-- Image Gallery Section -->
+    <section class="gallery-container">
+        <div class="container">
+            <!-- Category Buttons -->
+                <div class="gallery-categories text-center">
+                    <a class="btn btn-primary text-center gallery-btn" href="/portrait_category">Portraiture</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/concert_category">Concert</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/cosplay_category">Cosplay</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/products_category">Products</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/companion_category">Companion</a>
+                    <a class="btn btn-primary text-center gallery-btn" href="/model_category">Model</a>                
+                <br>
+                <br>
+            <div class="row">
+                <!-- Gallery item 1 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                <img src="images/gallery/chaven.jpg" alt="Gallery Image 1" class="img-fluid"
+                data-title="Kape" 
+                data-description="masarap mag kape" 
+                data-rating="4.5"  
+                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 2 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/gallery/ibons.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape" 
+                data-description="A serene portrait of a person enjoying coffee." 
+                data-rating="4.5" 
+                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 3 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/gallery/france.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape" 
+                data-description="A serene portrait of a person enjoying coffee." 
+                data-rating="4.5" 
+                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 4 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/gi (1).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape" 
+                data-description="A serene portrait of a person enjoying coffee." 
+                data-rating="4.5" 
+                data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 5 -->  
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/gallery/bino.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div> 
+                <!-- Gallery item 6 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/rafa.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 7 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/cato.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 8 -->
+                <div class="col-md-4 col-sm-6 gallery-item">
+                    <img src="images/gallery/katsu.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+                <!-- Gallery item 9 -->
+                <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
+                    <img src="images/gallery/cat.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape" 
+                        data-description="A serene portrait of a person enjoying coffee." 
+                        data-rating="4.5" 
+                        data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Image Preview Modal -->
+ <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl"> 
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex">
+                <img id="modalImage" class="modal-img" src="" alt="Image Preview">
+                <div class="modal-details ms-4">
+                    <h3 id="modalTitle" class="modal-title"></h3>
+                    <p id="modalDescription" class="modal-description"></p>
+                    <div class="modal-ratings">
+                        <strong>Rating:</strong> <span id="modalRating"></span> / 5
+                    </div>
+                    <div class="modal-comments mt-3">
+                        <strong>Comments:</strong>
+                        <div id="modalComments"></div> 
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-
-    <!-- New container for logo, contacts, and services -->
-    <div class="info-container">
+<!-- New container for logo, contacts, and services -->
+<div class="info-container">
             <a class="logo" href="/about">
             <br>
             <br>
@@ -327,9 +374,9 @@
             </a>
         <div class="contacts">
             <h3>Contact Us</h3>
-            <p>Email: info@jped.com</p>
-            <p>Phone: +123-456-7890</p>
-            <p>Address: 123 Photography St., Imageland</p>
+            <p>Email: jpedphotog@gmail.com</p>
+            <p>Phone: 09166901647</p>
+            <p>Dagupan City</p>
         </div>
         <div class="services">
             <h3>Our Services</h3>
@@ -345,72 +392,45 @@
     </div>
 
 
-    <!-- Image Preview Modal -->
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl"> 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex">
-                    <img id="modalImage" class="modal-img" src="" alt="Image Preview">
-                    <div class="modal-details ms-4">
-                        <h3 id="modalTitle" class="modal-title"></h3>
-                        <p id="modalDescription" class="modal-description"></p>
-                        <div class="modal-ratings">
-                            <strong>Rating:</strong> <span id="modalRating"></span> / 5
-                        </div>
-                        <div class="modal-comments mt-3">
-                            <strong>Comments:</strong>
-                            <div id="modalComments"></div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-<script>
-    $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
     // Modal trigger logic
-        $('.gallery-item img').click(function () {
-            const imgSrc = $(this).attr('src');
-            const imgTitle = $(this).data('title');
-            const imgDescription = $(this).data('description');
-            const imgRating = $(this).data('rating');
-            let imgComments = [];
-            try {
-                const rawComments = $(this).data('comments');
-                imgComments = typeof rawComments === 'string' ? JSON.parse(rawComments) : rawComments;
-            } catch (error) {
-                console.error('Error parsing comments:', error);
-            }
+    $('.gallery-item img').click(function () {
+        const imgSrc = $(this).attr('src');
+        const imgTitle = $(this).data('title');
+        const imgDescription = $(this).data('description');
+        const imgRating = $(this).data('rating');
+        let imgComments = [];
+        try {
+            const rawComments = $(this).data('comments');
+            imgComments = typeof rawComments === 'string' ? JSON.parse(rawComments) : rawComments;
+        } catch (error) {
+            console.error('Error parsing comments:', error);
+        }
 
-            // Set modal content 
-            $('#modalImage').attr('src', imgSrc);
-            $('#modalTitle').text(imgTitle || 'No title');
-            $('#modalDescription').text(imgDescription || 'No description available.');
-            
-            // Correctly format the rating
-            $('#modalRating').text(imgRating || 'No rating');
+        // Set modal content 
+        $('#modalImage').attr('src', imgSrc);
+        $('#modalTitle').text(imgTitle || 'No title');
+        $('#modalDescription').text(imgDescription || 'No description available.');
+        
+        // Correctly format the rating
+        $('#modalRating').text(imgRating || 'No rating');
 
-            // Populate comments
-            let commentsHtml = '';
-            imgComments.forEach(comment => {
-                commentsHtml += `<div class="comment-item">${comment}</div>`;
-            });
-            $('#modalComments').html(commentsHtml || 'No comments');
-
-            // Show the modal
-            $('#imageModal').modal('show');
+        // Populate comments
+        let commentsHtml = '';
+        imgComments.forEach(comment => {
+            commentsHtml += `<div class="comment-item">${comment}</div>`;
         });
+        $('#modalComments').html(commentsHtml || 'No comments');
+
+        // Show the modal
+        $('#imageModal').modal('show');
     });
-</script>
+});
 
+    </script>
 
-<!-- Scripts -->
+    <!-- Scripts -->
     <script>
         let lastScrollTop = 0;
         const navbar = document.querySelector('.navbar');

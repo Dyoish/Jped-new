@@ -8,20 +8,13 @@
     <link rel="stylesheet" href="login.css">
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Load Poppins font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: "Spoof Trial Thin";
-            src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot");
-            src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix") format("embedded-opentype"),
-                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2") format("woff2"),
-                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff") format("woff"),
-                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf") format("truetype"),
-                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin") format("svg");
-                
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
         body {
-            font-family: "Spoof Trial Thin", sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -158,12 +151,21 @@
         .btn-white {
             color: white;
             border: 2px solid rgba(255, 255, 255, .2);
+            padding-right: 20px;
+            padding-left: 20px;
             
         }
 
         .btn-white:hover {
             background-color: transparent   ;
         }
+
+        .btn {
+            color: white;
+            border: 2px solid rgba(255, 255, 255, .2);
+            padding-right: 20px;
+            padding-left: 20px;
+         }
     </style>
 </head>
 
@@ -203,7 +205,7 @@
             <!-- Signup Prompt (merged into login container) -->
             <br>
             <p>Start your journey with us.</p>
-            <a href="/signup" class="btn btn-white" style='border: transparent; margin-top: -10px;'>Sign up</a>
+            <a href="/signup" class="btn" style='border: transparent; margin-top: -10px;'>Sign up</a>
         </div>
     </div>
 

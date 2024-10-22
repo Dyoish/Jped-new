@@ -25,48 +25,59 @@
 
     /* Additional styles for responsiveness */
     body {
-        font-family: "Spoof Trial Thin";
-        padding-top: 60px;
-        /* Add padding to body for the fixed navbar */
-    }
+        font-family: "Spoof Trial Thin", sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #121212;
 
-    .black-button {
-        background-color: black;
+        /* Add your background image */
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/bg/login.png') center / cover no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+            
+        }
+
+        .container {
+            background: transparent;
+            border-radius: 10px;
+            padding: 0px;
+            width: 37%;
+            height: 50%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(20px);
+        }
+        
+    .btn{
+        background-color: transparent;
         color: white;
+        border: 2px solid rgba(255, 255, 255, .2);
+        border-radius: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-left: 190px;
     }
 
-    .black-link {
-        text-decoration: none;
+
+    .btn:hover {
+        background-color: white;
         color: black;
     }
 
-    .btn-black-button:hover {
-        background-color: #333;
+    
+    .form-control {
+        background: transparent;
+        border-radius: 20px;
     }
 
-    /* Hover effect for the Next button */
-    .btn-primary.black-button:hover {
-        background-color: #333;
-        border: 1px solid #333;
-        color: white;
-    }
-
-    footer {
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-    }
-
-    .navbar-brand img {
-        transition: transform 0.3s ease-in-out;
-        /* Apply the transition to the transform property */
-    }
-
-    .navbar-brand img:hover {
-        transform: scale(1.1);
-        /* Increase the scale on hover */
-    }
     </style>
 </head>
 
@@ -80,17 +91,13 @@
 
 
     <!-- Login Content -->
-    <section style="margin-top: 20px; margin-bottom: 20px;">
         <div class="container">
             <div class=" row justify-content-center">
-                <div class="col-lg-6 col-md-8 col-sm-10">
-                    <!-- Back Button -->
-                    <a href="/login" class="btn btn-outline-secondary mb-3">Back</a>
 
-                    <form id="loginForm" action="/verify" method="post" style="border: 1px solid #ccc; border-radius: 50px; padding: 80px;">
+                    <form id="loginForm" action="/verify" method="post" >
                         @csrf <!-- Ensure CSRF token is included -->
 
-                        <header class="py-5 text-center">
+                        <header class="py-4 text-center">
                             <h1>Reset Password</h1>
                             <p>Enter your Email Address to reset your account's password.</p>
                         </header>
@@ -99,7 +106,7 @@
                             <input type="email" class="form-control" id="enterEmail" name="enterEmail" placeholder="Email" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block black-button btn-black-button">Next</button>
+                        <button type="submit" class="btn">Next</button>
                     </form>
                 </div>
             </div>
