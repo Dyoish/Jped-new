@@ -16,39 +16,47 @@ use Laracsv\Export; // Export para kay kay ma'am Veron
 
 class DashboardController extends Controller
 {
-    public function dashboard(){
+    public function dashboard()
+    {
         return view('DashBoard');
     }
 
-    public function index(){    
+    public function index()
+    {
         return view('DashBoard');
     }
-    
-    public function signup(){
+
+    public function signup()
+    {
         return view('Signup');
     }
 
-    public function terms(){
+    public function terms()
+    {
         return view('terms');
     }
-    
-    public function adminlogin(){
+
+    public function adminlogin()
+    {
         return view('Adminlogin');
     }
 
-    public function admindashboard(){
-        $user = User::orderBy('id','desc')->get();
+    public function admindashboard()
+    {
+        $user = User::orderBy('id', 'desc')->get();
         $usercount = User::count();
-        return view('Admindashboards',compact('user','usercount'));
+        return view('Admindashboards', compact('user', 'usercount'));
     }
 
-    public function adminanalytics(){
-        $bookings = Booking::with('service')->get(); 
-        return view('adminanalytics', compact('bookings'));
+    public function adminbookings()
+    {
+        $bookings = Booking::with('service')->get();
+        return view('adminbookings', compact('bookings'));
     }
-    
+
     //customer count
-    public function admincustomers(){
+    public function admincustomers()
+    {
         $user = User::get();
         return view('Admincustomers', compact('user'));
     }
@@ -64,22 +72,24 @@ class DashboardController extends Controller
 
         // Build the CSV with the selected columns and then download
         $csvExporter->build($bookings, [
-        'name',
-        'email',
-        'service_id',
-        'booking_date',
-        'booking_time',])->download();
+            'name',
+            'email',
+            'service_id',
+            'booking_date',
+            'booking_time',
+        ])->download();
     }
-    
+
     //Admin Authentication
-    public function adminAuth(Request $request) {
+    public function adminAuth(Request $request)
+    {
 
         $request->validate([
-            'email'    => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
         $credentials = $request->only('email', 'password');
-          if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $user = User::where('email', $request->email)->first();
             if ($user->id == '1') {
                 return redirect()->route('admindashboards');
@@ -88,13 +98,13 @@ class DashboardController extends Controller
             }
         }
         return redirect()->back()->with('error', 'Unauthorized');
-    } 
+    }
 
     // Show pending bookings
     public function pendingBookings()
     {
         $bookings = Booking::where('status', 'pending')->get(); // Get all pending bookings
-        return view('adminanalytics', compact('bookings'));
+        return view('adminbookings', compact('bookings'));
     }
 
     //Approve booking
@@ -126,7 +136,8 @@ class DashboardController extends Controller
         }
         return redirect()->back()->with('success', 'Booking reject successfully!');
     }
-    
+
+
 }
 
-    
+

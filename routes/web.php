@@ -38,23 +38,23 @@ use App\Http\Controllers\GalleryController;
 
 // Route::get('/signup',[SignupController::class, 'signup']);
 
-Route::get('/', function(){
-    return  view('DashBoard');
-})->name('home');;
-Route::get('/',[App\Http\Controllers\DashboardController::class,'index'])->name('home');;
+Route::get('/', function () {
+    return view('DashBoard');
+})->name('home');
+;
+Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+;
 
 //Authentication
-Route::get('/login', [LoginController::class,'Login'])->name('Login');
-Route::post('/login', [LoginController::class,'Loginpost'])->name('Login.post');
-Route::get('/signup', [LoginController::class,'Signup'])->name('Signup');
-Route::post('/signup', [LoginController::class,'Signuppost'])->name('Signup.post');
-Route::get('/logout', [LoginController::class,'logout'])->name('logout');
-Route::group(['middleware'=>'auth'], function(){
-    
+Route::get('/login', [LoginController::class, 'Login'])->name('Login');
+Route::post('/login', [LoginController::class, 'Loginpost'])->name('Login.post');
+Route::get('/signup', [LoginController::class, 'Signup'])->name('Signup');
+Route::post('/signup', [LoginController::class, 'Signuppost'])->name('Signup.post');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::group(['middleware' => 'auth'], function () {
+
     //PROFILE
     Route::get('/change_number', [Profile_Controller::class, 'New_PhoneNumber_Route']);
-
-    Route::get('/my_refunded/{id}/delete', [CartController::class, 'destroy3']);
 
     Route::get('/profile', [Profile_Controller::class, 'Profile_Route']);
 
@@ -71,34 +71,38 @@ Route::group(['middleware'=>'auth'], function(){
         return view('Verify_Page');
     });
 
-  
-    
+
+
 });
-Route::get('/verify', function(){return  view('Verify_Page');});
-Route::post('/verify', function(){return  view('Verify_Page');});
+Route::get('/verify', function () {
+    return view('Verify_Page');
+});
+Route::post('/verify', function () {
+    return view('Verify_Page');
+});
 Route::post('/verify', [ForgetPasswordManager::class, 'forgotPassword'])->name('Verify_Page');
 
 Route::get('/enterEmail', [ForgetPasswordManager::class, 'forgetPassword'])->name("forget.password");
 Route::post('/enterEmail', [ForgetPasswordManager::class, 'forgetPasswordPost'])->name("forget.password.post");
-Route::get('/conPass/{token}',  [ForgetPasswordManager::class, 'resetPassword'])->name("resetPassword")->name("reset.password");
-Route::post('/conPass',  [ForgetPasswordManager::class, 'resetPasswordPost'])->name("resetPassword")->name("reset.password.post");
+Route::get('/conPass/{token}', [ForgetPasswordManager::class, 'resetPassword'])->name("resetPassword")->name("reset.password");
+Route::post('/conPass', [ForgetPasswordManager::class, 'resetPasswordPost'])->name("resetPassword")->name("reset.password.post");
 
 Route::get('/forget-password', [ForgetPasswordManager::class, 'forgetPassword'])->name('forget.password');
 Route::post('/forget-password', [ForgetPasswordManager::class, 'forgetPasswordPost']);
 Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'resetPassword'])->name('reset.password');
 Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost']);
 
-Route::get('/adminlogin',[DashboardController::class,'adminlogin']);
-Route::post('/adminlogin', [DashboardController::class,'adminAuth'])->name('adminpost');
+Route::get('/adminlogin', [DashboardController::class, 'adminlogin']);
+Route::post('/adminlogin', [DashboardController::class, 'adminAuth'])->name('adminpost');
 
 //Admin panel
-Route::group(['middleware'=>'userid'], function(){
-Route::get('/admindashboards',[DashboardController::class,'admindashboard'])->name('admindashboards');
-Route::get('/adminanalytics',[DashboardController::class,'adminanalytics']);
-Route::get('/admincustomers',[DashboardController::class,'admincustomers']);
-Route::get('/admincustomers/{id}/delete',[UserController::class,'destroy']);
-// Route::get('/adminmanagements',[App\Http\Controllers\productController::class,'index']);
-// Route::get('productmanagements/create',[App\Http\Controllers\productController::class,'create']);
+Route::group(['middleware' => 'userid'], function () {
+    Route::get('/admindashboards', [DashboardController::class, 'admindashboard'])->name('admindashboards');
+    Route::get('/adminbookings', [DashboardController::class, 'adminbookings']);
+    Route::get('/admincustomers', [DashboardController::class, 'admincustomers']);
+    Route::get('/admincustomers/{id}/delete', [UserController::class, 'destroy']);
+
+    // Route::get('productmanagements/create',[App\Http\Controllers\productController::class,'create']);
 // Route::post('productmanagements/create',[App\Http\Controllers\productController::class,'store']);
 // Route::get('productmanagements/{id}/edit',[App\Http\Controllers\productController::class,'edit']);
 // Route::put('productmanagements/{id}/edit',[App\Http\Controllers\productController::class,'update']);
@@ -106,8 +110,8 @@ Route::get('/admincustomers/{id}/delete',[UserController::class,'destroy']);
 });
 
 //products
-Route::get('/product_demo/{id}',[DashboardController::class,'details']);
-Route::get('/terms',[DashboardController::class,'terms']);
+Route::get('/product_demo/{id}', [DashboardController::class, 'details']);
+Route::get('/terms', [DashboardController::class, 'terms']);
 
 //Photography Categories/Services
 Route::get('/portrait_category', [Category_Controller::class, 'Portrait_Category_Route']);
@@ -122,16 +126,16 @@ Route::get('/pre_built_units', [Category_Controller::class, 'PreBuilt_Category_R
 Route::get('/documentary_category', [Category_Controller::class, 'Documentary_Category_Route']);
 
 Route::get('/gallery', function () {
-    return view('Gallery'); 
+    return view('Gallery');
 });
 
 Route::get('/about', function () {
-    return view('aboutus'); 
+    return view('aboutus');
 });
 
 //Route::get('/', [GalleryController::class, 'index']);
 
-Route::get('/book', [BookController::class,'index']);
+Route::get('/book', [BookController::class, 'index']);
 // Route::get('Book', BookController::class,);
 
 // Define the route for showing the booking form
@@ -186,4 +190,3 @@ Route::post('/bookings/cancel/{id}', [BookController::class, 'cancel'])->name('b
 //admin: approve and reject
 Route::post('/bookings/approve/{id}', [DashboardController::class, 'approve'])->name('bookings.approve');
 Route::post('/bookings/cancel/{id}', [DashboardController::class, 'cancel'])->name('bookings.cancel');
-

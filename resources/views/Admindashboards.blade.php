@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="{{ asset ('assests/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assests/css/bootstrap.css') }}">
     <link rel="stylesheet" href="assets/css/analytics.css" />
     <script src="{{ asset('assests/js/jquery.js') }}"></script>
     <title>Dashboard</title>
@@ -17,7 +18,7 @@
 <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-    <a class="brand">
+        <a class="brand">
             <span class="text" style="margin-top: 20px; margin-left: 100px;">J.PED</span>
         </a>
         <ul class="side-menu top">
@@ -28,7 +29,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('/adminanalytics') }}">
+                <a href="{{ url('/adminbookings') }}">
                     <i class="bx bxs-analyse"></i>
                     <span class="text">Booking</span>
                 </a>
@@ -52,7 +53,7 @@
             <br>
             <br>
             <li>
-                <a class="dropdown-item text-center" href="{{route('logout')}}"  style="color: red;">
+                <a class="dropdown-item text-center" href="{{route('logout')}}" style="color: red;">
                     <i class="bx bxs-log-out"></i> Log out
                 </a>
             </li>
@@ -81,10 +82,12 @@
                     </span>
                 </li>
             </ul>
-            
+
             <ul class="box-info">
                 <li>
-                <span><h3>New Customers</h3></span>
+                    <span>
+                        <h3>New Customers</h3>
+                    </span>
                     <table class="table table-borderless">
                         <thead>
                             <tr>
@@ -94,16 +97,16 @@
                             </tr>
                         </thead>
                         <div>
-                        <tbody>
-                            @foreach ($user->slice(0,5) as $item)
-                            <tr>
-                                <td>{{$item -> id }}</td>
-                                <td>{{$item -> name}}</td>
-                                <td>{{$item -> email}}</td>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+                            <tbody>
+                                @foreach ($user->slice(0, 5) as $item)
+                                    <tr>
+                                        <td>{{$item->id }}</td>
+                                        <td>{{$item->name}}</td>
+                                        <td>{{$item->email}}</td>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </div>
                     </table>
                 </li>
