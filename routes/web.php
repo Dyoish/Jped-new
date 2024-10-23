@@ -190,3 +190,5 @@ Route::post('/bookings/cancel/{id}', [BookController::class, 'cancel'])->name('b
 //admin: approve and reject
 Route::post('/bookings/approve/{id}', [DashboardController::class, 'approve'])->name('bookings.approve');
 Route::post('/bookings/cancel/{id}', [DashboardController::class, 'cancel'])->name('bookings.cancel');
+
+Route::post('/check_booking', [BookController::class, 'checkBooking']);

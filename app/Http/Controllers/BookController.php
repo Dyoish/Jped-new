@@ -19,12 +19,12 @@ class BookController extends Controller
 
     //Display the booking form with services.
     public function showBookingForm()
-     {
-         // Fetch all services from the services table
-         $services = Service::all(); 
-         // Pass the $services variable to the booking_form view
-         return view('booking_form', compact('services'));
-     }
+    {
+        // Fetch all services from the services table
+        $services = Service::all();
+        // Pass the $services variable to the booking_form view
+        return view('booking_form', compact('services'));
+    }
 
 
     //Store a new booking.
@@ -41,15 +41,15 @@ class BookController extends Controller
 
         // Check if another user has booked the same date for the same service
         $existingBooking = Booking::where('service_id', $validated['service_id'])
-        ->where('booking_date', $validated['booking_date'])
-        ->where('user_id', '!=', Auth::id()) // Check for bookings by other users
-        ->first();
+            ->where('booking_date', $validated['booking_date'])
+            ->where('user_id', '!=', Auth::id()) // Check for bookings by other users
+            ->first();
 
         // Check if the user has already booked the same date
         $userBooking = Booking::where('service_id', $validated['service_id'])
-        ->where('booking_date', $validated['booking_date'])
-        ->where('user_id', Auth::id()) // Check for bookings by the same user
-        ->first();
+            ->where('booking_date', $validated['booking_date'])
+            ->where('user_id', Auth::id()) // Check for bookings by the same user
+            ->first();
 
         // If the current user has already booked the same date, return an error
         if ($userBooking) {
@@ -70,7 +70,7 @@ class BookController extends Controller
         // Redirect with a success message
         return redirect()->back()->with('success', 'Your booking has been added successfully!');
     }
-    
+
     //Show all bookings for the authenticated user.
     public function showAllBookings()
     {
@@ -129,20 +129,37 @@ class BookController extends Controller
     public function cancel(Request $request, $id)
     {
         $booking = Booking::find($id);
-    
+
         // Check if the booking exists
         if (!$booking) {
             return redirect()->back()->with('error', 'Booking not found.');
         }
-    
+
         // Ensure the authenticated user is the owner of the booking
         if ($booking->user_id !== Auth::id()) {
             return redirect()->back()->with('error', 'Unauthorized action.');
         }
-    
+
         // Perform the cancellation (delete the booking)
         $booking->delete();
 
         return redirect()->back()->with('success', 'Booking canceled successfully.');
+    }
+
+    public function checkBooking(Request $request)
+    {
+        // Validate incoming request
+        $request->validate([
+            'booking_date' => 'required|date',
+            'service_id' => 'required|integer',
+        ]);
+
+        // Check for existing bookings
+        $existingBooking = Booking::where('booking_date', $request->booking_date)
+            ->where('service_id', $request->service_id)
+            ->exists();
+
+        // Return JSON response
+        return response()->json(['canBook' => !$existingBooking]);
     }
 }

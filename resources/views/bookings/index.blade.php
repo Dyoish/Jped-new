@@ -122,9 +122,9 @@
 
                     <div
                         class="card-footer 
-                                                {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
-                                                {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
-                                                {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
+                                                                        {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
+                                                                        {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
+                                                                        {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
 
                         @if (trim(strtolower($booking->status)) === 'approved')
                             Accepted
