@@ -434,7 +434,7 @@
         <!-- Profile 2 -->
         <div class="profile-item">
             <div class="hover-effect">
-                <img src="images/profile/josh.jpg" alt="Profile 2" class="profile-pic">
+                <img src="images/profile/isla.jpg" alt="Profile 2" class="profile-pic">
                 <div class="hover-text">
                     <p>Loren Gelido<br>
                         (Front End Developer) <br>
@@ -447,7 +447,7 @@
         <!-- Profile 3 -->
         <div class="profile-item">
             <div class="hover-effect">
-                <img src="images/profile/josh.jpg" alt="Profile 3" class="profile-pic">
+                <img src="images/profile/" alt="Profile 3" class="profile-pic">
                 <div class="hover-text">
                     <p>Leyanna Sanchez <br>
                         (Full Stack Developer) <br>
@@ -460,7 +460,7 @@
         <!-- Profile 4 -->
         <div class="profile-item">
             <div class="hover-effect">
-                <img src="images/profile/josh.jpg" alt="Profile 4" class="profile-pic">
+                <img src="images/profile/" alt="Profile 4" class="profile-pic">
                 <div class="hover-text">
                     <p>Mark Capinpin <br>
                         (Reseacher) <br>
@@ -473,7 +473,7 @@
         <!-- Profile 5 -->
         <div class="profile-item">
             <div class="hover-effect">
-                <img src="images/profile/josh.jpg" alt="Profile 5" class="profile-pic">
+                <img src="images/profile/" alt="Profile 5" class="profile-pic">
                 <div class="hover-text">
                     <p>Lester Taluban <br>
                         (Front End Developer) <br>

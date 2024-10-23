@@ -210,9 +210,31 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="booking_time" class="form-label">Select Time</label>
-                            <select name="booking_time" class="form-select" required>
-                                <option value="">Choose a time...</option>
+                            <label for="start_time" class="form-label">Select Start Time</label>
+                            <select name="start_time" id="start_time" class="form-select" required>
+                                <option value="">Choose a start time...</option>
+                                <option value="06:00">6:00 AM</option>
+                                <option value="07:00">7:00 AM</option>
+                                <option value="08:00">8:00 AM</option>
+                                <option value="09:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="end_time" class="form-label">Select End Time</label>
+                            <select name="end_time" id="end_time" class="form-select" required>
+                                <option value="">Choose an end time...</option>
                                 <option value="06:00">6:00 AM</option>
                                 <option value="07:00">7:00 AM</option>
                                 <option value="08:00">8:00 AM</option>
@@ -308,6 +330,55 @@
             }
             return true; // Allow form submission
         }
+
+        $(function () {
+            // Initialize Flatpickr for the booking date
+            flatpickr("#booking_date", {
+                dateFormat: "Y-m-d", // Format the date
+                minDate: "today", // Disable past dates
+                defaultDate: "today", // Optional: pre-fill today's date
+            });
+
+            $("#bookingForm").on("submit", function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get the selected date and service
+                const bookingDate = $("#booking_date").val();
+                const serviceId = $("select[name='service_id']").val();
+                const startTime = $("select[name='start_time']").val();
+                const endTime = $("select[name='end_time']").val();
+
+                // Validate that end time is after start time
+                if (endTime <= startTime) {
+                    alert("End time must be later than start time.");
+                    return; // Prevent form submission
+                }
+
+                // Check for existing bookings via AJAX
+                $.ajax({
+                    url: "{{ url('check_booking') }}", // Your new route
+                    method: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        booking_date: bookingDate,
+                        service_id: serviceId,
+                        start_time: startTime,
+                        end_time: endTime
+                    },
+                    success: function (response) {
+                        if (response.canBook) {
+                            $("#bookingForm").off("submit").submit(); // Proceed with submission
+                        } else {
+                            // Show the modal instead of an alert
+                            $('#bookingAlertModal').modal('show');
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while checking the booking.");
+                    }
+                });
+            });
+        });
     </script>
 
 

@@ -378,7 +378,8 @@
                 <li>Concert Photography</li>
                 <li>Cosplay Photography</li>
                 <li>Product Photography</li>
-                <li>Documentary Photography</li>
+                <li>Companion Photography</li>
+                <li>Model Photography</li>
             </ul>
         </div>
     </div>

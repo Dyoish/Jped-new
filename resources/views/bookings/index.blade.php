@@ -123,7 +123,7 @@
                                 <h5 class="card-title">{{ $booking->name }}</h5>
                                 <p class="card-text">
                                     <strong>Email:</strong> {{ $booking->email }}<br>
-                                    <strong>Service:</strong> {{ $booking->service ? $booking->service->name : 'N/A' }}<br>
+                                    <strong>Service:</strong> {{ $booking->service->name }}<br>
                                     <strong>Booking Date:</strong> {{ $booking->booking_date }}<br>
                                     <strong>Booking Time:</strong> {{ $booking->booking_time }}<br>
                                     <strong>Status:</strong> {{ ucfirst($booking->status) }}
@@ -132,9 +132,9 @@
 
                             <div
                                 class="card-footer 
-                                                    {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
-                                                    {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
-                                                    {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
+                                                                            {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
+                                                                            {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
+                                                                            {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
                                 @if (trim(strtolower($booking->status)) === 'approved')
                                     Accepted
                                 @elseif (trim(strtolower($booking->status)) === 'pending')

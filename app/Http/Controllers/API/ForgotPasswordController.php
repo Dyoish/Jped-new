@@ -13,7 +13,7 @@ class ForgotPasswordController extends Controller
 {
 
     // SENDS EMAIL TO RESET PASSWORD
-    public function forgotPassword(Request $request)
+    public function forgetPassword(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -29,7 +29,7 @@ class ForgotPasswordController extends Controller
             ];
         }
 
-        
+
     }
 
     // RESETS AND UPDATES PASSWORD FUNCTION
@@ -38,7 +38,7 @@ class ForgotPasswordController extends Controller
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required'|'confirmed',
+            'password' => 'required' | 'confirmed',
         ]);
 
         $status = Password::reset(
@@ -57,12 +57,12 @@ class ForgotPasswordController extends Controller
 
         if ($status == Password::PASSWORD_RESET) {
             return response([
-                'message'=> 'Password reset successfully'
+                'message' => 'Password reset successfully'
             ]);
         }
 
         return response([
-            'message'=> __($status)
+            'message' => __($status)
         ], 500);
     }
 }

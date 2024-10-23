@@ -82,7 +82,7 @@ Route::get('/verify', function () {
 Route::post('/verify', function () {
     return view('Verify_Page');
 });
-Route::post('/verify', [ForgetPasswordManager::class, 'forgotPassword'])->name('Verify_Page');
+Route::post('/verify', [ForgetPasswordManager::class, 'forgetPassword'])->name('Verify_Page');
 
 Route::get('/enterEmail', [ForgetPasswordManager::class, 'forgetPassword'])->name("forget.password");
 Route::post('/enterEmail', [ForgetPasswordManager::class, 'forgetPasswordPost'])->name("forget.password.post");

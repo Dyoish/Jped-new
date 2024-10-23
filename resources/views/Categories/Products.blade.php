@@ -378,37 +378,11 @@
                 <li>Concert Photography</li>
                 <li>Cosplay Photography</li>
                 <li>Product Photography</li>
-                <li>Documentary Photography</li>
+                <li>Companion Photography</li>
+                <li>Model Photography</li>
             </ul>
         </div>
     </div>
-
-    <!-- Image Preview Modal -->
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex">
-                    <img id="modalImage" class="modal-img" src="" alt="Image Preview">
-                    <div class="modal-details ms-4">
-                        <h3 id="modalTitle" class="modal-title"></h3>
-                        <p id="modalDescription" class="modal-description"></p>
-                        <div class="modal-ratings">
-                            <strong>Rating:</strong> <span id="modalRating"></span> / 5
-                        </div>
-                        <div class="modal-comments mt-3">
-                            <strong>Comments:</strong>
-                            <div id="modalComments"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <script>
         $(document).ready(function () {

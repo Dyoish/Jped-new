@@ -9,10 +9,111 @@
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="{{ asset('assests/css/bootstrap.css') }}">
     <link rel="stylesheet" href="assets/css/analytics.css" />
     <script src="{{ asset('assests/js/jquery.js') }}"></script>
     <title>JPED | Dashboard</title>
+
+    <style>
+        /* Hide scrollbars */
+        body {
+            overflow-y: hidden;
+            /* Hides vertical scrollbar */
+            overflow-x: hidden;
+            /* Hides horizontal scrollbar */
+            margin: 0;
+            /* Removes default body margin */
+            padding: 0;
+            /* Removes default body padding */
+        }
+
+        /* Improved ul styling */
+        ul.box-info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.box-info li {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        ul.box-info li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Improved table styling */
+        table.table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table.table thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table.table thead th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        table.table tbody td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+
+        table.table tbody tr:hover {
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        /* Button Styling */
+        table.table tbody td button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        table.table tbody td button.btn-danger {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        table.table tbody td button:hover {
+            opacity: 0.9;
+        }
+
+        /* General form and table alignments */
+        td {
+            vertical-align: middle !important;
+        }
+
+        form {
+            display: inline;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
 </head>
 
 <body>
@@ -73,19 +174,19 @@
             </div>
 
             <!-- Box info for New Customers -->
-            <ul class="box-info" style="list-style: none; padding: 0; display: flex; flex-direction: column;">
-                <li style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
-                    <table class="table" style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+            <ul class="box-info">
+                <li>
+                    <table class="table">
                         <thead>
-                            <tr style="background-color: #007bff; color: #fff; text-align: left;">
-                                <th style="padding: 10px;">ID</th>
-                                <th style="padding: 10px;">Name</th>
-                                <th style="padding: 10px;">Email</th>
-                                <th style="padding: 10px;">Service</th>
-                                <th style="padding: 10px;">Booking Date</th>
-                                <th style="padding: 10px;">Booking Time</th>
-                                <th style="padding: 10px;">Status</th> <!-- Add Status Column -->
-                                <th style="padding: 10px;">Action</th>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Service</th>
+                                <th>Booking Date</th>
+                                <th>Booking Time</th>
+                                <th>Status</th> <!-- Add Status Column -->
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -103,12 +204,12 @@
                                         @if($booking->status == 'pending')
                                             <form action="{{ route('bookings.approve', $booking->id) }}" method="POST">
                                                 @csrf
-                                                <button type="submit">Approve</button>
+                                                <button type="submit" class="btn btn-primary">Approve</button>
                                             </form>
                                             <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                                                <button type="submit" class="btn btn-danger">Reject</button>
                                             </form>
                                         @else
                                             {{ ucfirst($booking->status ?? 'N/A') }} <!-- Display final status -->

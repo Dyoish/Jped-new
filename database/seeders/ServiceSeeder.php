@@ -15,6 +15,5 @@ class ServiceSeeder extends Seeder
         Service::create(['name' => 'Products Photography']);
         Service::create(['name' => 'Companion Photography']);
         Service::create(['name' => 'Model Photography']);
-        Service::create(['name' => 'Documentary Photography']);
     }
 }
