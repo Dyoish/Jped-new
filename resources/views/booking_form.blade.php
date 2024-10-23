@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>J.PED</title>
+    <title>JPED | Book Form</title>
     <link rel="stylesheet" href="dashboard.css">
     <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
+
     <!-- Load Poppins font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Ensure jQuery is loaded first -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
+
     <!-- Flatpickr CSS and JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -25,17 +26,18 @@
         crossorigin="anonymous"></script>
 
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-    
-    body {
-        font-family: 'Poppins', sans-serif;
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        overflow-x: hidden;
-    }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            overflow-x: hidden;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation Bar -->
@@ -49,7 +51,7 @@
 
     <div class="container mt-5">
         <h2>Book a Photography Session</h2>
-        
+
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -67,7 +69,7 @@
         @endif
 
         <form action="{{ url('add_booking') }}" method="POST">
-            @csrf 
+            @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Your Name</label>
                 <input type="text" class="form-control" name="name" required>
@@ -103,7 +105,7 @@
     </div>
 
     <script>
-        $(function() {
+        $(function () {
             // Initialize Flatpickr for the booking date
             flatpickr("#booking_date", {
                 dateFormat: "Y-m-d", // Format the date
@@ -113,4 +115,5 @@
         });
     </script>
 </body>
+
 </html>

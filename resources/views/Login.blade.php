@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Cartel | Login</title>
+    <title>JPED | Login</title>
     <link rel="stylesheet" href="login.css">
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -28,7 +28,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
+
         }
 
         /* Two-panel layout */
@@ -59,7 +59,8 @@
             font-size: 2.5rem;
             margin-bottom: 20px;
             margin-left: 25px;
-            font-weight: bold; /* This makes the text bold */
+            font-weight: bold;
+            /* This makes the text bold */
         }
 
         .login-panel p {
@@ -69,7 +70,7 @@
 
         .login-panel .form-group {
             margin-bottom: 20px;
-            
+
         }
 
         .login-panel .form-group input {
@@ -112,7 +113,7 @@
             justify-content: center;
             align-items: center;
             color: white;
-            
+
         }
 
         .signup-panel h2 {
@@ -143,7 +144,8 @@
                 height: 100%;
             }
 
-            .login-panel, .signup-panel {
+            .login-panel,
+            .signup-panel {
                 width: 100%;
             }
         }
@@ -153,11 +155,11 @@
             border: 2px solid rgba(255, 255, 255, .2);
             padding-right: 20px;
             padding-left: 20px;
-            
+
         }
 
         .btn-white:hover {
-            background-color: transparent   ;
+            background-color: transparent;
         }
 
         .btn {
@@ -165,7 +167,7 @@
             border: 2px solid rgba(255, 255, 255, .2);
             padding-right: 20px;
             padding-left: 20px;
-         }
+        }
     </style>
 </head>
 
@@ -182,15 +184,15 @@
                 @csrf
                 <div class="form-group">
                     <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-                    @error('email') 
-                        <span class="text-danger">{{ $message }}</span> 
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                    @error('password') 
-                        <span class="text-danger">{{ $message }}</span> 
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
 

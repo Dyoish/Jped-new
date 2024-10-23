@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Cartel | Sign up</title>
+    <title>JPED | Sign up</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- Load Poppins font from Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Poppins font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
@@ -28,7 +28,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
+
         }
 
         .container {
@@ -68,7 +68,8 @@
             font-size: 2.5rem;
             margin-bottom: 20px;
             margin-left: 50px;
-            font-weight: bold; /* This makes the text bold */
+            font-weight: bold;
+            /* This makes the text bold */
         }
 
         .form-control {
@@ -136,7 +137,7 @@
             padding-left: 20px;
             border-radius: 20px;
 
-            
+
         }
 
         .btn-white:hover {
@@ -174,46 +175,46 @@
             <a href="/login" class="btn btn-black black-button">Log in</a>
         </div> -->
 
-        <div class="create-account">
-            <h1>Create Account</h1>
-            <form action="{{route('Signup.post')}}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="name">Username</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your username">
-                    @error('name') <span class="text-danger">{{$message}}</span> @enderror
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
-                    @error('email') <span class="text-danger">{{$message}}</span> @enderror
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Enter your password">
-                        <!-- <div class="input-group-append">
+    <div class="create-account">
+        <h1>Create Account</h1>
+        <form action="{{route('Signup.post')}}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your username">
+                @error('name') <span class="text-danger">{{$message}}</span> @enderror
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+                @error('email') <span class="text-danger">{{$message}}</span> @enderror
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Enter your password">
+                    <!-- <div class="input-group-append">
                             <button type="button" class="toggle-btn" onclick="togglePassword()">👁️</button>
                         </div> -->
-                    </div>
-                    @error('password') <span class="text-danger">{{$message}}</span> @enderror
                 </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-                            placeholder="Confirm your password">
-                        <!-- <div class="input-group-append">
+                @error('password') <span class="text-danger">{{$message}}</span> @enderror
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm your password">
+                    <!-- <div class="input-group-append">
                             <button type="button" class="toggle-btn" onclick="toggleConfirmPassword()">👁️</button>
                         </div> -->
-                    </div>
                 </div>
-                <div class="button-container" style="text-align: center;">
-                    <button type="submit" class="btn btn-white">Sign-Up</button>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="button-container" style="text-align: center;">
+                <button type="submit" class="btn btn-white">Sign-Up</button>
+            </div>
+        </form>
+    </div>
     </div>
 
     <!--<footer>

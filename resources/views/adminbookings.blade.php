@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assests/css/bootstrap.css') }}">
     <link rel="stylesheet" href="assets/css/analytics.css" />
     <script src="{{ asset('assests/js/jquery.js') }}"></script>
-    <title>Dashboard</title>
+    <title>JPED | Dashboard</title>
 </head>
 
 <body>
@@ -40,12 +40,6 @@
                 <a href="{{ url('/adminbookings') }}">
                     <i class="bx bxs-analyse"></i>
                     <span class="text">Booking</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/adminstatistics') }}">
-                    <i class="bx bxs-dashboard"></i>
-                    <span class="text">Service</span>
                 </a>
             </li>
             <br>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Booking</title>
+    <title>J.PED | Book Info</title>
 
     <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,7 +24,6 @@
         body {
             background-color: #f5f5f5;
             font-family: 'Poppins', sans-serif;
-            /* Use Poppins font */
             display: flex;
             flex-direction: column;
             margin: 0;
@@ -47,6 +46,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
 
         .card:hover {
@@ -107,7 +107,8 @@
             </div>
         @else
             @foreach($bookings as $booking)
-                <div class="card">
+                <!-- Make the card clickable, trigger modal on click -->
+                <div class="card" data-bs-toggle="modal" data-bs-target="#bookingModal{{ $booking->id }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $booking->name }}</h5>
                         <p class="card-text">
@@ -137,30 +138,29 @@
                     </div>
                 </div>
 
-                @if ($booking->status !== 'pending')
-                    <div class="modal fade" id="seeMoreModal{{ $booking->id }}" tabindex="-1"
-                        aria-labelledby="seeMoreModalLabel{{ $booking->id }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="seeMoreModalLabel{{ $booking->id }}">Booking Details</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p><strong>Name:</strong> {{ $booking->name }}</p>
-                                    <p><strong>Email:</strong> {{ $booking->email }}</p>
-                                    <p><strong>Service:</strong> {{ $booking->service->name }}</p>
-                                    <p><strong>Booking Date:</strong> {{ $booking->booking_date }}</p>
-                                    <p><strong>Booking Time:</strong> {{ $booking->booking_time }}</p>
-                                    <p><strong>Status:</strong> {{ ucfirst($booking->status) }}</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
+                <!-- Modal for booking details -->
+                <div class="modal fade" id="bookingModal{{ $booking->id }}" tabindex="-1"
+                    aria-labelledby="bookingModalLabel{{ $booking->id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="bookingModalLabel{{ $booking->id }}">Booking Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Name:</strong> {{ $booking->name }}</p>
+                                <p><strong>Email:</strong> {{ $booking->email }}</p>
+                                <p><strong>Service:</strong> {{ $booking->service->name }}</p>
+                                <p><strong>Booking Date:</strong> {{ $booking->booking_date }}</p>
+                                <p><strong>Booking Time:</strong> {{ $booking->booking_time }}</p>
+                                <p><strong>Status:</strong> {{ ucfirst($booking->status) }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
-                @endif
+                </div>
             @endforeach
         @endif
     </div>

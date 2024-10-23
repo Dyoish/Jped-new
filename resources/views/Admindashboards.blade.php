@@ -77,7 +77,7 @@
                 <li>
                     <i class="bx bxs-group"></i>
                     <span class="text">
-                        <h3>Users</h3>
+                        <h3>Clients</h3>
                         <p>Total Users: {{number_format($usercount)}}</p>
                     </span>
                 </li>
@@ -86,7 +86,7 @@
             <ul class="box-info">
                 <li>
                     <span>
-                        <h3>New Customers</h3>
+                        <h3>New Clients</h3>
                     </span>
                     <table class="table table-borderless">
                         <thead>

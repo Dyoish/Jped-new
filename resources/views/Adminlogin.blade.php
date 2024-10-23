@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Cartel | Login</title>
+    <title>JPED | Login</title>
     <link rel="stylesheet" href="login.css">
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -64,7 +64,8 @@
             font-size: 2.5rem;
             margin-bottom: 20px;
             margin-left: 50px;
-            font-weight: bold; /* This makes the text bold */
+            font-weight: bold;
+            /* This makes the text bold */
         }
 
         .login-panel p {
@@ -141,7 +142,7 @@
             <h1>Admin Login</h1>
 
             @if(session()->has('error'))
-            <div class="alert alert-danger">{{session('error')}}</div>
+                <div class="alert alert-danger">{{session('error')}}</div>
             @endif
             <form id="loginForm" action="{{route('adminpost')}}" method="post">
                 @csrf

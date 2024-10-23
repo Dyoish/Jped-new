@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assests/css/bootstrap.css') }}">
     <link rel="stylesheet" href="assets/css/analytics.css" />
     <script src="{{ asset('assests/js/jquery.js') }}"></script>
-    <title>Customers</title>
+    <title>JPED | Customers</title>
 </head>
 
 <body>

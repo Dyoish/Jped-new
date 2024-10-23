@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\BookingStatusMail;
+use Illuminate\Support\Facades\Mail;
 
 use Laracsv\Export; // Export para kay kay ma'am Veron
 
@@ -113,31 +115,49 @@ class DashboardController extends Controller
         // Find the booking by ID
         $booking = Booking::find($id);
 
-        // Ensure booking exists and status is pending
-        if ($booking && $booking->status === 'pending') {
-            // Change status to approved
-            $booking->status = 'approved';
-            $booking->save();
-
-            // Redirect back with success message
-            return redirect()->back()->with('success', 'Booking approved successfully!');
+        // Check if booking exists and is pending
+        if (!$booking) {
+            return redirect()->back()->with('error', 'Booking not found.');
         }
 
-        // If booking doesn't exist or is not pending
-        return redirect()->back()->with('error', 'Booking cannot be approved.');
+        if ($booking->status !== 'pending') {
+            return redirect()->back()->with('error', 'Booking is not pending.');
+        }
+
+        // Change status to approved
+        $booking->status = 'approved';
+        $booking->save();
+
+        // Send email notification
+        if ($booking->email) {
+            Mail::to($booking->email)->send(new BookingStatusMail($booking, 'approved'));
+        }
+
+        return redirect()->back()->with('success', 'Booking approved successfully!');
     }
-    //Reject/Cancel booking
+
     public function cancel($id)
     {
+        // Find the booking by ID
         $booking = Booking::find($id);
-        if ($booking) {
-            $booking->status = 'Rejected';
-            $booking->save();
+
+        // Check if booking exists
+        if (!$booking) {
+            return redirect()->back()->with('error', 'Booking not found.');
         }
-        return redirect()->back()->with('success', 'Booking reject successfully!');
+
+        // Change status to rejected
+        $booking->status = 'rejected';
+        $booking->save();
+
+        // Send email notification
+        if ($booking->email) {
+            Mail::to($booking->email)->send(new BookingStatusMail($booking, 'rejected'));
+        }
+
+        return redirect()->back()->with('success', 'Booking rejected successfully!');
     }
-
-
 }
+
 
 
