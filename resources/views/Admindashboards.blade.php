@@ -74,6 +74,52 @@
             </div>
 
             <ul class="box-info">
+    <li>
+        <i class="bx bxs-group"></i>
+        <span class="text">
+            <h4>Portrait Photography</h4>
+            <p>Info for Box 1</p>
+        </span>
+    </li>
+    <li>
+        <i class="bx bxs-group"></i>
+        <span class="text">
+            <h4>Concert Photography</h4>
+            <p>Info for Box 2</p>
+        </span>
+    </li>
+    <li>
+        <i class="bx bxs-group"></i>
+        <span class="text">
+            <h4>Cosplay Photography</h4>
+            <p>Info for Box 3</p>
+        </span>
+    </li>
+    <li>
+        <i class="bx bxs-group"></i>
+        <span class="text">
+            <h4>Products Photography</h4>
+            <p>Info for Box 4</p>
+        </span>
+    </li>
+    <li>
+        <i class="bx bxs-group"></i>
+        <span class="text">
+            <h4>Companion Photography</h4>
+            <p>Info for Box 5</p>
+        </span>
+    </li>
+    <li>
+        <i class="bx bxs-group"></i>
+        <span class="text">
+            <h4>Model Photography</h4>
+            <p>Info for Box 6</p>
+        </span>
+    </li>
+</ul>
+
+
+            <ul class="box-info">
                 <li>
                     <i class="bx bxs-group"></i>
                     <span class="text">
