@@ -25,36 +25,29 @@
 </head>
 
 <body>
+
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <a href="/" class="brand">
-            <img src="images/black 2.png" alt="Cyber Cartel Icon"
-                style="width: 50px; height: 50px; margin-left: 30px; margin-top: 20px;">
-            <span class="text" style="margin-top: 20px;">Cyber Cartel</span>
+        <a class="brand">
+            <span class="text" style="margin-top: 20px; margin-left: 100px;">J.PED</span>
         </a>
         <ul class="side-menu top">
-            <li>
+            <li class="{{ request()->is('admindashboards') ? 'active' : '' }}">
                 <a href="{{ url('/admindashboards') }}">
                     <i class="bx bxs-dashboard"></i>
                     <span class="text">Dashboards</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ request()->is('adminbookings') ? 'active' : '' }}">
                 <a href="{{ url('/adminbookings') }}">
                     <i class="bx bxs-analyse"></i>
-                    <span class="text">Analytics</span>
+                    <span class="text">Booking</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ url('/admincustomers') }}">
-                    <i class="bx bxs-group"></i>
-                    <span class="text">Customers</span>
-                </a>
-            </li>
-            <li class="active">
-                <a href="{{ url('/adminmanagements') }}">
-                    <i class="bx bxs-data"></i>
-                    <span class="text">Product Management</span>
+            <li class="{{ request()->is('adminstatistics') ? 'active' : '' }}">
+                <a href="{{ url('/adminstatistics') }}">
+                    <i class="bx bxs-bar-chart-alt-2"></i> <!-- Chart icon for statistics -->
+                    <span class="text">Statistics</span>
                 </a>
             </li>
             <br>
@@ -64,13 +57,13 @@
             <br>
             <br>
             <li>
-                <a class="dropdown-item text-center" href="{{route('logout')}}" style="color: red;">
+                <a class="dropdown-item text-center" href="{{ route('logout') }}" style="color: red;">
                     <i class="bx bxs-log-out"></i> Log out
                 </a>
             </li>
         </ul>
     </section>
-    <!-- SIDEBAR -->
+
 
 
 

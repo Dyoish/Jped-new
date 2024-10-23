@@ -19,6 +19,8 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Exports\BookingsExport;
 use Maatwebsite\Excel\Facades\Excel;
 
+use App\Http\Controllers\StatisticsController;
+
 
 use App\Http\Controllers\GalleryController;
 
@@ -101,6 +103,9 @@ Route::group(['middleware' => 'userid'], function () {
     Route::get('/adminbookings', [DashboardController::class, 'adminbookings']);
     Route::get('/admincustomers', [DashboardController::class, 'admincustomers']);
     Route::get('/admincustomers/{id}/delete', [UserController::class, 'destroy']);
+
+    // Route for the statistics page
+    Route::get('/adminstatistics', [StatisticsController::class, 'index'])->name('admin.statistics');
 
     // Route::get('productmanagements/create',[App\Http\Controllers\productController::class,'create']);
 // Route::post('productmanagements/create',[App\Http\Controllers\productController::class,'store']);

@@ -42,6 +42,12 @@
                     <span class="text">Booking</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ url('/adminstatistics') }}">
+                    <i class="bx bxs-bar-chart-alt-2"></i> <!-- Chart icon for statistics -->
+                    <span class="text">Statistics</span>
+                </a>
+            </li>
             <br>
             <br>
             <br>
