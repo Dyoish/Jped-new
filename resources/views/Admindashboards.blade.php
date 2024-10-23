@@ -13,6 +13,41 @@
     <link rel="stylesheet" href="assets/css/analytics.css" />
     <script src="{{ asset('assests/js/jquery.js') }}"></script>
     <title>Dashboard</title>
+    <style> 
+        .box-info-smol {
+  display: flex;            
+  flex-wrap: wrap;           
+  gap: 20px;                 
+  padding: 0;
+  list-style-type: none;    
+}
+
+.box-info-smol li {
+  background-color: #ffffff; 
+  border-radius: 10px;       
+  padding: 20px;
+  width: 200px;              
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  text-align: center;        
+}
+
+.box-info-smol li:hover {
+  transform: translateY(-5px); 
+  transition: transform 0.3s ease;
+}
+
+.box-info-smol h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.box-info-smol p {
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0 0;
+}
+    </style>
 </head>
 
 <body>
@@ -73,47 +108,41 @@
                 </div>
             </div>
 
-            <ul class="box-info">
+            <ul class="box-info-smol">
     <li>
-        <i class="bx bxs-group"></i>
         <span class="text">
-            <h4>Portrait Photography</h4>
-            <p>Info for Box 1</p>
+            <h4>Portrait Photography Bookings:</h4>
+            <p>{{ $portraitBookingsCount }}</p> 
         </span>
     </li>
     <li>
-        <i class="bx bxs-group"></i>
         <span class="text">
-            <h4>Concert Photography</h4>
-            <p>Info for Box 2</p>
+            <h4>Concert Photography Bookings:</h4>
+            <p>{{ $concertBookingsCount }}</p> 
         </span>
     </li>
     <li>
-        <i class="bx bxs-group"></i>
         <span class="text">
-            <h4>Cosplay Photography</h4>
-            <p>Info for Box 3</p>
+            <h4>Cosplay Photography Bookings:</h4>
+            <p>{{ $cosplayBookingsCount }}</p>
         </span>
     </li>
     <li>
-        <i class="bx bxs-group"></i>
         <span class="text">
-            <h4>Products Photography</h4>
-            <p>Info for Box 4</p>
+            <h4>Product Photography Bookings:</h4>
+            <p>{{ $productBookingsCount }}</p> 
         </span>
     </li>
     <li>
-        <i class="bx bxs-group"></i>
         <span class="text">
-            <h4>Companion Photography</h4>
-            <p>Info for Box 5</p>
+            <h4>Companion Photography Bookings:</h4>
+            <p>{{ $companionBookingsCount }}</p> 
         </span>
     </li>
     <li>
-        <i class="bx bxs-group"></i>
         <span class="text">
-            <h4>Model Photography</h4>
-            <p>Info for Box 6</p>
+            <h4>Model Photography Bookings:</h4>
+            <p>{{ $modelBookingsCount }}</p> 
         </span>
     </li>
 </ul>
