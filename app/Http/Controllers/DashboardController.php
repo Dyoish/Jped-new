@@ -47,7 +47,14 @@ class DashboardController extends Controller
     {
         $user = User::orderBy('id', 'desc')->get();
         $usercount = User::count();
-        return view('Admindashboards', compact('user', 'usercount'));
+        $portraitBookingsCount = Booking::where('service_id', 1)->where('status', 'approved')->count();
+        $concertBookingsCount = Booking::where('service_id', 2)->where('status', 'approved')->count();
+        $cosplayBookingsCount = Booking::where('service_id', 3)->where('status', 'approved')->count();
+        $productBookingsCount = Booking::where('service_id', 4)->where('status', 'approved')->count();
+        $companionBookingsCount = Booking::where('service_id', 5)->where('status', 'approved')->count();
+        $modelBookingsCount = Booking::where('service_id', 6)->where('status', 'approved')->count();
+    
+        return view('Admindashboards', compact('user', 'usercount', 'portraitBookingsCount', 'concertBookingsCount', 'cosplayBookingsCount', 'productBookingsCount', 'companionBookingsCount', 'modelBookingsCount'));
     }
 
     public function adminbookings()
