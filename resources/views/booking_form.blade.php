@@ -182,13 +182,13 @@
                     <form action="{{ url('add_booking') }}" method="POST" onsubmit="return validateEmail()">
                         @csrf
                         <div class="mb-3">
-                            <label for="name" class="form-label">Your Name</label>
+                            <label for="name" class="form-label">Username</label>
                             <input type="text" class="form-control" name="name" placeholder="Enter your full name"
                                 value="{{ auth()->user()->name }}" required readonly>
                         </div>
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">Your Email</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
                                 placeholder="Enter your email" value="{{ auth()->user()->email }}" required readonly>
                         </div>

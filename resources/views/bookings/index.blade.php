@@ -42,11 +42,13 @@
         }
 
         .card {
-            margin-bottom: 20px;
+            margin-bottom: 48px;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            height: 200px;
+            /* Set a fixed height */
         }
 
         .card:hover {
@@ -60,7 +62,8 @@
         }
 
         .card-text {
-            font-size: 1rem;
+            font-size: 0.9rem;
+            /* Slightly smaller font size */
             color: #777;
         }
 
@@ -89,6 +92,11 @@
             font-weight: bold;
             font-size: 1.1rem;
         }
+
+        .navbar {
+            transition: top 0.5s ease;
+            /* 0.5s duration for a smooth effect */
+        }
     </style>
 </head>
 
@@ -99,69 +107,79 @@
 
     @section('content')
     <div class="container">
-        <h1>All Bookings</h1>
+        <h1>Your Bookings</h1>
 
         @if ($bookings->isEmpty())
             <div class="alert alert-warning text-center" role="alert">
                 No bookings found.
             </div>
         @else
-            @foreach($bookings as $booking)
-                <!-- Make the card clickable, trigger modal on click -->
-                <div class="card" data-bs-toggle="modal" data-bs-target="#bookingModal{{ $booking->id }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $booking->name }}</h5>
-                        <p class="card-text">
-                            <strong>Email:</strong> {{ $booking->email }}<br>
-                            <strong>Service:</strong> {{ $booking->service ? $booking->service->name : 'N/A' }}<br>
-                            <strong>Booking Date:</strong> {{ $booking->booking_date }}<br>
-                            <strong>Booking Time:</strong> {{ $booking->booking_time }}<br>
-                            <strong>Status:</strong> {{ ucfirst($booking->status) }}
-                        </p>
-                    </div>
-
-                    <div
-                        class="card-footer 
-                                                                        {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
-                                                                        {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
-                                                                        {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
-
-                        @if (trim(strtolower($booking->status)) === 'approved')
-                            Accepted
-                        @elseif (trim(strtolower($booking->status)) === 'pending')
-                            Pending
-                        @elseif (trim(strtolower($booking->status)) === 'rejected')
-                            Rejected
-                        @else
-                            Unknown Status
-                        @endif
-                    </div>
-                </div>
-
-                <!-- Modal for booking details -->
-                <div class="modal fade" id="bookingModal{{ $booking->id }}" tabindex="-1"
-                    aria-labelledby="bookingModalLabel{{ $booking->id }}" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="bookingModalLabel{{ $booking->id }}">Booking Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="row">
+                @foreach($bookings as $booking)
+                    <div class="col-md-4"> <!-- Changed to col-md-4 for 3 cards in a row -->
+                        <!-- Card trigger modal -->
+                        <div class="card" data-bs-toggle="modal" data-bs-target="#bookingModal{{ $booking->id }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $booking->name }}</h5>
+                                <p class="card-text">
+                                    <strong>Email:</strong> {{ $booking->email }}<br>
+                                    <strong>Service:</strong> {{ $booking->service ? $booking->service->name : 'N/A' }}<br>
+                                    <strong>Booking Date:</strong> {{ $booking->booking_date }}<br>
+                                    <strong>Booking Time:</strong> {{ $booking->booking_time }}<br>
+                                    <strong>Status:</strong> {{ ucfirst($booking->status) }}
+                                </p>
                             </div>
-                            <div class="modal-body">
-                                <p><strong>Name:</strong> {{ $booking->name }}</p>
-                                <p><strong>Email:</strong> {{ $booking->email }}</p>
-                                <p><strong>Service:</strong> {{ $booking->service->name }}</p>
-                                <p><strong>Booking Date:</strong> {{ $booking->booking_date }}</p>
-                                <p><strong>Booking Time:</strong> {{ $booking->booking_time }}</p>
-                                <p><strong>Status:</strong> {{ ucfirst($booking->status) }}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                            <div
+                                class="card-footer 
+                                                    {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
+                                                    {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
+                                                    {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
+                                @if (trim(strtolower($booking->status)) === 'approved')
+                                    Accepted
+                                @elseif (trim(strtolower($booking->status)) === 'pending')
+                                    Pending
+                                @elseif (trim(strtolower($booking->status)) === 'rejected')
+                                    Rejected
+                                @else
+                                    Unknown Status
+                                @endif
                             </div>
                         </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="bookingModal{{ $booking->id }}" tabindex="-1"
+                            aria-labelledby="bookingModalLabel{{ $booking->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="bookingModalLabel{{ $booking->id }}">Booking Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Name:</strong> {{ $booking->name }}</p>
+                                        <p><strong>Email:</strong> {{ $booking->email }}</p>
+                                        <p><strong>Service:</strong> {{ $booking->service ? $booking->service->name : 'N/A' }}
+                                        </p>
+                                        <p><strong>Booking Date:</strong> {{ $booking->booking_date }}</p>
+                                        <p><strong>Booking Time:</strong> {{ $booking->booking_time }}</p>
+                                        <p><strong>Status:</strong> {{ ucfirst($booking->status) }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- Close Button -->
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                        <!-- Edit Button -->
+                                        <a href="/bookings/{{ $booking->id }}/edit" class="btn btn-primary">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         @endif
     </div>
 
@@ -169,6 +187,22 @@
         function confirmCancel() {
             return confirm('Are you sure you want to cancel this booking? This action cannot be undone.');
         }
+
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Scroll Down - Hide Navbar
+                navbar.style.top = "-80px"; // Adjust depending on your navbar's height
+            } else {
+                // Scroll Up - Show Navbar
+                navbar.style.top = "0";
+            }
+            lastScrollTop = scrollTop;
+        });
     </script>
 
     @endsection

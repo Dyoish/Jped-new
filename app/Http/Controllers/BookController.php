@@ -13,7 +13,7 @@ class BookController extends Controller
     public function index()
     {
         // Fetch bookings for the authenticated user
-        $bookings = Booking::where('user_id', Auth::id())->get();
+        $bookings = Booking::where('user_id', auth()->id())->get();
         return view('bookings.index', compact('bookings'));
     }
 
