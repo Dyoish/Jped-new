@@ -389,13 +389,14 @@ body {
 }
 
 #content main .box-info li {
-    padding: 24px;
+    padding: 40px;
     background: var(--light);
     border-radius: 20px;
     display: flex;
     align-items: center;
     grid-gap: 24px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
 }
 
 #content main .box-info li .bx {
@@ -406,6 +407,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 #content main .box-info li .text h3 {

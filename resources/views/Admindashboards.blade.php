@@ -13,40 +13,41 @@
     <link rel="stylesheet" href="assets/css/analytics.css" />
     <script src="{{ asset('assests/js/jquery.js') }}"></script>
     <title>Dashboard</title>
-    <style> 
+    <style>
         .box-info-smol {
-  display: flex;            
-  flex-wrap: wrap;           
-  gap: 20px;                 
-  padding: 0;
-  list-style-type: none;    
-}
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0;
+            list-style-type: none;
+            margin-left: 35px;
+        }
 
-.box-info-smol li {
-  background-color: #ffffff; 
-  border-radius: 10px;       
-  padding: 20px;
-  width: 200px;              
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  text-align: center;        
-}
+        .box-info-smol li {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-.box-info-smol li:hover {
-  transform: translateY(-5px); 
-  transition: transform 0.3s ease;
-}
+        .box-info-smol li:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
 
-.box-info-smol h4 {
-  margin: 0;
-  font-size: 18px;
-  color: #333;
-}
+        .box-info-smol h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
 
-.box-info-smol p {
-  font-size: 16px;
-  color: #666;
-  margin: 10px 0 0;
-}
+        .box-info-smol p {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0 0;
+        }
     </style>
 </head>
 
@@ -69,18 +70,24 @@
                     <span class="text">Booking</span>
                 </a>
             </li>
-            <!-- <li>
-                <a href="{{ url('/admincustomers') }}">
-                    <i class="bx bxs-group"></i>
-                    <span class="text">Customers</span>
-                </a>
-            </li> -->
-            <!-- <li>
-                <a href="{{ url('/adminmanagements') }}">
-                    <i class="bx bxs-data"></i>
-                    <span class="text">Product Management</span>
-                </a>
-            </li> -->
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <br>
             <br>
@@ -88,7 +95,7 @@
             <br>
             <br>
             <li>
-                <a class="dropdown-item text-center" href="{{route('logout')}}" style="color: red;">
+                <a href="{{route('logout') }}" style="color: red;">
                     <i class="bx bxs-log-out"></i> Log out
                 </a>
             </li>
@@ -98,7 +105,7 @@
 
     <!-- CONTENT -->
     <section id="content">
-
+        <br>
         <!-- MAIN -->
         <main>
             <div class="head-title">
@@ -109,43 +116,45 @@
             </div>
 
             <ul class="box-info-smol">
-    <li>
-        <span class="text">
-            <h4>Portrait Photography Bookings:</h4>
-            <p>{{ $portraitBookingsCount }}</p> 
-        </span>
-    </li>
-    <li>
-        <span class="text">
-            <h4>Concert Photography Bookings:</h4>
-            <p>{{ $concertBookingsCount }}</p> 
-        </span>
-    </li>
-    <li>
-        <span class="text">
-            <h4>Cosplay Photography Bookings:</h4>
-            <p>{{ $cosplayBookingsCount }}</p>
-        </span>
-    </li>
-    <li>
-        <span class="text">
-            <h4>Product Photography Bookings:</h4>
-            <p>{{ $productBookingsCount }}</p> 
-        </span>
-    </li>
-    <li>
-        <span class="text">
-            <h4>Companion Photography Bookings:</h4>
-            <p>{{ $companionBookingsCount }}</p> 
-        </span>
-    </li>
-    <li>
-        <span class="text">
-            <h4>Model Photography Bookings:</h4>
-            <p>{{ $modelBookingsCount }}</p> 
-        </span>
-    </li>
-</ul>
+                <li>
+                    <span class="text">
+                        <h4>Portrait Photography Bookings:</h4>
+                        <p>{{ $portraitBookingsCount }}</p>
+                    </span>
+                </li>
+                <li>
+                    <span class="text">
+                        <h4>Concert Photography Bookings:</h4>
+                        <p>{{ $concertBookingsCount }}</p>
+                    </span>
+                </li>
+                <li>
+                    <span class="text">
+                        <h4>Cosplay Photography Bookings:</h4>
+                        <p>{{ $cosplayBookingsCount }}</p>
+                    </span>
+                </li>
+                <li>
+                    <span class="text">
+                        <h4>Product Photography Bookings:</h4>
+                        <p>{{ $productBookingsCount }}</p>
+                    </span>
+                </li>
+                <li>
+                    <span class="text">
+                        <h4>Companion Photography Bookings:</h4>
+                        <p>{{ $companionBookingsCount }}</p>
+                    </span>
+                </li>
+                <li>
+                    <span class="text">
+                        <h4>Model Photography Bookings:</h4>
+                        <p>{{ $modelBookingsCount }}</p>
+                    </span>
+                </li>
+            </ul>
+
+
 
 
             <ul class="box-info">
@@ -158,10 +167,11 @@
                 </li>
             </ul>
 
+
             <ul class="box-info">
                 <li>
                     <span>
-                        <h3>New Clients</h3>
+                        <h3>Client Details</h3>
                     </span>
                     <table class="table table-borderless">
                         <thead>

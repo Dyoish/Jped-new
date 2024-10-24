@@ -42,10 +42,6 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        ul.box-info li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
 
         /* Improved table styling */
         table.table {
@@ -113,6 +109,13 @@
             background-color: #007bff;
             border-color: #007bff;
         }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
     </style>
 </head>
 
@@ -143,12 +146,24 @@
                     <span class="text">Booking</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ url('/adminstatistics') }}">
-                    <i class="bx bxs-bar-chart-alt-2"></i> <!-- Chart icon for statistics -->
-                    <span class="text">Statistics</span>
-                </a>
-            </li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <br>
             <br>
@@ -156,7 +171,7 @@
             <br>
             <br>
             <li>
-                <a class="dropdown-item text-center" href="{{route('logout')}}" style="color: red;">
+                <a href="{{route('logout') }}" style="color: red;">
                     <i class="bx bxs-log-out"></i> Log out
                 </a>
             </li>
@@ -164,7 +179,7 @@
     </section>
 
     <!-- CONTENT -->
-    <section id="content" style="padding: 30px;">
+    <section id="content" style="padding: 25px;">
         <!-- MAIN -->
         <main>
             <div class="head-title">
