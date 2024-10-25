@@ -179,7 +179,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('add_booking') }}" method="POST" onsubmit="return validateEmail()">
+                    <form id="bookingForm" action="{{ url('add_booking') }}" method="POST" onsubmit="return validateEmail()">
                         @csrf
 
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -289,70 +289,66 @@
     </div>
 
     <!-- Modal for booking alert -->
-    <div class="modal fade" id="bookingAlertModal" tabindex="-1" aria-labelledby="bookingAlertModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="bookingAlertModalLabel">Booking Alert</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    This date is already booked for the selected service. Please choose another date.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+    <div class="modal fade" id="bookingAlertModal" tabindex="-1" aria-labelledby="bookingAlertModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingAlertModalLabel">Booking Alert</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                This date has already been booked. Please choose another date.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
     <script>
-    $(function () {
-        flatpickr("#booking_date", {
-            dateFormat: "Y-m-d",
-            minDate: "today",
-            defaultDate: "today",
-        });
-
-        $("#bookingForm").on("submit", function (event) {
-            event.preventDefault();
-            const bookingDate = $("#booking_date").val();
-            const serviceId = $("select[name='service_id']").val();
-            const bookingTime = $("select[name='booking_time']").val();
-            const endTime = $("select[name='end_time']").val();
-
-            // Check if the end time is before the booking time
-            if (endTime <= bookingTime) {
-                alert("End time cannot be before booking time.");
-                return;
-            }
-
-            $.ajax({
-    url: "{{ url('check_booking') }}",
-    method: "POST",
-    data: {
-        _token: "{{ csrf_token() }}",
-        booking_date: bookingDate,
-        service_id: serviceId,
-        location: $("#location").val(),
-        booking_time: bookingTime,
-        end_time: endTime,
-        user_id: $("input[name='user_id']").val() // Add this line
-    },
-    success: function (response) {
-        if (response.canBook) {
-            $("#bookingForm").off("submit").submit();
-        } else {
-            $('#bookingAlertModal').modal('show');
-        }
-    },
-    error: function () {
-        alert("An error occurred while checking the booking.");
-    }
-});
-        });
+ $(function () {
+    flatpickr("#booking_date", {
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        defaultDate: "today",
     });
 
+    $("#bookingForm").on("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        const bookingDate = $("#booking_date").val();
+        const serviceId = $("select[name='service_id']").val();
+        const bookingTime = $("select[name='booking_time']").val();
+        const endTime = $("select[name='end_time']").val();
+
+        // Check if the end time is before the booking time
+        if (endTime <= bookingTime) {
+            alert("End time cannot be before booking time.");
+            return;
+        }
+
+        $.ajax({
+            url: "{{ url('check_booking') }}",
+            method: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                booking_date: bookingDate,
+                booking_time: bookingTime,
+                end_time: endTime,
+                service_id: serviceId // Include the service ID for validation
+            },
+            success: function (response) {
+                if (response.canBook) {
+                    $("#bookingForm").off("submit").submit(); // Submit the form if booking is allowed
+                } else {
+                    $('#bookingAlertModal').modal('show'); // Show the modal if booking is not allowed
+                }
+            },
+            error: function () {
+                alert("An error occurred while checking the booking.");
+            }
+        });
+    });
+});
     function calculatePrice() {
     // Get selected values
     const serviceSelect = document.querySelector('select[name="service_id"]');

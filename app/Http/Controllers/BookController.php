@@ -43,14 +43,25 @@ public function store(Request $request)
         'end_time' => 'required|date_format:H:i|after:booking_time',
     ]);
 
-    // Calculate price
+    $existingBooking = Booking::where('booking_date', $validatedData['booking_date'])
+        ->where(function ($query) use ($validatedData) {
+            $query->where(function ($q) use ($validatedData) {
+                $q->where('booking_time', '<', $validatedData['end_time'])
+                  ->where('end_time', '>', $validatedData['booking_time']);
+            });
+        })
+        ->exists();
+
+    if ($existingBooking) {
+        return response()->json(['canBook' => false, 'message' => 'Booking time is already taken. Please choose a different time.'], 409);
+    }
     $servicePrices = [
-        1 => 1000, // Portrait Photography
-        2 => 1500, // Concert Photography
-        3 => 1250, // Cosplay Photography
-        4 => 1100, // Products Photography
-        5 => 800,  // Companion Photography
-        6 => 1300, // Model Photography
+        1 => 1000, 
+        2 => 1500, 
+        3 => 1250, 
+        4 => 1100, 
+        5 => 800,  
+        6 => 1300, 
     ];
 
     $locationPrices = [
@@ -60,7 +71,6 @@ public function store(Request $request)
         'Calasiao' => 125,
     ];
 
-    // Hourly rate based on booking duration
     $bookingDurationHours = (strtotime($validatedData['end_time']) - strtotime($validatedData['booking_time'])) / 3600;
     $hourlyRates = [
         1 => 500,
@@ -82,21 +92,19 @@ public function store(Request $request)
     ];
 
     $servicePrice = $servicePrices[$validatedData['service_id']];
-    $locationPrice = $locationPrices[$validatedData['location']] ?? 0; // Default to 0 if location not found
-    $hourlyRate = $hourlyRates[$bookingDurationHours] ?? 0; // Default to 0 if duration exceeds available rates
+    $locationPrice = $locationPrices[$validatedData['location']] ?? 0; 
+    $hourlyRate = $hourlyRates[$bookingDurationHours] ?? 0; 
 
-    // Calculate total price
     $totalPrice = $servicePrice + $locationPrice + $hourlyRate;
 
-    // Create booking with calculated price
     $bookingData = array_merge($validatedData, [
         'price' => $totalPrice,
-    'user_id' => Auth::id()]);
+        'user_id' => Auth::id()
+    ]);
     Booking::create($bookingData);
 
     return redirect()->back()->with('success', 'Booking created successfully!');
 }
-
 
 
     //Show all bookings for the authenticated user.
@@ -178,26 +186,19 @@ public function store(Request $request)
 
     public function checkBooking(Request $request)
     {
-        // Validate incoming request
-        $request->validate([
-            'booking_date' => 'required|date',
-            'service_id' => 'required|integer',
-            'booking_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:booking_time',
-        ]);
+        $bookingDate = $request->input('booking_date');
+        $bookingTime = $request->input('booking_time');
+        $endTime = $request->input('end_time');
+        $serviceId = $request->input('service_id');
     
-        // Check for existing bookings
-        $existingBooking = Booking::where('booking_date', $request->booking_date)
-            ->where('service_id', $request->service_id)
-            ->where(function ($query) use ($request) {
-                $query->where(function ($q) use ($request) {
-                    $q->where('booking_time', '<=', $request->end_time)
-                      ->where('end_time', '>=', $request->booking_time);
-                });
+        $exists = Booking::where('booking_date', $bookingDate)
+            ->where('service_id', $serviceId)
+            ->where(function ($query) use ($bookingTime, $endTime) {
+                $query->whereBetween('booking_time', [$bookingTime, $endTime])
+                      ->orWhereBetween('end_time', [$bookingTime, $endTime]);
             })
             ->exists();
     
-        // Return JSON response
-        return response()->json(['canBook' => !$existingBooking]);
+        return response()->json(['canBook' => !$exists]);
     }
 }
