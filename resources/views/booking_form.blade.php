@@ -181,6 +181,8 @@
 
                     <form action="{{ url('add_booking') }}" method="POST" onsubmit="return validateEmail()">
                         @csrf
+
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="mb-3">
                             <label for="name" class="form-label">Username</label>
                             <input type="text" class="form-control" name="name" placeholder="Enter your full name"
@@ -242,6 +244,8 @@
                                 <option value="18:00">6:00 PM</option>
                                 <option value="19:00">7:00 PM</option>
                                 <option value="20:00">8:00 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                                <option value="22:00">10:00 PM</option>
                             </select>
                         </div>
 
@@ -264,6 +268,8 @@
                                 <option value="18:00">6:00 PM</option>
                                 <option value="19:00">7:00 PM</option>
                                 <option value="20:00">8:00 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                                <option value="22:00">10:00 PM</option>
                             </select>
                         </div>
 
@@ -300,101 +306,42 @@
             </div>
         </div>
     </div>
-
     <script>
-       $(function () {
-            flatpickr("#booking_date", {
-                dateFormat: "Y-m-d",
-                minDate: "today",
-                defaultDate: "today",
-            });
-
-            $("#bookingForm").on("submit", function (event) {
-                event.preventDefault();
-                const bookingDate = $("#booking_date").val();
-                const serviceId = $("select[name='service_id']").val();
-                const bookingTime = $("select[name='booking_time']").val();
-                const endTime = $("select[name='end_time']").val();
-
-                if (endTime <= bookingTime) {
-                    alert("End time must be later than start time.");
-                    return;
-                }
-
-                $.ajax({
-                    url: "{{ url('check_booking') }}",
-                    method: "POST",
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        booking_date: bookingDate,
-                        service_id: serviceId,
-                        location: $("#location").val(),
-                        booking_time: bookingTime,
-                        end_time: endTime
-                    },
-                    success: function (response) {
-                        if (response.canBook) {
-                            $("#bookingForm").off("submit").submit();
-                        } else {
-                            $('#bookingAlertModal').modal('show');
-                        }
-                    },
-                    error: function () {
-                        alert("An error occurred while checking the booking.");
-                    }
-                });
-            });
+    $(function () {
+        flatpickr("#booking_date", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            defaultDate: "today",
         });
 
-        function validateEmail() {
-            const emailInput = document.getElementById('email').value;
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        $("#bookingForm").on("submit", function (event) {
+            event.preventDefault();
+            const bookingDate = $("#booking_date").val();
+            const serviceId = $("select[name='service_id']").val();
+            const bookingTime = $("select[name='booking_time']").val();
+            const endTime = $("select[name='end_time']").val();
 
-            if (!emailPattern.test(emailInput)) {
-                alert('Please enter a valid email address.');
-                return false;
+            // Check if the end time is before the booking time
+            if (endTime <= bookingTime) {
+                alert("End time cannot be before booking time.");
+                return;
             }
-            return true;
-        }
 
-        $(function () {
-            // Initialize Flatpickr for the booking date
-            flatpickr("#booking_date", {
-                dateFormat: "Y-m-d", // Format the date
-                minDate: "today", // Disable past dates
-                defaultDate: "today", // Optional: pre-fill today's date
-            });
-
-            $("#bookingForm").on("submit", function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-                // Get the selected date and service
-                const bookingDate = $("#booking_date").val();
-                const serviceId = $("select[name='service_id']").val();
-                const startTime = $("select[name='booking_time']").val();
-                const endTime = $("select[name='end_time']").val();
-
-                // Validate that end time is after start time
-                if (endTime <= startTime) {
-                    alert("End time must be later than start time.");
-                    return; // Prevent form submission
-                }
-
-                // Check for existing bookings via AJAX
-                $.ajax({
+            $.ajax({
     url: "{{ url('check_booking') }}",
     method: "POST",
     data: {
         _token: "{{ csrf_token() }}",
         booking_date: bookingDate,
         service_id: serviceId,
-        location: $("#location").val(), // Pass location
-        booking_time: startTime,
-        end_time: endTime
+        location: $("#location").val(),
+        booking_time: bookingTime,
+        end_time: endTime,
+        user_id: $("input[name='user_id']").val() // Add this line
     },
     success: function (response) {
         if (response.canBook) {
-            $("#bookingForm").off("submit").submit(); // Proceed with submission
+            $("#bookingForm").off("submit").submit();
         } else {
             $('#bookingAlertModal').modal('show');
         }
@@ -403,26 +350,110 @@
         alert("An error occurred while checking the booking.");
     }
 });
-
-            });
         });
+    });
 
-        const services = @json($services); // Laravel syntax to pass data to JavaScript
+    function calculatePrice() {
+    // Get selected values
+    const serviceSelect = document.querySelector('select[name="service_id"]');
+    const serviceId = serviceSelect.value;
 
-        // Populate the pricing dynamically
-        $(document).ready(function () {
-            $("select[name='service_id']").change(function () {
-                const selectedServiceId = $(this).val();
-                const selectedService = services.find(service => service.id == selectedServiceId);
-                if (selectedService) {
-                    $("#price").val(`$${selectedService.price}`);
-                } else {
-                    $("#price").val("");
-                }
-            });
-        });
-    </script>
+    const locationSelect = document.querySelector('select[name="location"]');
+    const locationId = locationSelect.value;
 
+    const startTimeSelect = document.querySelector('select[name="booking_time"]');
+    const startTime = startTimeSelect.value;
+
+    const endTimeSelect = document.querySelector('select[name="end_time"]');
+    const endTime = endTimeSelect.value;
+
+    // Price definitions
+    const servicePrices = {
+        "1": 1000,  // Portrait Photography
+        "2": 1500,  // Concert Photography
+        "3": 1250,  // Cosplay Photography
+        "4": 1100,  // Products Photography
+        "5": 800,    // Companion Photography
+        "6": 1300    // Model Photography
+    };
+
+    const locationPrices = {
+        "Dagupan": 100,
+        "Binmaley": 150,
+        "Lingayen": 200,
+        "Calasiao": 125
+    };
+
+    const hourlyRates = {
+        "1 hour": 500,
+        "2 hours": 600,
+        "3 hours": 700,
+        "4 hours": 800,
+        "5 hours": 900,
+        "6 hours": 1000,
+        "7 hours": 1100,
+        "8 hours": 1200,
+        "9 hours": 1300,
+        "10 hours": 1400,
+        "11 hours": 1500,
+        "12 hours": 1600,
+        "13 hours": 1700,
+        "14 hours": 1800,
+        "15 hours": 1900,
+        "16 hours": 2000
+    };
+
+    // Calculate duration
+    const startHour = parseInt(startTime.split(':')[0], 10);
+    const endHour = parseInt(endTime.split(':')[0], 10);
+    
+    // Debugging log
+    console.log("Start Hour:", startHour, "End Hour:", endHour);
+
+    // Ensure end time is greater than start time
+    if (endHour <= startHour) {
+        alert("End time must be later than start time.");
+        document.getElementById('price').value = ''; // Clear price if end time is invalid
+        return; // Exit the function
+    }
+
+    const duration = endHour - startHour;
+
+    // Debugging log
+    console.log("Duration:", duration);
+
+    if (serviceId && locationId && duration > 0) {
+        const servicePrice = servicePrices[serviceId];
+        const locationPrice = locationPrices[locationId];
+        const hourlyPrice = hourlyRates[duration + ' hour' + (duration > 1 ? 's' : '')]; // Adjust key for pluralization
+
+        // Debugging log
+        console.log("Service Price:", servicePrice, "Location Price:", locationPrice, "Hourly Price:", hourlyPrice);
+
+        // Total price calculation
+        const totalPrice = servicePrice + locationPrice + (hourlyPrice || 0); // Add 0 if hourlyPrice is undefined
+        document.getElementById('price').value = totalPrice;
+    } else {
+        document.getElementById('price').value = ''; // Clear price if inputs are not valid
+    }
+}
+
+    document.querySelector('select[name="service_id"]').addEventListener('change', calculatePrice);
+    document.querySelector('select[name="location"]').addEventListener('change', calculatePrice);
+    document.querySelector('select[name="booking_time"]').addEventListener('change', calculatePrice);
+    document.querySelector('select[name="end_time"]').addEventListener('change', calculatePrice);
+
+    function validateEmail() {
+        const emailInput = document.getElementById('email').value;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailPattern.test(emailInput)) {
+            alert('Please enter a valid email address.');
+            return false;
+        }
+        return true;
+    }
+</script>
 
 </body>
 
