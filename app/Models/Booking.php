@@ -13,11 +13,11 @@ class Booking extends Model
         'name',
         'email',
         'service_id',
+        'location',
         'booking_date',
-        'user_id',
         'booking_time',
         'end_time',
-        'location'
+        'price', 
     ];
 
     protected $attributes = [

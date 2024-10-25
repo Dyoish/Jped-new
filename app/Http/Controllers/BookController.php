@@ -32,18 +32,22 @@ class BookController extends Controller
 //Store a new booking.
 public function store(Request $request)
 {
-    $request->validate([
-        'name' => 'required|string',
-        'email' => 'required|email',
+    // Validate the incoming request
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
         'service_id' => 'required|exists:services,id',
-        'location' => 'required|string',
+        'location' => 'required|string|max:255',
         'booking_date' => 'required|date',
         'booking_time' => 'required|date_format:H:i',
-        'end_time' => 'required|date_format:H:i|after:booking_time', // Ensure end_time is after start_time
+        'end_time' => 'required|date_format:H:i|after:booking_time',
+        'price' => 'required|numeric', 
     ]);
 
-    Booking::create($request->all());
+    
+    Booking::create($validatedData);
 
+   
     return redirect()->back()->with('success', 'Booking created successfully!');
 }
 

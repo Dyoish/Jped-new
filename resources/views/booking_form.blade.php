@@ -302,35 +302,40 @@
     </div>
 
     <script>
-        $(function () {
-            // Initialize Flatpickr for the booking date
+       $(function () {
             flatpickr("#booking_date", {
-                dateFormat: "Y-m-d", // Format the date
-                minDate: "today", // Disable past dates
-                defaultDate: "today", // Optional: pre-fill today's date
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                defaultDate: "today",
             });
 
             $("#bookingForm").on("submit", function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-                // Get the selected date and service
+                event.preventDefault();
                 const bookingDate = $("#booking_date").val();
                 const serviceId = $("select[name='service_id']").val();
+                const bookingTime = $("select[name='booking_time']").val();
+                const endTime = $("select[name='end_time']").val();
 
-                // Check for existing bookings via AJAX
+                if (endTime <= bookingTime) {
+                    alert("End time must be later than start time.");
+                    return;
+                }
+
                 $.ajax({
-                    url: "{{ url('check_booking') }}", // Your new route
+                    url: "{{ url('check_booking') }}",
                     method: "POST",
                     data: {
                         _token: "{{ csrf_token() }}",
                         booking_date: bookingDate,
                         service_id: serviceId,
+                        location: $("#location").val(),
+                        booking_time: bookingTime,
+                        end_time: endTime
                     },
                     success: function (response) {
                         if (response.canBook) {
-                            $("#bookingForm").off("submit").submit(); // Proceed with submission
+                            $("#bookingForm").off("submit").submit();
                         } else {
-                            // Show the modal instead of an alert
                             $('#bookingAlertModal').modal('show');
                         }
                     },
@@ -347,9 +352,9 @@
 
             if (!emailPattern.test(emailInput)) {
                 alert('Please enter a valid email address.');
-                return false; // Prevent form submission
+                return false;
             }
-            return true; // Allow form submission
+            return true;
         }
 
         $(function () {
@@ -384,7 +389,7 @@
         booking_date: bookingDate,
         service_id: serviceId,
         location: $("#location").val(), // Pass location
-        start_time: startTime,
+        booking_time: startTime,
         end_time: endTime
     },
     success: function (response) {
@@ -408,13 +413,11 @@
         $(document).ready(function () {
             $("select[name='service_id']").change(function () {
                 const selectedServiceId = $(this).val();
-
-                // Find the selected service and display its price
                 const selectedService = services.find(service => service.id == selectedServiceId);
                 if (selectedService) {
                     $("#price").val(`$${selectedService.price}`);
                 } else {
-                    $("#price").val(""); // Clear the field if no service is selected
+                    $("#price").val("");
                 }
             });
         });

@@ -17,6 +17,7 @@ class CreateBookingsTable extends Migration
             $table->date('booking_date');
             $table->time('booking_time');
             $table->time('end_time');
+            $table->double('price');
             $table->timestamps();
         });
     }
