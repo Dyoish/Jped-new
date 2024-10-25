@@ -115,7 +115,7 @@ class BookController extends Controller
         return view('bookings.index', compact('bookings')); // Pass the bookings to the view
     }
 
-    //Update button function in website (updated output)
+    //Update button function in website (Edit form)
     public function update(Request $request, $id)
     {
         $booking = Booking::find($id);
@@ -137,8 +137,34 @@ class BookController extends Controller
         // Pricing arrays and calculations
         $servicePrices = [1 => 1000, 2 => 1500, 3 => 1250, 4 => 1100, 5 => 800, 6 => 1300];
         $locationPrices = ['Dagupan' => 100, 'Binmaley' => 150, 'Lingayen' => 200, 'Calasiao' => 125];
+
+        // Calculate booking duration in hours
         $bookingDurationHours = (strtotime($validatedData['end_time']) - strtotime($validatedData['booking_time'])) / 3600;
-        $hourlyRates = [1 => 500, 2 => 600, /* include all hourly rates up to 16 hours */];
+
+        // Check duration is within allowed range
+        if ($bookingDurationHours < 1 || $bookingDurationHours > 16) {
+            return redirect()->back()->with('error', 'Booking duration must be between 1 and 16 hours.');
+        }
+
+        // Define hourly rates based on duration
+        $hourlyRates = [
+            1 => 500,
+            2 => 600,
+            3 => 700,
+            4 => 800,
+            5 => 900,
+            6 => 1000,
+            7 => 1100,
+            8 => 1200,
+            9 => 1300,
+            10 => 1400,
+            11 => 1500,
+            12 => 1600,
+            13 => 1700,
+            14 => 1800,
+            15 => 1900,
+            16 => 2000
+        ];
 
         $servicePrice = $servicePrices[$validatedData['service_id']] ?? 0;
         $locationPrice = $locationPrices[$validatedData['location']] ?? 0;
@@ -160,7 +186,7 @@ class BookController extends Controller
         return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
     }
 
-    //Update button function in website
+    //Update button function in website (Edit button)
     public function edit($id)
     {
         $booking = Booking::find($id);

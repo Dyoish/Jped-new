@@ -179,7 +179,8 @@
                         </div>
                     @endif
 
-                    <form id="bookingForm" action="{{ url('add_booking') }}" method="POST" onsubmit="return validateEmail()">
+                    <form id="bookingForm" action="{{ url('add_booking') }}" method="POST"
+                        onsubmit="return validateEmail()">
                         @csrf
 
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -204,8 +205,6 @@
                                 @endforeach
                             </select>
                         </div>
-
-
 
                         <div class="mb-3">
                             <label for="booking_date" class="form-label">Select Date</label>
@@ -289,167 +288,171 @@
     </div>
 
     <!-- Modal for booking alert -->
-    <div class="modal fade" id="bookingAlertModal" tabindex="-1" aria-labelledby="bookingAlertModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="bookingAlertModalLabel">Booking Alert</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                This date has already been booked. Please choose another date.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <div class="modal fade" id="bookingAlertModal" tabindex="-1" aria-labelledby="bookingAlertModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingAlertModalLabel">Booking Alert</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    This date has already been booked. Please choose another date.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+
     <script>
- $(function () {
-    flatpickr("#booking_date", {
-        dateFormat: "Y-m-d",
-        minDate: "today",
-        defaultDate: "today",
-    });
+        $(function () {
+            flatpickr("#booking_date", {
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                defaultDate: "today",
+            });
 
-    $("#bookingForm").on("submit", function (event) {
-        event.preventDefault(); // Prevent the default form submission
-        const bookingDate = $("#booking_date").val();
-        const serviceId = $("select[name='service_id']").val();
-        const bookingTime = $("select[name='booking_time']").val();
-        const endTime = $("select[name='end_time']").val();
+            $("#bookingForm").on("submit", function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                const bookingDate = $("#booking_date").val();
+                const serviceId = $("select[name='service_id']").val();
+                const bookingTime = $("select[name='booking_time']").val();
+                const endTime = $("select[name='end_time']").val();
 
-        // Check if the end time is before the booking time
-        if (endTime <= bookingTime) {
-            alert("End time cannot be before booking time.");
-            return;
-        }
-
-        $.ajax({
-            url: "{{ url('check_booking') }}",
-            method: "POST",
-            data: {
-                _token: "{{ csrf_token() }}",
-                booking_date: bookingDate,
-                booking_time: bookingTime,
-                end_time: endTime,
-                service_id: serviceId // Include the service ID for validation
-            },
-            success: function (response) {
-                if (response.canBook) {
-                    $("#bookingForm").off("submit").submit(); // Submit the form if booking is allowed
-                } else {
-                    $('#bookingAlertModal').modal('show'); // Show the modal if booking is not allowed
+                // Check if the end time is before the booking time
+                if (endTime <= bookingTime) {
+                    alert("End time cannot be before booking time.");
+                    return;
                 }
-            },
-            error: function () {
-                alert("An error occurred while checking the booking.");
-            }
+
+                $.ajax({
+                    url: "{{ url('check_booking') }}",
+                    method: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        booking_date: bookingDate,
+                        booking_time: bookingTime,
+                        end_time: endTime,
+                        service_id: serviceId // Include the service ID for validation
+                    },
+                    success: function (response) {
+                        if (response.canBook) {
+                            $("#bookingForm").off("submit").submit(); // Submit the form if booking is allowed
+                        } else {
+                            $('#bookingAlertModal').modal('show'); // Show the modal if booking is not allowed
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while checking the booking.");
+                    }
+                });
+            });
         });
-    });
-});
-    function calculatePrice() {
-    // Get selected values
-    const serviceSelect = document.querySelector('select[name="service_id"]');
-    const serviceId = serviceSelect.value;
 
-    const locationSelect = document.querySelector('select[name="location"]');
-    const locationId = locationSelect.value;
+        function calculatePrice() {
+            // Get selected values
+            const serviceSelect = document.querySelector('select[name="service_id"]');
+            const serviceId = serviceSelect.value;
 
-    const startTimeSelect = document.querySelector('select[name="booking_time"]');
-    const startTime = startTimeSelect.value;
+            const locationSelect = document.querySelector('select[name="location"]');
+            const locationId = locationSelect.value;
 
-    const endTimeSelect = document.querySelector('select[name="end_time"]');
-    const endTime = endTimeSelect.value;
+            const startTimeSelect = document.querySelector('select[name="booking_time"]');
+            const startTime = startTimeSelect.value;
 
-    // Price definitions
-    const servicePrices = {
-        "1": 1000,  // Portrait Photography
-        "2": 1500,  // Concert Photography
-        "3": 1250,  // Cosplay Photography
-        "4": 1100,  // Products Photography
-        "5": 800,    // Companion Photography
-        "6": 1300    // Model Photography
-    };
+            const endTimeSelect = document.querySelector('select[name="end_time"]');
+            const endTime = endTimeSelect.value;
 
-    const locationPrices = {
-        "Dagupan": 100,
-        "Binmaley": 150,
-        "Lingayen": 200,
-        "Calasiao": 125
-    };
+            // Price definitions
+            const servicePrices = {
+                "1": 1000,  // Portrait Photography
+                "2": 1500,  // Concert Photography
+                "3": 1250,  // Cosplay Photography
+                "4": 1100,  // Products Photography
+                "5": 800,    // Companion Photography
+                "6": 1300    // Model Photography
+            };
 
-    const hourlyRates = {
-        "1 hour": 500,
-        "2 hours": 600,
-        "3 hours": 700,
-        "4 hours": 800,
-        "5 hours": 900,
-        "6 hours": 1000,
-        "7 hours": 1100,
-        "8 hours": 1200,
-        "9 hours": 1300,
-        "10 hours": 1400,
-        "11 hours": 1500,
-        "12 hours": 1600,
-        "13 hours": 1700,
-        "14 hours": 1800,
-        "15 hours": 1900,
-        "16 hours": 2000
-    };
+            const locationPrices = {
+                "Dagupan": 100,
+                "Binmaley": 150,
+                "Lingayen": 200,
+                "Calasiao": 125
+            };
 
-    // Calculate duration
-    const startHour = parseInt(startTime.split(':')[0], 10);
-    const endHour = parseInt(endTime.split(':')[0], 10);
-    
-    // Debugging log
-    console.log("Start Hour:", startHour, "End Hour:", endHour);
+            const hourlyRates = {
+                "1 hour": 500,
+                "2 hours": 600,
+                "3 hours": 700,
+                "4 hours": 800,
+                "5 hours": 900,
+                "6 hours": 1000,
+                "7 hours": 1100,
+                "8 hours": 1200,
+                "9 hours": 1300,
+                "10 hours": 1400,
+                "11 hours": 1500,
+                "12 hours": 1600,
+                "13 hours": 1700,
+                "14 hours": 1800,
+                "15 hours": 1900,
+                "16 hours": 2000
+            };
 
-    // Ensure end time is greater than start time
-    if (endHour <= startHour) {
-        alert("End time must be later than start time.");
-        document.getElementById('price').value = ''; // Clear price if end time is invalid
-        return; // Exit the function
-    }
+            // Calculate duration
+            const startHour = parseInt(startTime.split(':')[0], 10);
+            const endHour = parseInt(endTime.split(':')[0], 10);
 
-    const duration = endHour - startHour;
+            // Debugging log
+            console.log("Start Hour:", startHour, "End Hour:", endHour);
 
-    // Debugging log
-    console.log("Duration:", duration);
+            // Ensure end time is greater than start time
+            if (endHour <= startHour) {
+                alert("End time must be later than start time.");
+                document.getElementById('price').value = ''; // Clear price if end time is invalid
+                return; // Exit the function
+            }
 
-    if (serviceId && locationId && duration > 0) {
-        const servicePrice = servicePrices[serviceId];
-        const locationPrice = locationPrices[locationId];
-        const hourlyPrice = hourlyRates[duration + ' hour' + (duration > 1 ? 's' : '')]; // Adjust key for pluralization
+            const duration = endHour - startHour;
 
-        // Debugging log
-        console.log("Service Price:", servicePrice, "Location Price:", locationPrice, "Hourly Price:", hourlyPrice);
+            // Debugging log
+            console.log("Duration:", duration);
 
-        // Total price calculation
-        const totalPrice = servicePrice + locationPrice + (hourlyPrice || 0); // Add 0 if hourlyPrice is undefined
-        document.getElementById('price').value = totalPrice;
-    } else {
-        document.getElementById('price').value = ''; // Clear price if inputs are not valid
-    }
-}
+            if (serviceId && locationId && duration > 0) {
+                const servicePrice = servicePrices[serviceId];
+                const locationPrice = locationPrices[locationId];
+                const hourlyPrice = hourlyRates[duration + ' hour' + (duration > 1 ? 's' : '')]; // Adjust key for pluralization
 
-    document.querySelector('select[name="service_id"]').addEventListener('change', calculatePrice);
-    document.querySelector('select[name="location"]').addEventListener('change', calculatePrice);
-    document.querySelector('select[name="booking_time"]').addEventListener('change', calculatePrice);
-    document.querySelector('select[name="end_time"]').addEventListener('change', calculatePrice);
+                // Debugging log
+                console.log("Service Price:", servicePrice, "Location Price:", locationPrice, "Hourly Price:", hourlyPrice);
 
-    function validateEmail() {
-        const emailInput = document.getElementById('email').value;
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-        if (!emailPattern.test(emailInput)) {
-            alert('Please enter a valid email address.');
-            return false;
+                // Total price calculation
+                const totalPrice = servicePrice + locationPrice + (hourlyPrice || 0); // Add 0 if hourlyPrice is undefined
+                document.getElementById('price').value = totalPrice;
+            } else {
+                document.getElementById('price').value = ''; // Clear price if inputs are not valid
+            }
         }
-        return true;
-    }
-</script>
+
+        document.querySelector('select[name="service_id"]').addEventListener('change', calculatePrice);
+        document.querySelector('select[name="location"]').addEventListener('change', calculatePrice);
+        document.querySelector('select[name="booking_time"]').addEventListener('change', calculatePrice);
+        document.querySelector('select[name="end_time"]').addEventListener('change', calculatePrice);
+
+        function validateEmail() {
+            const emailInput = document.getElementById('email').value;
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!emailPattern.test(emailInput)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 </body>
 

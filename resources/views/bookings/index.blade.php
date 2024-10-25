@@ -143,10 +143,11 @@
                                 </p>
                             </div>
 
-                            <div class="card-footer 
-                                        {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
-                                        {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
-                                        {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
+                            <div
+                                class="card-footer 
+                                                {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
+                                                {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
+                                                {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
                                 {{ ucfirst($booking->status) }}
                             </div>
                         </div>
