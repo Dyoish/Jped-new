@@ -203,10 +203,24 @@
                             </select>
                         </div>
 
+
+
                         <div class="mb-3">
                             <label for="booking_date" class="form-label">Select Date</label>
                             <input type="text" class="form-control" id="booking_date" name="booking_date"
                                 placeholder="Select a date" required>
+                        </div>
+
+                        <!-- New location dropdown field -->
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Select Location</label>
+                            <select name="location" id="location" class="form-select" required>
+                                <option value="">Choose a location...</option>
+                                <option value="Dagupan">Dagupan</option>
+                                <option value="Binmaley">Binmaley</option>
+                                <option value="Lingayen">Lingayen</option>
+                                <option value="Calasiao">Calasiao</option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
@@ -251,6 +265,13 @@
                                 <option value="19:00">7:00 PM</option>
                                 <option value="20:00">8:00 PM</option>
                             </select>
+                        </div>
+
+                        <!-- Add this div below the service dropdown -->
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" id="price" class="form-control" placeholder="Price will appear here"
+                                readonly>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Book Now</button>
@@ -377,6 +398,23 @@
                         alert("An error occurred while checking the booking.");
                     }
                 });
+            });
+        });
+
+        const services = @json($services); // Laravel syntax to pass data to JavaScript
+
+        // Populate the pricing dynamically
+        $(document).ready(function () {
+            $("select[name='service_id']").change(function () {
+                const selectedServiceId = $(this).val();
+
+                // Find the selected service and display its price
+                const selectedService = services.find(service => service.id == selectedServiceId);
+                if (selectedService) {
+                    $("#price").val(`$${selectedService.price}`);
+                } else {
+                    $("#price").val(""); // Clear the field if no service is selected
+                }
             });
         });
     </script>
