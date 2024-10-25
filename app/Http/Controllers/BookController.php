@@ -30,81 +30,81 @@ class BookController extends Controller
 
     //Store a new booking.
 //Store a new booking.
-public function store(Request $request)
-{
-    // Validate the incoming request
-    $validatedData = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-        'service_id' => 'required|exists:services,id',
-        'location' => 'required|string|max:255',
-        'booking_date' => 'required|date',
-        'booking_time' => 'required|date_format:H:i',
-        'end_time' => 'required|date_format:H:i|after:booking_time',
-    ]);
+    public function store(Request $request)
+    {
+        // Validate the incoming request
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'service_id' => 'required|exists:services,id',
+            'location' => 'required|string|max:255',
+            'booking_date' => 'required|date',
+            'booking_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:booking_time',
+        ]);
 
-    $existingBooking = Booking::where('booking_date', $validatedData['booking_date'])
-        ->where(function ($query) use ($validatedData) {
-            $query->where(function ($q) use ($validatedData) {
-                $q->where('booking_time', '<', $validatedData['end_time'])
-                  ->where('end_time', '>', $validatedData['booking_time']);
-            });
-        })
-        ->exists();
+        $existingBooking = Booking::where('booking_date', $validatedData['booking_date'])
+            ->where(function ($query) use ($validatedData) {
+                $query->where(function ($q) use ($validatedData) {
+                    $q->where('booking_time', '<', $validatedData['end_time'])
+                        ->where('end_time', '>', $validatedData['booking_time']);
+                });
+            })
+            ->exists();
 
-    if ($existingBooking) {
-        return response()->json(['canBook' => false, 'message' => 'Booking time is already taken. Please choose a different time.'], 409);
+        if ($existingBooking) {
+            return response()->json(['canBook' => false, 'message' => 'Booking time is already taken. Please choose a different time.'], 409);
+        }
+        $servicePrices = [
+            1 => 1000,
+            2 => 1500,
+            3 => 1250,
+            4 => 1100,
+            5 => 800,
+            6 => 1300,
+        ];
+
+        $locationPrices = [
+            'Dagupan' => 100,
+            'Binmaley' => 150,
+            'Lingayen' => 200,
+            'Calasiao' => 125,
+        ];
+
+        $bookingDurationHours = (strtotime($validatedData['end_time']) - strtotime($validatedData['booking_time'])) / 3600;
+        $hourlyRates = [
+            1 => 500,
+            2 => 600,
+            3 => 700,
+            4 => 800,
+            5 => 900,
+            6 => 1000,
+            7 => 1100,
+            8 => 1200,
+            9 => 1300,
+            10 => 1400,
+            11 => 1500,
+            12 => 1600,
+            13 => 1700,
+            14 => 1800,
+            15 => 1900,
+            16 => 2000,
+        ];
+
+        $servicePrice = $servicePrices[$validatedData['service_id']];
+        $locationPrice = $locationPrices[$validatedData['location']] ?? 0;
+        $hourlyRate = $hourlyRates[$bookingDurationHours] ?? 0;
+
+        $totalPrice = $servicePrice + $locationPrice + $hourlyRate;
+
+        $bookingData = array_merge($validatedData, [
+            'price' => $totalPrice,
+            'user_id' => Auth::id()
+        ]);
+        Booking::create($bookingData);
+
+        return redirect()->back()->with('success', 'Booking created successfully!');
     }
-    $servicePrices = [
-        1 => 1000, 
-        2 => 1500, 
-        3 => 1250, 
-        4 => 1100, 
-        5 => 800,  
-        6 => 1300, 
-    ];
-
-    $locationPrices = [
-        'Dagupan' => 100,
-        'Binmaley' => 150,
-        'Lingayen' => 200,
-        'Calasiao' => 125,
-    ];
-
-    $bookingDurationHours = (strtotime($validatedData['end_time']) - strtotime($validatedData['booking_time'])) / 3600;
-    $hourlyRates = [
-        1 => 500,
-        2 => 600,
-        3 => 700,
-        4 => 800,
-        5 => 900,
-        6 => 1000,
-        7 => 1100,
-        8 => 1200,
-        9 => 1300,
-        10 => 1400,
-        11 => 1500,
-        12 => 1600,
-        13 => 1700,
-        14 => 1800,
-        15 => 1900,
-        16 => 2000,
-    ];
-
-    $servicePrice = $servicePrices[$validatedData['service_id']];
-    $locationPrice = $locationPrices[$validatedData['location']] ?? 0; 
-    $hourlyRate = $hourlyRates[$bookingDurationHours] ?? 0; 
-
-    $totalPrice = $servicePrice + $locationPrice + $hourlyRate;
-
-    $bookingData = array_merge($validatedData, [
-        'price' => $totalPrice,
-        'user_id' => Auth::id()
-    ]);
-    Booking::create($bookingData);
-
-    return redirect()->back()->with('success', 'Booking created successfully!');
-}
 
 
     //Show all bookings for the authenticated user.
@@ -117,36 +117,48 @@ public function store(Request $request)
 
     //Update button function in website (updated output)
     public function update(Request $request, $id)
-{
-    $booking = Booking::find($id);
-    if (!$booking) {
-        return redirect()->back()->with('error', 'Booking not found.');
+    {
+        $booking = Booking::find($id);
+        if (!$booking) {
+            return redirect()->back()->with('error', 'Booking not found.');
+        }
+
+        // Validate input fields
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'service_id' => 'required|exists:services,id',
+            'booking_date' => 'required|date',
+            'booking_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:booking_time',
+            'location' => 'required|string|max:255'
+        ]);
+
+        // Pricing arrays and calculations
+        $servicePrices = [1 => 1000, 2 => 1500, 3 => 1250, 4 => 1100, 5 => 800, 6 => 1300];
+        $locationPrices = ['Dagupan' => 100, 'Binmaley' => 150, 'Lingayen' => 200, 'Calasiao' => 125];
+        $bookingDurationHours = (strtotime($validatedData['end_time']) - strtotime($validatedData['booking_time'])) / 3600;
+        $hourlyRates = [1 => 500, 2 => 600, /* include all hourly rates up to 16 hours */];
+
+        $servicePrice = $servicePrices[$validatedData['service_id']] ?? 0;
+        $locationPrice = $locationPrices[$validatedData['location']] ?? 0;
+        $hourlyRate = $hourlyRates[$bookingDurationHours] ?? 0;
+
+        $totalPrice = $servicePrice + $locationPrice + $hourlyRate;
+
+        // Update booking details
+        $booking->name = $validatedData['name'];
+        $booking->email = $validatedData['email'];
+        $booking->service_id = $validatedData['service_id'];
+        $booking->booking_date = $validatedData['booking_date'];
+        $booking->booking_time = $validatedData['booking_time'];
+        $booking->end_time = $validatedData['end_time'];
+        $booking->location = $validatedData['location'];
+        $booking->price = $totalPrice;
+        $booking->save();
+
+        return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
     }
-
-    // Log the request data
-    Log::info('Request Data:', $request->all());
-
-    // Validate the input fields
-    $request->validate([
-        'name' => 'required',
-        'email' => 'required|email',
-        'service_id' => 'required|exists:services,id',
-        'booking_date' => 'required|date',
-        'booking_time' => 'required',
-        'location' => 'required|string|max:255', // New validation for location
-    ]);
-
-    // Update booking details
-    $booking->name = $request->input('name');
-    $booking->email = $request->input('email');
-    $booking->service_id = $request->input('service_id');
-    $booking->booking_date = $request->input('booking_date');
-    $booking->booking_time = $request->input('booking_time');
-    $booking->location = $request->input('location'); // Set location
-    $booking->save();
-
-    return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
-}
 
     //Update button function in website
     public function edit($id)
@@ -157,10 +169,10 @@ public function store(Request $request)
             return redirect()->back()->with('error', 'Booking not found.');
         }
 
-        // Fetch all services to display in the dropdown
-        $services = Service::all(); // Adjust this if your Service model has a different name
+        $services = Service::all();
+        $locations = ['Dagupan', 'Binmaley', 'Lingayen', 'Calasiao']; // Define available locations
 
-        return view('bookings.edit', compact('booking', 'services'));
+        return view('bookings.edit', compact('booking', 'services', 'locations'));
     }
 
     //Cancel button function in website
@@ -190,15 +202,15 @@ public function store(Request $request)
         $bookingTime = $request->input('booking_time');
         $endTime = $request->input('end_time');
         $serviceId = $request->input('service_id');
-    
+
         $exists = Booking::where('booking_date', $bookingDate)
             ->where('service_id', $serviceId)
             ->where(function ($query) use ($bookingTime, $endTime) {
                 $query->whereBetween('booking_time', [$bookingTime, $endTime])
-                      ->orWhereBetween('end_time', [$bookingTime, $endTime]);
+                    ->orWhereBetween('end_time', [$bookingTime, $endTime]);
             })
             ->exists();
-    
+
         return response()->json(['canBook' => !$exists]);
     }
 }
