@@ -162,7 +162,9 @@
                     <i class="bx bxs-group"></i>
                     <span class="text">
                         <h3>Clients</h3>
-                        <p>Total Users: {{number_format($usercount)}}</p>
+                        <p>Total Users:
+                            {{ number_format($usercount - ($user->contains('id', 1) ? 1 : 0)) }}
+                        </p>
                     </span>
                 </li>
             </ul>
@@ -181,21 +183,21 @@
                                 <th>Email</th>
                             </tr>
                         </thead>
-                        <div>
-                            <tbody>
-                                @foreach ($user->slice(0, 5) as $item)
+                        <tbody>
+                            @foreach ($user->slice(0, 5) as $item)
+                                @if ($item->id != 1)
                                     <tr>
-                                        <td>{{$item->id }}</td>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->email}}</td>
-                                        </td>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </div>
+                                @endif
+                            @endforeach
+                        </tbody>
                     </table>
                 </li>
             </ul>
+
         </main>
     </section>
 </body>
