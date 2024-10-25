@@ -13,18 +13,18 @@ class BookingsExport
      *
      * @return Response
      */
-    public function exportCSV()
+    public function export()
     {
         // Get all bookings
         $bookings = Booking::all();
 
-        // Define the CSV headers
+        // Define the  headers
         $headers = [
-            'Content-type'        => 'text/csv',
+            'Content-type' => 'text/csv',
             'Content-Disposition' => 'attachment; filename=bookings.csv',
-            'Pragma'              => 'no-cache',
-            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
-            'Expires'             => '0',
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
         ];
 
         // Create a callback to generate CSV

@@ -1,4 +1,4 @@
-@import url(https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 * {
     margin: 0;
@@ -15,8 +15,7 @@ li {
 }
 
 :root {
-    --poppins: "Spoof Trial Thin", sans-serif;
-    --lato: "Spoof Trial Thin", sans-serif;
+    --poppins: "Poppins", sans-serif;
 
     --light: #ffffff;
     --blue: #000000;

@@ -187,13 +187,13 @@ Route::get('/bookings/{id}/edit', [BookController::class, 'edit'])->name('bookin
 Route::get('/bookings', [BookController::class, 'index'])->name('bookings.index');
 
 // cancel button
-Route::post('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
+// Route::post('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
+// Route::delete('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
 
-Route::delete('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
-Route::post('/bookings/cancel/{id}', [BookController::class, 'cancel'])->name('bookings.cancel');
+Route::post('/bookings/{id}/reject', [BookController::class, 'reject'])->name('bookings.reject');
 
 //admin: approve and reject
 Route::post('/bookings/approve/{id}', [DashboardController::class, 'approve'])->name('bookings.approve');
-Route::post('/bookings/cancel/{id}', [DashboardController::class, 'cancel'])->name('bookings.cancel');
+Route::post('/bookings/{id}/reject', [DashboardController::class, 'reject'])->name('bookings.reject');
 
 Route::post('/check_booking', [BookController::class, 'checkBooking']);

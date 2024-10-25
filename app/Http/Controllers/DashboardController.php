@@ -53,7 +53,7 @@ class DashboardController extends Controller
         $productBookingsCount = Booking::where('service_id', 4)->where('status', 'approved')->count();
         $companionBookingsCount = Booking::where('service_id', 5)->where('status', 'approved')->count();
         $modelBookingsCount = Booking::where('service_id', 6)->where('status', 'approved')->count();
-    
+
         return view('Admindashboards', compact('user', 'usercount', 'portraitBookingsCount', 'concertBookingsCount', 'cosplayBookingsCount', 'productBookingsCount', 'companionBookingsCount', 'modelBookingsCount'));
     }
 
@@ -79,14 +79,19 @@ class DashboardController extends Controller
         // Create a new instance of Laracsv Export class
         $csvExporter = new Export();
 
-        // Build the CSV with the selected columns and then download
+        // Define the columns you want to export
         $csvExporter->build($bookings, [
+            'id', // It's usually good practice to include the ID for reference
             'name',
             'email',
             'service_id',
             'booking_date',
             'booking_time',
-        ])->download();
+            'end_time', // Include the end time if relevant
+            'price', // Include the price if relevant
+            'status', // Include the status to track the booking status
+            'location' // Include location if it is needed
+        ])->download('bookings.csv'); // Specify the filename for download
     }
 
     //Admin Authentication
@@ -143,7 +148,7 @@ class DashboardController extends Controller
         return redirect()->back()->with('success', 'Booking approved successfully!');
     }
 
-    public function cancel($id)
+    public function reject($id)
     {
         // Find the booking by ID
         $booking = Booking::find($id);
