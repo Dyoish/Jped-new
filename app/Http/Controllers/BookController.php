@@ -6,6 +6,7 @@ use Illuminate\Http\Request; // Req importation
 use App\Models\Service; // Service importation
 use App\Models\Booking; // Booking importation
 use Illuminate\Support\Facades\Auth; // Import Auth
+use Illuminate\Support\Facades\Log;
 
 class BookController extends Controller
 {
@@ -28,48 +29,25 @@ class BookController extends Controller
 
 
     //Store a new booking.
-    public function store(Request $request)
-    {
-        // Validate the request data
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'service_id' => 'required|exists:services,id',  // Ensure the service_id exists in the services table
-            'booking_date' => 'required|date',
-            'booking_time' => 'required|date_format:H:i',
-        ]);
+//Store a new booking.
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string',
+        'email' => 'required|email',
+        'service_id' => 'required|exists:services,id',
+        'location' => 'required|string',
+        'booking_date' => 'required|date',
+        'booking_time' => 'required|date_format:H:i',
+        'end_time' => 'required|date_format:H:i|after:booking_time', // Ensure end_time is after start_time
+    ]);
 
-        // Check if another user has booked the same date for the same service
-        $existingBooking = Booking::where('service_id', $validated['service_id'])
-            ->where('booking_date', $validated['booking_date'])
-            ->where('user_id', '!=', Auth::id()) // Check for bookings by other users
-            ->first();
+    Booking::create($request->all());
 
-        // Check if the user has already booked the same date
-        $userBooking = Booking::where('service_id', $validated['service_id'])
-            ->where('booking_date', $validated['booking_date'])
-            ->where('user_id', Auth::id()) // Check for bookings by the same user
-            ->first();
+    return redirect()->back()->with('success', 'Booking created successfully!');
+}
 
-        // If the current user has already booked the same date, return an error
-        if ($userBooking) {
-            return back()->withErrors(['booking_date' => 'Other Clients has already booked the same date, please choose other date.']);
-        }
 
-        // Create a new booking
-        $booking = new Booking();
-        $booking->name = $validated['name'];
-        $booking->email = $validated['email'];
-        $booking->service_id = $validated['service_id'];
-        $booking->booking_date = $validated['booking_date'];
-        $booking->booking_time = $validated['booking_time'];
-        // Assign the user ID from the currently logged-in user
-        $booking->user_id = Auth::id();
-        $booking->save();
-
-        // Redirect with a success message
-        return redirect()->back()->with('success', 'Your booking has been added successfully!');
-    }
 
     //Show all bookings for the authenticated user.
     public function showAllBookings()
@@ -81,34 +59,36 @@ class BookController extends Controller
 
     //Update button function in website (updated output)
     public function update(Request $request, $id)
-    {
-        $booking = Booking::find($id);
-        if (!$booking) {
-            return redirect()->back()->with('error', 'Booking not found.');
-        }
-
-        // Log the request data to see what's being submitted
-        \Log::info('Request Data:', $request->all());
-
-        // Validate the input fields
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'service_id' => 'required|exists:services,id',
-            'booking_date' => 'required|date',
-            'booking_time' => 'required',
-        ]);
-
-        // Update the booking details
-        $booking->name = $request->input('name');
-        $booking->email = $request->input('email');
-        $booking->service_id = $request->input('service_id');
-        $booking->booking_date = $request->input('booking_date');
-        $booking->booking_time = $request->input('booking_time');
-        $booking->save();
-
-        return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
+{
+    $booking = Booking::find($id);
+    if (!$booking) {
+        return redirect()->back()->with('error', 'Booking not found.');
     }
+
+    // Log the request data
+    Log::info('Request Data:', $request->all());
+
+    // Validate the input fields
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'service_id' => 'required|exists:services,id',
+        'booking_date' => 'required|date',
+        'booking_time' => 'required',
+        'location' => 'required|string|max:255', // New validation for location
+    ]);
+
+    // Update booking details
+    $booking->name = $request->input('name');
+    $booking->email = $request->input('email');
+    $booking->service_id = $request->input('service_id');
+    $booking->booking_date = $request->input('booking_date');
+    $booking->booking_time = $request->input('booking_time');
+    $booking->location = $request->input('location'); // Set location
+    $booking->save();
+
+    return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
+}
 
     //Update button function in website
     public function edit($id)

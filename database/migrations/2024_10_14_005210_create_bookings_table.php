@@ -13,8 +13,10 @@ class CreateBookingsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->unsignedBigInteger('service_id');
+            $table->string('location');
             $table->date('booking_date');
             $table->time('booking_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }

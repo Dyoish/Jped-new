@@ -224,8 +224,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="start_time" class="form-label">Select Start Time</label>
-                            <select name="start_time" id="start_time" class="form-select" required>
+                            <label for="booking_time" class="form-label">Select Start Time</label>
+                            <select name="booking_time" id="booking_time" class="form-select" required>
                                 <option value="">Choose a start time...</option>
                                 <option value="06:00">6:00 AM</option>
                                 <option value="07:00">7:00 AM</option>
@@ -366,7 +366,7 @@
                 // Get the selected date and service
                 const bookingDate = $("#booking_date").val();
                 const serviceId = $("select[name='service_id']").val();
-                const startTime = $("select[name='start_time']").val();
+                const startTime = $("select[name='booking_time']").val();
                 const endTime = $("select[name='end_time']").val();
 
                 // Validate that end time is after start time
@@ -377,27 +377,28 @@
 
                 // Check for existing bookings via AJAX
                 $.ajax({
-                    url: "{{ url('check_booking') }}", // Your new route
-                    method: "POST",
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        booking_date: bookingDate,
-                        service_id: serviceId,
-                        start_time: startTime,
-                        end_time: endTime
-                    },
-                    success: function (response) {
-                        if (response.canBook) {
-                            $("#bookingForm").off("submit").submit(); // Proceed with submission
-                        } else {
-                            // Show the modal instead of an alert
-                            $('#bookingAlertModal').modal('show');
-                        }
-                    },
-                    error: function () {
-                        alert("An error occurred while checking the booking.");
-                    }
-                });
+    url: "{{ url('check_booking') }}",
+    method: "POST",
+    data: {
+        _token: "{{ csrf_token() }}",
+        booking_date: bookingDate,
+        service_id: serviceId,
+        location: $("#location").val(), // Pass location
+        start_time: startTime,
+        end_time: endTime
+    },
+    success: function (response) {
+        if (response.canBook) {
+            $("#bookingForm").off("submit").submit(); // Proceed with submission
+        } else {
+            $('#bookingAlertModal').modal('show');
+        }
+    },
+    error: function () {
+        alert("An error occurred while checking the booking.");
+    }
+});
+
             });
         });
 

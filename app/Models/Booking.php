@@ -16,6 +16,8 @@ class Booking extends Model
         'booking_date',
         'user_id',
         'booking_time',
+        'end_time',
+        'location'
     ];
 
     protected $attributes = [
