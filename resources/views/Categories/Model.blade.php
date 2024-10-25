@@ -200,13 +200,14 @@
 
         /* Styling for the container with logo, contacts, and services */
         .info-container {
+            background-image: url('images/bg/footer.png');
+            /* Path to your cover image */
             display: flex;
             justify-content: space-around;
             align-items: flex-start;
-            margin-top: 400px;
+            margin-top: 40px;
             padding: 20px;
             background-color: #f4f4f4;
-            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -247,14 +248,32 @@
 
         .info-container li {
             margin-bottom: 8px;
+
         }
 
         .services {
             margin-right: 130px;
+            margin-top: 10px;
         }
 
         .contacts {
-            margin-right: -70px;
+            margin-right: -100px;
+            margin-top: 50px;
+        }
+
+        /* Make it responsive */
+        @media (max-width: 768px) {
+            .info-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-container .logo,
+            .info-container .contacts,
+            .info-container .services {
+                padding: 10px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -306,7 +325,7 @@
                     </div>
                     <!-- Gallery item 2 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/ibons.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                        <img src="images/model/lance.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
@@ -317,38 +336,86 @@
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 4 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/gi (1).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape"
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -210px;'>
+                        <img src="images/model/akoo.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 5 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/bino.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape"
+                        <img src="images/model/jem.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 6 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/rafa.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -210px;'>
+                        <img src="images/model/RR.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 7 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/cato.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -230px;'>
+                        <img src="images/model/extwo.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 8 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/katsu.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
+                        <img src="images/model/wow.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 9 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/cat.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -230px;'>
+                        <img src="images/model/shia.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 10 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -230px;'>
+                        <img src="images/model/prans.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 11 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: 0px;'>
+                        <img src="images/model/ran.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 12 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -120px;'>
+                        <img src="images/model/nekers.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 13 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -110px;'>
+                        <img src="images/model/eriks.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 14 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -230px;'>
+                        <img src="images/model/cahven.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 15 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: 0px;'>
+                        <img src="images/model/solow.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 16 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -230px;'>
+                        <img src="images/model/ley.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 17 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -730px;'>
+                        <img src="images/model/mamajo.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
@@ -362,13 +429,14 @@
             <br>
             <br>
             <br>
-            <h3>About Us</h3>
+            <img src="images/blogo.png" alt="About Us Logo"
+                style="width: 200px; height: auto; margin-right: -250px; margin-top: -50px;">
         </a>
         <div class="contacts">
             <h3>Contact Us</h3>
-            <p>Email: info@jped.com</p>
-            <p>Phone: +123-456-7890</p>
-            <p>Address: 123 Photography St., Imageland</p>
+            <p>Email: jpedphotog@gmail.com</p>
+            <p>Phone: 09166901647</p>
+            <p>Dagupan City</p>
         </div>
         <div class="services">
             <h3>Our Services</h3>

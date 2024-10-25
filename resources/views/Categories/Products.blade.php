@@ -201,13 +201,14 @@
 
         /* Styling for the container with logo, contacts, and services */
         .info-container {
+            background-image: url('images/bg/footer.png');
+            /* Path to your cover image */
             display: flex;
             justify-content: space-around;
             align-items: flex-start;
-            margin-top: 400px;
+            margin-top: 40px;
             padding: 20px;
             background-color: #f4f4f4;
-            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -248,14 +249,32 @@
 
         .info-container li {
             margin-bottom: 8px;
+
         }
 
         .services {
             margin-right: 130px;
+            margin-top: 10px;
         }
 
         .contacts {
-            margin-right: -70px;
+            margin-right: -100px;
+            margin-top: 50px;
+        }
+
+        /* Make it responsive */
+        @media (max-width: 768px) {
+            .info-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-container .logo,
+            .info-container .contacts,
+            .info-container .services {
+                padding: 10px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -301,61 +320,89 @@
                 <div class="row">
                     <!-- Gallery item 1 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/chaven.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
+                        <img src="images/products/captwo.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
                             data-description="masarap mag kape" data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 2 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/ibons.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
+                        <img src="images/products/alltri.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 3 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/france.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape"
+                        <img src="images/products/ranger.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape"
                             data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 4 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/gi (1).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                    <div class="col-md-4 col-sm-6 gallery-item">
+                        <img src="images/products/tote.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
+                            data-description="masarap mag kape" data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 5 -->
-                    <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/bino.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -20px;'>
+                        <img src="images/products/shirtt.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
+                            data-description="masarap mag kape" data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 6 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/rafa.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                    <div class="col-md-4 col-sm-6 gallery-item">
+                        <img src="images/products/crop.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
+                            data-description="masarap mag kape" data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 7 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/cato.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                    <div class="col-md-4 col-sm-6 gallery-item">
+                        <img src="images/products/brand.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
+                            data-description="masarap mag kape" data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 8 -->
-                    <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/katsu.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -20px;'>
+                        <img src="images/products/alltwo.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
+                            data-description="masarap mag kape" data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 9 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/cat.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                    <div class="col-md-4 col-sm-6 gallery-item">
+                        <img src="images/products/toap.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
+                            data-description="masarap mag kape" data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
+
                 </div>
             </div>
     </section>
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex">
+                    <img id="modalImage" class="modal-img" src="" alt="Image Preview">
+                    <div class="modal-details ms-4">
+                        <h3 id="modalTitle" class="modal-title"></h3>
+                        <p id="modalDescription" class="modal-description"></p>
+                        <div class="modal-ratings">
+                            <strong>Rating:</strong> <span id="modalRating"></span> / 5
+                        </div>
+                        <div class="modal-comments mt-3">
+                            <strong>Comments:</strong>
+                            <div id="modalComments"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- New container for logo, contacts, and services -->
     <div class="info-container">
@@ -363,13 +410,14 @@
             <br>
             <br>
             <br>
-            <h3>About Us</h3>
+            <img src="images/blogo.png" alt="About Us Logo"
+                style="width: 200px; height: auto; margin-right: -250px; margin-top: -50px;">
         </a>
         <div class="contacts">
             <h3>Contact Us</h3>
-            <p>Email: info@jped.com</p>
-            <p>Phone: +123-456-7890</p>
-            <p>Address: 123 Photography St., Imageland</p>
+            <p>Email: jpedphotog@gmail.com</p>
+            <p>Phone: 09166901647</p>
+            <p>Dagupan City</p>
         </div>
         <div class="services">
             <h3>Our Services</h3>
