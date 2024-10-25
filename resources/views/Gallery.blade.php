@@ -180,7 +180,7 @@
         }
 
         .header-image {
-            background-image: url('images/bg/hmpp.jpg');
+            background-image: url('images/bg/gal.png');
             /* Path to your cover image */
             background-size: cover;
             /* Ensures the image covers the entire div */
