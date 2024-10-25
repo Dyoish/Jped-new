@@ -5,9 +5,161 @@
     <title>J.PED | Edit Booking</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+
+    <!-- Flatpickr CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Load Poppins font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 </head>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+
+    }
+
+    .container-custom {
+        display: flex;
+        /* Use flexbox for centering */
+        justify-content: center;
+        /* Center horizontally */
+        align-items: center;
+        /* Center vertically */
+        height: 100%;
+        /* Full height of the container */
+    }
+
+    .form-box {
+        border: 1px solid #dee2e6;
+        /* Light gray border */
+        border-radius: 10px;
+        /* Rounded corners */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow for depth */
+        padding: 50px;
+        /* Reduced inner padding */
+        background-color: #ffffff;
+        /* White background for form */
+        margin: 20px auto;
+        /* Center the box with top/bottom margin */
+        max-width: 700px;
+        /* Set a maximum width for the form box */
+    }
+
+    h1 {
+        color: black;
+        /* Darker heading color */
+        margin-bottom: 20px;
+        /* More space below heading */
+        margin-left: 210px;
+
+    }
+
+    h2 {
+        color: #343a40;
+        /* Darker heading color */
+        margin-bottom: 20px;
+        /* More space below heading */
+    }
+
+    .alert {
+        margin-bottom: 20px;
+        /* Space below alerts */
+    }
+
+    .card {
+        border: 1px solid #dee2e6;
+        /* Border around card */
+        border-radius: 10px;
+        /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow */
+        padding: 20px;
+        /* Padding inside card */
+        background-color: #ffffff;
+        /* White background for card */
+        padding: 90px;
+    }
+
+    .form-group {
+        display: flex;
+        /* Use flexbox for alignment */
+        flex-direction: column;
+        /* Stack items vertically */
+        margin-bottom: 20px;
+        /* Space between form groups */
+    }
+
+    .form-label {
+        font-weight: bold;
+        /* Bold labels */
+        color: #495057;
+        /* Darker label color */
+        margin-bottom: 5px;
+        /* Space below the label */
+    }
+
+    .form-control,
+    .form-select {
+        border: 1px solid #ced4da;
+        /* Light border for inputs */
+        border-radius: 5px;
+        /* Rounded corners for inputs */
+        width: 70%;
+        /* Allow the input fields to shrink to fit the content */
+        display: inline-block;
+        /* Keep them inline */
+        margin-left: 20px;
+        /* Add space between label and input */
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #80bdff;
+        /* Blue border on focus */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+        /* Shadow on focus */
+    }
+
+    button.btn-primary {
+        background-color: #007bff;
+        /* Primary button color */
+        border: none;
+        /* No border */
+        padding: 10px 20px;
+        /* Padding inside button */
+        border-radius: 5px;
+        /* Rounded button corners */
+        font-weight: bold;
+        /* Bold text */
+
+    }
+
+    button.btn-primary:hover {
+        background-color: #0056b3;
+        /* Darker on hover */
+    }
+
+    @media (max-width: 576px) {
+        .container {
+            padding: 0 15px;
+            /* Padding for small screens */
+        }
+
+        .card {
+            margin: 0;
+            /* No margin for small screens */
+        }
+    }
+</style>
+
 
 <body>
 
@@ -15,9 +167,9 @@
     @include('Layouts.navbar')
 
     <br><br><br><br><br>
+    <div class="container-custom"></div>
 
     <div class="container mt-5">
-        <h2>Edit Your Booking</h2>
 
         @if(session('success'))
             <div class="alert alert-success">
@@ -35,19 +187,21 @@
             </div>
         @endif
 
-        <form action="{{ route('bookings.update', $booking->id) }}" method="POST" id="bookingForm">
+
+        <form action="{{ route('bookings.update', $booking->id) }}" method="POST" id="bookingForm" class="form-box">
+            <h1> Edit Book</h1>
             @csrf
             @method('POST') <!-- Use PUT if you're following RESTful conventions -->
 
             <div class="mb-3">
                 <label for="name" class="form-label">Your Name</label>
-                <input type="text" class="form-control" name="name" value="{{ old('name', $booking->name) }}" required>
+                <input type="text" class="form-control" name="name" value="{{ old('name', $booking->name) }}" readonly>
             </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label">Your Email</label>
                 <input type="email" id="email" class="form-control" name="email"
-                    value="{{ old('email', $booking->email) }}" required>
+                    value="{{ old('email', $booking->email) }}" readonly>
             </div>
 
             <div class="mb-3">
@@ -109,8 +263,14 @@
                     value="{{ old('total_price', $booking->total_price) }}" readonly>
             </div>
 
-            <button type="submit" class="btn btn-primary">Update Booking</button>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Update Booking</button>
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">Back</button>
+            </div>
+
+
         </form>
+
     </div>
 
     <script>
