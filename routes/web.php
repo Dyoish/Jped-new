@@ -106,12 +106,6 @@ Route::group(['middleware' => 'userid'], function () {
 
     // Route for the statistics page
     Route::get('/adminstatistics', [StatisticsController::class, 'index'])->name('admin.statistics');
-
-    // Route::get('productmanagements/create',[App\Http\Controllers\productController::class,'create']);
-// Route::post('productmanagements/create',[App\Http\Controllers\productController::class,'store']);
-// Route::get('productmanagements/{id}/edit',[App\Http\Controllers\productController::class,'edit']);
-// Route::put('productmanagements/{id}/edit',[App\Http\Controllers\productController::class,'update']);
-// Route::get('productmanagements/{id}/delete',[App\Http\Controllers\productController::class,'destroy']);
 });
 
 //products
@@ -121,14 +115,10 @@ Route::get('/terms', [DashboardController::class, 'terms']);
 //Photography Categories/Services
 Route::get('/portrait_category', [Category_Controller::class, 'Portrait_Category_Route']);
 Route::get('/concert_category', [Category_Controller::class, 'Concert_Category_Route']);
-Route::get('/events_category', [Category_Controller::class, 'Events_Category_Route']);
 Route::get('/companion_category', [Category_Controller::class, 'Companion_Category_Route']);
 Route::get('/cosplay_category', [Category_Controller::class, 'Cosplay_Category_Route']);
 Route::get('/model_category', [Category_Controller::class, 'Model_Category_Route']);
 Route::get('/products_category', [Category_Controller::class, 'Products_Category_Route']);
-Route::get('/monitor_category', [Category_Controller::class, 'Monitor_Category_Route']);
-Route::get('/pre_built_units', [Category_Controller::class, 'PreBuilt_Category_Route']);
-Route::get('/documentary_category', [Category_Controller::class, 'Documentary_Category_Route']);
 
 Route::get('/gallery', function () {
     return view('Gallery');

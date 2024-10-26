@@ -388,6 +388,13 @@
                     return;
                 }
 
+                // Show alert if booking date is not selected
+                if (!bookingDate) {
+                    alert("Please select a booking date.");
+                    return;
+                }
+
+                // Check availability before submitting
                 $.ajax({
                     url: "{{ url('check_booking') }}",
                     method: "POST",
@@ -402,7 +409,7 @@
                         if (response.canBook) {
                             $("#bookingForm").off("submit").submit(); // Submit the form if booking is allowed
                         } else {
-                            $('#bookingAlertModal').modal('show'); // Show the modal if booking is not allowed
+                            alert("The selected time slot is not available. Please choose another time.");
                         }
                     },
                     error: function () {
@@ -412,6 +419,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>
