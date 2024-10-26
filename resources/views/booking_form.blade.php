@@ -33,6 +33,7 @@
 
 
     <style>
+        /* Overall body styling */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
@@ -45,57 +46,82 @@
             width: 100%;
         }
 
+        /* Main container customization */
         .container-custom {
-            max-width: 1000px;
+            max-width: 1150px;
+            /* Reduced max-width for a tighter layout */
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
+        /* Form container styling */
         .container-form {
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            padding: 54.5px;
+            padding: 25px;
         }
 
+        /* Form header */
         .container-form h2 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #333;
             text-align: center;
+            font-size: 20px;
         }
 
+        /* Label styling */
         .form-label {
             font-weight: 600;
+            font-size: 14px;
+            /* Smaller font for compactness */
+            color: #333;
         }
 
-        .form-control {
-            padding: 10px;
+        /* Input and select field styling */
+        .form-control,
+        .form-select {
+            font-size: 14px;
+            /* Reduced font size for compact appearance */
+            padding: 8px;
             border-radius: 5px;
         }
 
+        /* Button styling */
         .btn-primary {
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: #333;
+            /* Consistent color scheme */
             border: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             border-radius: 5px;
+            font-size: 14px;
             transition: background-color 0.3s ease;
         }
 
+        /* Button hover effect */
         .btn-primary:hover {
-            background-color: black;
+            background-color: #000;
         }
 
+        /* Carousel image styling */
         .carousel img {
             width: 100%;
             height: 100%;
+            max-height: 1200px;
+            /* Limit the height */
             object-fit: cover;
             border-radius: 8px;
         }
 
+        /* Success and error alert box */
         .alert {
-            margin-top: 20px;
+            font-size: 14px;
+            /* Compact font */
+            padding: 10px;
+            margin-top: 15px;
         }
     </style>
+
 </head>
 
 <body>

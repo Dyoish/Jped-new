@@ -219,7 +219,7 @@ class BookController extends Controller
         // Perform the cancellation (delete the booking)
         $booking->delete();
 
-        return redirect()->back()->with('success', 'Booking canceled successfully.');
+        return redirect()->back()->with('success', 'Booking reject successfully.');
     }
 
     public function checkBooking(Request $request)
