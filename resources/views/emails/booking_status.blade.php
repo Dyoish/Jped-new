@@ -6,12 +6,17 @@
 </head>
 
 <body>
-    <h1>Hello, {{ $booking->name }}!</h1>
-
-    <p>Your booking for {{ $booking->service->name }} on {{ $booking->booking_date }} at {{ $booking->booking_time }}
-        has been {{ $statusMessage }}.</p>
-
-    <p>Thank you for using our service!</p>
+    <h1>Booking Status Update</h1>
+    <p>Dear {{ $booking->name }},</p>
+    <p>{{ $statusMessage }}</p>
+    <p>Booking Details:</p>
+    <ul>
+        <li><strong>Service:</strong> {{ $booking->service->name }}</li>
+        <li><strong>Booking Date:</strong> {{ $booking->booking_date }}</li>
+        <li><strong>Booking Time:</strong> {{ $booking->booking_time }}</li>
+        <li><strong>Status:</strong> {{ $booking->status }}</li>
+    </ul>
+    <p>Thank you for choosing JPED!</p>
 </body>
 
 </html>

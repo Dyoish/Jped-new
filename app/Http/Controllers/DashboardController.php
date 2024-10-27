@@ -121,7 +121,7 @@ class DashboardController extends Controller
         return view('adminbookings', compact('bookings'));
     }
 
-    //Approve booking
+    // Approve booking
     public function approve($id)
     {
         // Find the booking by ID
@@ -142,12 +142,17 @@ class DashboardController extends Controller
 
         // Send email notification
         if ($booking->email) {
-            Mail::to($booking->email)->send(new BookingStatusMail($booking, 'approved'));
+            try {
+                Mail::to($booking->email)->send(new BookingStatusMail($booking, 'Your booking has been approved.'));
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Failed to send email: ' . $e->getMessage());
+            }
         }
 
         return redirect()->back()->with('success', 'Booking approved successfully!');
     }
 
+    // Reject booking
     public function reject($id)
     {
         // Find the booking by ID
@@ -164,7 +169,11 @@ class DashboardController extends Controller
 
         // Send email notification
         if ($booking->email) {
-            Mail::to($booking->email)->send(new BookingStatusMail($booking, 'rejected'));
+            try {
+                Mail::to($booking->email)->send(new BookingStatusMail($booking, 'Your booking has been rejected.'));
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Failed to send email: ' . $e->getMessage());
+            }
         }
 
         return redirect()->back()->with('success', 'Booking rejected successfully!');

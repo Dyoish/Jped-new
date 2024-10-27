@@ -144,7 +144,7 @@
 
     @if(session('success'))
         <div
-            style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; margin-bottom: 20px;">
+            style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; margin-bottom: 20px; margin-left: 400px;">
             {{ session('success') }}
         </div>
     @endif
@@ -246,18 +246,19 @@
                                     <!-- PM added -->
                                     <td>{{ $booking->price ?? 'N/A' }}</td>
                                     <td class="{{ $booking->status == 'pending' ? 'status-pending' : '' }}
-                                {{ $booking->status == 'accepted' ? 'status-accepted' : '' }}
-                                {{ $booking->status == 'rejected' ? 'status-rejected' : '' }}">
+                                                        {{ $booking->status == 'accepted' ? 'status-accepted' : '' }}
+                                                        {{ $booking->status == 'rejected' ? 'status-rejected' : '' }}">
                                         {{ ucfirst($booking->status ?? 'N/A') }}
                                     </td>
                                     <td>
                                         @if($booking->status == 'pending')
-                                            <form action="{{ route('bookings.approve', $booking->id) }}" method="POST">
+                                            <form action="{{ route('bookings.approve', $booking->id) }}" method="POST"
+                                                class="approve-form">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Approve</button>
                                             </form>
                                             <form action="{{ route('bookings.reject', $booking->id) }}" method="POST"
-                                                style="display:inline;">
+                                                class="reject-form" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Reject</button>
                                             </form>
@@ -300,6 +301,30 @@
             document.body.appendChild(link); // Required for Firefox
             link.click();
             document.body.removeChild(link);
+        });
+    </script>
+
+    <script>
+        // Attach event listeners to approve forms
+        document.querySelectorAll('.approve-form').forEach(form => {
+            form.addEventListener('submit', function (event) {
+                if (!confirm("Are you sure you want to approve this booking?")) {
+                    event.preventDefault(); // Prevent form submission if user clicks Cancel
+                } else {
+                    alert("Booking has been approved!"); // Show success alert
+                }
+            });
+        });
+
+        // Attach event listeners to reject forms
+        document.querySelectorAll('.reject-form').forEach(form => {
+            form.addEventListener('submit', function (event) {
+                if (!confirm("Are you sure you want to reject this booking?")) {
+                    event.preventDefault(); // Prevent form submission if user clicks Cancel
+                } else {
+                    alert("Booking has been rejected!"); // Show success alert
+                }
+            });
         });
     </script>
 </body>

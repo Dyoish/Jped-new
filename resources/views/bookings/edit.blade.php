@@ -283,7 +283,7 @@
                 <select name="booking_time" id="booking_time" class="form-select" required>
                     <option value="">Choose a start time...</option>
                     @for($i = 6; $i <= 22; $i++)
-                        <option value="{{ sprintf('%02d:00', $i) }}" {{ $booking->booking_time == sprintf('%02d:00', $i) ? 'selected' : '' }}>
+                        <option value="{{ sprintf('%02d:00', $i) }}" {{ old('booking_time', $booking->booking_time) == sprintf('%02d:00', $i) ? 'selected' : '' }}>
                             {{ sprintf('%d:00 %s', $i > 12 ? $i - 12 : $i, $i < 12 ? 'AM' : 'PM') }}
                         </option>
                     @endfor
@@ -295,7 +295,7 @@
                 <select name="end_time" id="end_time" class="form-select" required>
                     <option value="">Choose an end time...</option>
                     @for($i = 6; $i <= 22; $i++)
-                        <option value="{{ sprintf('%02d:00', $i) }}" {{ $booking->end_time == sprintf('%02d:00', $i) ? 'selected' : '' }}>
+                        <option value="{{ sprintf('%02d:00', $i) }}" {{ old('end_time', $booking->end_time) == sprintf('%02d:00', $i) ? 'selected' : '' }}>
                             {{ sprintf('%d:00 %s', $i > 12 ? $i - 12 : $i, $i < 12 ? 'AM' : 'PM') }}
                         </option>
                     @endfor
@@ -307,6 +307,7 @@
                 <input type="text" id="price" class="form-control" name="total_price"
                     value="{{ old('total_price', $booking->total_price) }}" readonly>
             </div>
+
 
             <div class="d-flex justify-content-center mb-3">
                 <button type="submit" class="btn btn-primary">Update Booking</button>

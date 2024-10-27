@@ -169,7 +169,7 @@
                     <i class="bx bxs-group"></i>
                     <span class="text">
                         <h3>Clients</h3>
-                        <p>Total Users:
+                        <p>Total Clients:
                             {{ number_format($usercount - ($user->contains('id', 1) ? 1 : 0)) }}
                         </p>
                     </span>
