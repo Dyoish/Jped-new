@@ -22,33 +22,33 @@ class ForgetPasswordManager extends Controller
 
     // Method to handle the forget password form submission
     public function forgetPasswordPost(Request $request)
-{
-    $request->validate([
-        'email' => "required|email|exists:users",
-    ]);
+    {
+        $request->validate([
+            'email' => "required|email|exists:users",
+        ]);
 
-    $token = Str::random(64);
+        $token = Str::random(64);
 
-    // Insert the token into the database
-    DB::table('password_reset_tokens')->insert([
-        'email' => $request->email,
-        'token' => $token,
-        'created_at' => Carbon::now()
-    ]);
+        // Insert the token into the database
+        DB::table('password_reset_tokens')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
 
-    // Use the ResetPasswordMail and pass the email first and then the token
-    Mail::to($request->email)->send(new ResetPasswordMail($request->email, $token));
+        // Use the ResetPasswordMail and pass the email first and then the token
+        Mail::to($request->email)->send(new ResetPasswordMail($request->email, $token));
 
-    return redirect()->route("forget.password")->with("success", "We have sent an email to reset your password.");
-}
+        return redirect()->route("forget.password")->with("success", "We have sent an email to reset your password.");
+    }
 
     // Method to show the reset password form with the token
     public function showResetForm(Request $request, $token = null)
-{
-    return view('auth.reset-password')->with(
-        ['token' => $token, 'email' => $request->email]
-    );
-}
+    {
+        return view('auth.reset-password')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
 
 
     // Method to handle the password reset form submission
@@ -77,24 +77,24 @@ class ForgetPasswordManager extends Controller
         return redirect()->route("Login.post")->with("success", "Password reset successful.");
     }
     public function updatePassword(Request $request)
-{
-    // Validate the request...
-    $request->validate([
-        'password' => 'required|string|min:8|confirmed', // Adjust rules as needed
-    ]);
+    {
+        // Validate the request...
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed', // Adjust rules as needed
+        ]);
 
-    // Find the user by their email or another method (e.g., through the token)
-    // Update the user's password
-    $user = User::where('email', $request->input('email'))->first(); // Adjust as necessary to get the user
+        // Find the user by their email or another method (e.g., through the token)
+        // Update the user's password
+        $user = User::where('email', $request->input('email'))->first(); // Adjust as necessary to get the user
 
-    if ($user) {
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
+        if ($user) {
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
 
-        return redirect()->route('Login.post')->with('status', 'Password updated successfully!');
+            return redirect()->route('Login.post')->with('status', 'Password updated successfully!');
+        }
+
+        return redirect()->back()->withErrors(['email' => 'User not found.']);
     }
-
-    return redirect()->back()->withErrors(['email' => 'User not found.']);
-}
 
 }
