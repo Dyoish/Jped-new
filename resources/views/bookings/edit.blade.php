@@ -3,6 +3,7 @@
 
 <head>
     <title>J.PED | Edit Booking</title>
+    <link rel="icon" href="images/J.png" sizes="50x50" type="image/png"> <!-- Favicon link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
 
@@ -497,6 +498,8 @@
                 });
             });
         });
+
+
     </script>
 
 </body>

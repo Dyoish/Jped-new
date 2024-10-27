@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JPED | Login</title>
+    <link rel="icon" href="images/J.png" sizes="50x50" type="image/png"> <!-- Favicon link -->
     <link rel="stylesheet" href="login.css">
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

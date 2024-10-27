@@ -55,11 +55,9 @@ Route::post('/login', [LoginController::class, 'Loginpost'])->name('Login.post')
 Route::get('/signup', [LoginController::class, 'Signup'])->name('Signup');
 Route::post('/signup', [LoginController::class, 'Signuppost'])->name('Signup.post');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+//PROFILE
 Route::group(['middleware' => 'auth'], function () {
-
-    //PROFILE
-    Route::get('/change_number', [Profile_Controller::class, 'New_PhoneNumber_Route']);
-
     Route::get('/profile', [Profile_Controller::class, 'Profile_Route']);
 
     Route::get('/change_passwordV', [Profile_Controller::class, 'Pass_Verification_Route']);
@@ -68,16 +66,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/my_account/edit', [LoginController::class, 'edit'])->name('user.edit-profile');
     Route::put('/my_account', [LoginController::class, 'update'])->name('user.update-profile');
     Route::get('/my_account', [LoginController::class, 'Profile_Route'])->name('user.profile');
+
     Route::get('/verify', function () {
         return view('Verify_Page');
     });
+
     Route::post('/verify', function () {
         return view('Verify_Page');
     });
-
-
-
 });
+
+//FORGOT PASSWORD
 Route::get('/verify', function () {
     return view('Verify_Page');
 });
@@ -86,10 +85,11 @@ Route::post('/verify', function () {
 });
 Route::get('/forget-password', [ForgetPasswordManager::class, 'forgetPassword'])->name('forget.password');
 Route::post('/forget-password', [ForgetPasswordManager::class, 'forgetPasswordPost'])->name('forget.password.post');
-Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'showResetForm'])->name('reset.password');  
+Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'showResetForm'])->name('reset.password');
 Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost'])->name('reset.password.post');
 Route::post('/password/update', [ForgetPasswordManager::class, 'updatePassword'])->name('password.update');
 
+//ADMIN LOGIN
 Route::get('/adminlogin', [DashboardController::class, 'adminlogin']);
 Route::post('/adminlogin', [DashboardController::class, 'adminAuth'])->name('adminpost');
 
@@ -100,13 +100,8 @@ Route::group(['middleware' => 'userid'], function () {
     Route::get('/admincustomers', [DashboardController::class, 'admincustomers']);
     Route::get('/admincustomers/{id}/delete', [UserController::class, 'destroy']);
 
-    // Route for the statistics page
-    Route::get('/adminstatistics', [StatisticsController::class, 'index'])->name('admin.statistics');
 });
 
-//products
-Route::get('/product_demo/{id}', [DashboardController::class, 'details']);
-Route::get('/terms', [DashboardController::class, 'terms']);
 
 //Photography Categories/Services
 Route::get('/portrait_category', [Category_Controller::class, 'Portrait_Category_Route']);
@@ -120,44 +115,38 @@ Route::get('/gallery', function () {
     return view('Gallery');
 });
 
+//ABOUT US 
 Route::get('/about', function () {
     return view('aboutus');
 });
 
-//Route::get('/', [GalleryController::class, 'index']);
 
+//BOOKING ROUTES
 Route::get('/book', [BookController::class, 'index']);
-// Route::get('Book', BookController::class,);
-
-// Define the route for showing the booking form
 
 Route::post('/books', [BookController::class, 'store']);
 
 Route::post('/add_booking/{id}', [BookController::class, 'add_booking']);
 Route::post('/add_booking', [BookController::class, 'store'])->name('add_booking');
 
-
 Route::get('/booking-form', [BookController::class, 'showBookingForm'])->name('show_booking_form');
 
 Route::get('/booking', [BookController::class, 'showAllBookings'])->name('show_all_bookings');
 
-//admin button (?)
+
+//admin button on booking (accept, reject)
 Route::get('/dashboard/bookings/pending', [DashboardController::class, 'pendingBookings'])->name('dashboard.bookings.pending');
 Route::patch('/dashboard/bookings/confirm/{id}', [DashboardController::class, 'confirmBooking'])->name('dashboard.bookings.confirm');
 Route::patch('/dashboard/bookings/reject/{id}', [DashboardController::class, 'rejectBooking'])->name('dashboard.bookings.reject');
 
-//admin button
+//admin button on booking (accept, reject)
 Route::post('/booking/{id}/approve', [DashboardController::class, 'approveBooking'])->name('approveBooking');
 Route::post('/booking/{id}/reject', [DashboardController::class, 'rejectBooking'])->name('rejectBooking');
 
-//booking info button *website)
+//booking info cancel button)
 Route::post('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
 
-//export data
-// Route::get('bookings/export', function () {
-//     return Excel::download(new BookingsExport, 'bookings.xlsx');
-// })->name('bookings.export');
-
+//export table on admin booking
 Route::get('bookings/export/csv', function () {
     $exporter = new BookingsExport();
     return $exporter->exportCSV();
@@ -167,21 +156,17 @@ Route::get('/export-bookings', [DashboardController::class, 'exportBookings'])->
 
 //update button
 Route::post('/bookings/update/{id}', [BookController::class, 'update'])->name('bookings.update');
-
 Route::get('/bookings/{id}/edit', [BookController::class, 'edit'])->name('bookings.edit');
-
 Route::get('/bookings', [BookController::class, 'index'])->name('bookings.index');
 
-// cancel button
-// Route::post('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
-// Route::delete('/bookings/{id}/cancel', [BookController::class, 'cancel'])->name('bookings.cancel');
-
+//wala to
 Route::post('/bookings/{id}/reject', [BookController::class, 'reject'])->name('bookings.reject');
 
 //admin: approve and reject
 Route::post('/bookings/approve/{id}', [DashboardController::class, 'approve'])->name('bookings.approve');
 Route::post('/bookings/{id}/reject', [DashboardController::class, 'reject'])->name('bookings.reject');
 
-Route::post('/check_booking', [BookController::class, 'checkBooking']);
-
+//confirm booking
 Route::post('/conPass', [PasswordResetController::class, 'sendResetLink']);
+
+Route::post('/check_booking', [BookController::class, 'checkBooking']);

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+//Connection para sa database
+
 class Booking extends Model
 {
     use HasFactory;
@@ -17,7 +19,7 @@ class Booking extends Model
         'booking_date',
         'booking_time',
         'end_time',
-        'price', 
+        'price',
         'user_id'
     ];
 

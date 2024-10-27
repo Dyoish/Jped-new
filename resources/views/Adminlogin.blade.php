@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPED | Login</title>
+    <title>JPED | Admin Login</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="images/J.png" sizes="50x50" type="image/png"> <!-- Favicon link -->
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 

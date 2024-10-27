@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JPED | Admin Table</title>
+    <link rel="icon" href="images/J.png" sizes="50x50" type="image/png"> <!-- Favicon link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
@@ -245,9 +247,10 @@
                                     <td>{{ \Carbon\Carbon::parse($booking->end_time)->format('h:i A') ?? 'N/A' }}</td>
                                     <!-- PM added -->
                                     <td>{{ $booking->price ?? 'N/A' }}</td>
-                                    <td class="{{ $booking->status == 'pending' ? 'status-pending' : '' }}
-                                                        {{ $booking->status == 'accepted' ? 'status-accepted' : '' }}
-                                                        {{ $booking->status == 'rejected' ? 'status-rejected' : '' }}">
+                                    <td
+                                        class="{{ $booking->status == 'pending' ? 'status-pending' : '' }}
+                                                                    {{ $booking->status == 'accepted' ? 'status-accepted' : '' }}
+                                                                    {{ $booking->status == 'rejected' ? 'status-rejected' : '' }}">
                                         {{ ucfirst($booking->status ?? 'N/A') }}
                                     </td>
                                     <td>
@@ -281,19 +284,24 @@
             const table = document.querySelector('table');
             let csvContent = "data:text/csv;charset=utf-8,";
 
-            // Get header row
-            const headers = Array.from(table.querySelectorAll('thead th'))
-                .map(th => th.innerText.replace(/,/g, '')); // Escape commas
+            // Define the headers you want to export
+            const headers = ['ID', 'Name', 'Email', 'Service ID', 'Booking Date', 'Location'];
             csvContent += headers.join(",") + "\n";
 
-            // Get table rows
-            Array.from(table.rows).forEach(row => {
-                const rowData = Array.from(row.cells)
-                    .map(cell => cell.innerText.replace(/,/g, '')); // Escape commas
+            // Get the rows you want to export
+            Array.from(table.querySelectorAll('tbody tr')).forEach(row => {
+                const rowData = [
+                    row.cells[0].innerText.replace(/,/g, ''), // ID
+                    row.cells[1].innerText.replace(/,/g, ''), // Name
+                    row.cells[2].innerText.replace(/,/g, ''), // Email
+                    row.cells[3].innerText.replace(/,/g, ''), // Service (you might need to adjust this to service_id)
+                    row.cells[5].innerText.replace(/,/g, ''), // Booking Date
+                    row.cells[4].innerText.replace(/,/g, '')  // Location
+                ];
                 csvContent += rowData.join(",") + "\n";
             });
 
-            // Create and download CSV file
+            // Create and download the CSV file
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);

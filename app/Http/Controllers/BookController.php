@@ -8,6 +8,8 @@ use App\Models\Booking; // Booking importation
 use Illuminate\Support\Facades\Auth; // Import Auth
 use Illuminate\Support\Facades\Log;
 
+//WEBSITE BOOKING FUNCTIONS
+
 class BookController extends Controller
 {
     //Display bookings for the authenticated user.
@@ -29,7 +31,6 @@ class BookController extends Controller
 
 
     //Store a new booking.
-//Store a new booking
     public function store(Request $request)
     {
         // Validate the incoming request
@@ -46,8 +47,8 @@ class BookController extends Controller
         $existingBooking = Booking::where('booking_date', $validatedData['booking_date'])
             ->where(function ($query) use ($validatedData) {
                 $query->where(function ($q) use ($validatedData) {
-                    $q->where('booking_time', '<', $validatedData['end_time'])
-                        ->where('end_time', '>', $validatedData['booking_time']);
+                    $q->where('booking_time', '<', $validatedData['end_time'])  //Less than to end time detection
+                        ->where('end_time', '>', $validatedData['booking_time']);   //Greater than to end time detection
                 });
             })
             ->exists();
@@ -55,6 +56,8 @@ class BookController extends Controller
         if ($existingBooking) {
             return response()->json(['canBook' => false, 'message' => 'Booking time is already taken. Please choose a different time.'], 409);
         }
+
+        //Service Price (in order (ex. 1(Portrait) = 1000 Pesos, etc. ))
         $servicePrices = [
             1 => 1000,
             2 => 1500,
@@ -64,6 +67,7 @@ class BookController extends Controller
             6 => 1300,
         ];
 
+        //Location Price (in order (ex. Agno = 800 Peses, etc. ))
         $locationPrices = [
             "Agno" => 800,
             "Alaminos" => 600,
@@ -104,6 +108,7 @@ class BookController extends Controller
             "Villasis" => 400
         ];
 
+        //Hour Rates (in order (ex. 1 hour = 500 Pesos, etc. ))
         $bookingDurationHours = (strtotime($validatedData['end_time']) - strtotime($validatedData['booking_time'])) / 3600;
         $hourlyRates = [
             1 => 500,
@@ -124,10 +129,12 @@ class BookController extends Controller
             16 => 2000,
         ];
 
+        //Validation on Prices
         $servicePrice = $servicePrices[$validatedData['service_id']];
         $locationPrice = $locationPrices[$validatedData['location']] ?? 0;
         $hourlyRate = $hourlyRates[$bookingDurationHours] ?? 0;
 
+        //Add all for Total Price
         $totalPrice = $servicePrice + $locationPrice + $hourlyRate;
 
         $bookingData = array_merge($validatedData, [
@@ -169,7 +176,45 @@ class BookController extends Controller
 
         // Pricing arrays and calculations
         $servicePrices = [1 => 1000, 2 => 1500, 3 => 1250, 4 => 1100, 5 => 800, 6 => 1300];
-        $locationPrices = ['Dagupan' => 100, 'Binmaley' => 150, 'Lingayen' => 200, 'Calasiao' => 125];
+        $locationPrices = [
+            "Agno" => 800,
+            "Alaminos" => 600,
+            "Anda" => 500,
+            "Balungao" => 400,
+            "Bani" => 500,
+            "Basista" => 350,
+            "Bayambang" => 350,
+            "Binalonan" => 400,
+            "Binmaley" => 150,
+            "Bolinao" => 800,
+            "Bugallon" => 400,
+            "Burgos" => 800,
+            "Calasiao" => 150,
+            "Dagupan City" => 100,
+            "Dasol" => 500,
+            "Laoac" => 300,
+            "Lingayen" => 300,
+            "Manaoag" => 250,
+            "Mangaldan" => 200,
+            "Mangatarem" => 400,
+            "Mapandan" => 300,
+            "Natividad" => 600,
+            "Rosales" => 400,
+            "San Fabian" => 400,
+            "San Jacinto" => 300,
+            "San Manuel" => 600,
+            "San Nicolas" => 600,
+            "San Quintin" => 600,
+            "Sison" => 400,
+            "Sta. Barbara" => 300,
+            "Sta. Maria" => 500,
+            "Sual" => 300,
+            "Tayug" => 500,
+            "Umingan" => 600,
+            "Urbiztondo" => 600,
+            "Urdaneta" => 400,
+            "Villasis" => 400
+        ];
 
         // Calculate booking duration in hours
         $bookingDurationHours = (strtotime($validatedData['end_time']) - strtotime($validatedData['booking_time'])) / 3600;
@@ -219,6 +264,7 @@ class BookController extends Controller
         return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
     }
 
+
     //Update button function in website (Edit button)
     public function edit($id)
     {
@@ -233,6 +279,7 @@ class BookController extends Controller
 
         return view('bookings.edit', compact('booking', 'services', 'locations'));
     }
+
 
     //Cancel button function in website
     public function cancel(Request $request, $id)
@@ -255,6 +302,7 @@ class BookController extends Controller
         return redirect()->back()->with('success', 'Booking reject successfully.');
     }
 
+    //Check Booking Function
     public function checkBooking(Request $request)
     {
         $bookingDate = $request->input('booking_date');

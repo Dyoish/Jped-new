@@ -56,14 +56,6 @@
 </head>
 
 <body>
-    <!-- Navigation Bar 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="/"><img src="images/logo.png" style="width:200px;"></a>
-         
-    </nav> -->
-
-    <!-- Header Section -->
-
 
     <!-- Login Content -->
     <section style="margin-top: -15px; margin-bottom: 20px;">

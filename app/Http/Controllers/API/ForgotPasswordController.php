@@ -28,8 +28,6 @@ class ForgotPasswordController extends Controller
                 'status' => __($status)
             ];
         }
-
-
     }
 
     // RESETS AND UPDATES PASSWORD FUNCTION

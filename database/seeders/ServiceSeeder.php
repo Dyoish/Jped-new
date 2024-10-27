@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Service;
 
+//Makikita rin mga values sa database
+
 class ServiceSeeder extends Seeder
 {
     public function run()

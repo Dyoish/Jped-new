@@ -9,7 +9,8 @@ use App\Models\User;
 class UserController extends Controller
 {
     //DELETES USER INFORMATION
-    public function destroy($id){
+    public function destroy($id)
+    {
         $user = User::find($id);
         $user->delete();
         return redirect()->back();

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 
 use Laracsv\Export; // Export para kay kay ma'am Veron
 
+//ADMIN FUNCTIONS
 
 class DashboardController extends Controller
 {
@@ -33,16 +34,12 @@ class DashboardController extends Controller
         return view('Signup');
     }
 
-    public function terms()
-    {
-        return view('terms');
-    }
-
     public function adminlogin()
     {
         return view('Adminlogin');
     }
 
+    //BOX COUNTER / STATISTICS
     public function admindashboard()
     {
         $user = User::orderBy('id', 'desc')->get();
@@ -57,6 +54,7 @@ class DashboardController extends Controller
         return view('Admindashboards', compact('user', 'usercount', 'portraitBookingsCount', 'concertBookingsCount', 'cosplayBookingsCount', 'productBookingsCount', 'companionBookingsCount', 'modelBookingsCount'));
     }
 
+    //TABLE
     public function adminbookings()
     {
         $bookings = Booking::with('service')->get();
@@ -86,10 +84,6 @@ class DashboardController extends Controller
             'email',
             'service_id',
             'booking_date',
-            'booking_time',
-            'end_time', // Include the end time if relevant
-            'price', // Include the price if relevant
-            'status', // Include the status to track the booking status
             'location' // Include location if it is needed
         ])->download('bookings.csv'); // Specify the filename for download
     }

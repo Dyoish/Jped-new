@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class Category_Controller extends Controller
 {
+    //SERVICE/CATEGORIES FUNCTIONS
     public function Portrait_Category_Route()
     {
         return view('Categories.Portrait', );

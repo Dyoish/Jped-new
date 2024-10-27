@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+//Connection para sa database
+
 class Service extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name']; // Make sure you define these fields
-    
+
     public function showBookingForm()
     {
         $services = Service::all(); // Fetch all services from the database

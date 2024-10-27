@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JPED | About Us</title>
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" href="images/J.png" sizes="50x50" type="image/png"> <!-- Favicon link -->
     <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -528,9 +529,9 @@
         </a>
         <div class="contacts">
             <h3>Contact Us</h3>
-            <p>Email: info@jped.com</p>
-            <p>Phone: +123-456-7890</p>
-            <p>Address: 123 Photography St., Imageland</p>
+            <p>Email: jpedphotog@gmail.com</p>
+            <p>Phone: 09166901647</p>
+            <p>Dagupan City</p>
         </div>
         <div class="services">
             <h3>Our Services</h3>
