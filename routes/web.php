@@ -16,6 +16,8 @@ use App\Http\Controllers\Profile_Controller;
 use App\Http\Controllers\BookController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
+use App\Http\Controllers\PasswordResetController;
+
 use App\Exports\BookingsExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -86,8 +88,9 @@ Route::post('/verify', function () {
 Route::get('/forget-password', [ForgetPasswordManager::class, 'forgetPassword'])->name('forget.password');
 Route::post('/forget-password', [ForgetPasswordManager::class, 'forgetPasswordPost'])->name('forget.password.post');
 
-Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'resetPassword'])->name('reset.password');
-Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost'])->name('reset.password.post');
+Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'showResetForm'])->name('reset.password');  // GET to show the form
+Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost'])->name('reset.password.post'); // POST to submit form
+Route::post('/reset-password', [PasswordResetController::class, 'update'])->name('password.update');
 
 Route::get('/adminlogin', [DashboardController::class, 'adminlogin']);
 Route::post('/adminlogin', [DashboardController::class, 'adminAuth'])->name('adminpost');
@@ -182,3 +185,5 @@ Route::post('/bookings/approve/{id}', [DashboardController::class, 'approve'])->
 Route::post('/bookings/{id}/reject', [DashboardController::class, 'reject'])->name('bookings.reject');
 
 Route::post('/check_booking', [BookController::class, 'checkBooking']);
+
+Route::post('/conPass', [PasswordResetController::class, 'sendResetLink']);

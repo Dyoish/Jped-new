@@ -4,110 +4,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Reset Password</title>
     <link rel="stylesheet" href="login.css">
-    <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin"
-        rel="stylesheet">
     <style>
-        @import url(https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin);
+        @import url("https://db.onlinewebfonts.com/c/215107c04d97667966f3b627c9e79860?family=Spoof+Trial+Thin");
 
+        /* Font */
         @font-face {
             font-family: "Spoof Trial Thin";
             src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot");
-            src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix")format("embedded-opentype"),
-                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2")format("woff2"),
-                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff")format("woff"),
-                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf")format("truetype"),
-                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin")format("svg");
+            src: url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.eot?#iefix") format("embedded-opentype"),
+                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff2") format("woff2"),
+                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.woff") format("woff"),
+                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.ttf") format("truetype"),
+                url("https://db.onlinewebfonts.com/t/215107c04d97667966f3b627c9e79860.svg#Spoof Trial Thin") format("svg");
         }
 
-        /* Additional styles for responsiveness */
+        /* Background and Form Styling */
         body {
-            font-family: "Spoof Trial Thin";
-            padding-top: 60px;
-            /* Add padding to body for the fixed navbar */
+            font-family: "Spoof Trial Thin", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            color: #fff;
+            margin: 0;
+
+            /* Add your background image */
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/bg/login.png') center / cover no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        .black-button {
-            background-color: black;
-            color: white;
+        .container {
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 120px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, .2);
         }
 
-        .black-link {
-            text-decoration: none;
-            color: black;
+        .container h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .btn-primary.black-button:hover {
-            background-color: #333;
-            border: 1px solid #333;
-            color: white;
+        .form-control {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #fff;
+        }
+
+        .btn-custom {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            border-radius: 20px;
+            padding: 0.5rem 2rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-custom:hover {
+            background-color: #fff;
+            color: #4e54c8;
         }
 
         footer {
-            background-color: black;
-            color: #fff;
+            color: #ddd;
             text-align: center;
             padding: 10px;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation Bar 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="/"><img  src="images/logo.png"  style="width:200px;"></a>
-         Add your navigation links if needed
-    </nav> -->
+    <div class="container">
+        <h1>Reset Password</h1>
+        <p>Please check your email for a verification link.</p>
 
-    <!-- Header Section -->
+        <form id="loginForm" action="/conPass" method="post">
+            @csrf
+            <button type="submit" class="btn btn-custom">Proceed</button>
+        </form>
+    </div>
 
-    <!-- Login Content -->
-    <section style="margin-top: 74px; margin-bottom: 20px;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-8 col-sm-10">
-                    <form id="loginForm" action="/conPass" method="post"
-                        style="border: 1px solid #ccc; border-radius: 50px; padding: 95px; text-align: center; margin: auto;">
-                        @csrf
-                        <header class="py-5">
-                            <div class="container">
-                                <h1>Reset Password</h1>
-                            </div>
-                        </header>
 
-                        <h5 style="padding: 5px; margin-top:vh; margin-bottom:4vh">A Verification email has been sent.
-                            Please verify it.
-                        </h5>
-
-                        <button type="submit" class="btn btn-primary btn-block black-button">Proceed</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section
-    <footer class="bg-black text-light text-center py-3 fixed-bottom">
-        <div class="row">
-            <div class="col-md text-left ml-md-5">
-                <p><a href="/terms" class="text-light">Terms and Conditions</a></p>
-            </div>
-            <div class="col-md text-center">
-                <p>&copy; 2023 Login Page. All rights reserved.</p>
-            </div>
-            <div class="col-md text-right mr-md-5">
-                <p><a href="https://www.facebook.com/yourpage" class="text-light">Follow us on Facebook</a></p>
-            </div>
-        </div>
-    </footer> -->
-
-    <!-- Bootstrap JS and Popper.js scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
