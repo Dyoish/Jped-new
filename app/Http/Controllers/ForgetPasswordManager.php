@@ -70,7 +70,8 @@ class ForgetPasswordManager extends Controller
 
     public function showResetForm($token)
     {
-        // Display the reset password form with the token
-        return view('auth.reset-password', ['token' => $token]);
+        $email = request()->query('email');
+        return view('auth.reset-password', ['token' => $token, 'email' => $email]);
     }
+    
 }

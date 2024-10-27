@@ -11,10 +11,12 @@ class ResetPasswordMail extends Mailable
     use Queueable, SerializesModels;
 
     public $email;
+    public $token;
 
-    public function __construct($email)
+    public function __construct($email, $token) 
     {
         $this->email = $email;
+        $this->token = $token; 
     }
 
     public function build()
@@ -22,7 +24,7 @@ class ResetPasswordMail extends Mailable
         return $this->view('emails.reset-password')
             ->subject('Reset Your Password')
             ->with([
-                'resetLink' => url('/reset-password?email=' . urlencode($this->email))
+                'resetLink' => url('/reset-password/' . urlencode($this->token) . '?email=' . urlencode($this->email))
             ]);
     }
 }
