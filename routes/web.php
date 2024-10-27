@@ -84,18 +84,11 @@ Route::get('/verify', function () {
 Route::post('/verify', function () {
     return view('Verify_Page');
 });
-// Password Reset Routes
 Route::get('/forget-password', [ForgetPasswordManager::class, 'forgetPassword'])->name('forget.password');
 Route::post('/forget-password', [ForgetPasswordManager::class, 'forgetPasswordPost'])->name('forget.password.post');
-
-
-//Kawu
-Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'showResetForm'])->name('reset.password');  // GET to show the form
-Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost'])->name('reset.password.post'); // POST to submit form
-
-
-Route::post('/reset-password', [PasswordResetController::class, 'update'])->name('password.update');
-
+Route::get('/reset-password/{token}', [ForgetPasswordManager::class, 'showResetForm'])->name('reset.password');  
+Route::post('/reset-password', [ForgetPasswordManager::class, 'resetPasswordPost'])->name('reset.password.post');
+Route::post('/password/update', [ForgetPasswordManager::class, 'updatePassword'])->name('password.update');
 
 Route::get('/adminlogin', [DashboardController::class, 'adminlogin']);
 Route::post('/adminlogin', [DashboardController::class, 'adminAuth'])->name('adminpost');
