@@ -19,7 +19,7 @@ class CreateBookingsTable extends Migration
             $table->time('end_time');
             $table->double('price');
             $table->timestamps();
-
+            $table->unsignedBigInteger('user_id');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
