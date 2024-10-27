@@ -29,7 +29,7 @@ class BookController extends Controller
 
 
     //Store a new booking.
-//Store a new booking.
+//Store a new booking
     public function store(Request $request)
     {
         // Validate the incoming request
@@ -65,10 +65,43 @@ class BookController extends Controller
         ];
 
         $locationPrices = [
-            'Dagupan' => 100,
-            'Binmaley' => 150,
-            'Lingayen' => 200,
-            'Calasiao' => 125,
+            "Agno" => 800,
+            "Alaminos" => 600,
+            "Anda" => 500,
+            "Balungao" => 400,
+            "Bani" => 500,
+            "Basista" => 350,
+            "Bayambang" => 350,
+            "Binalonan" => 400,
+            "Binmaley" => 150,
+            "Bolinao" => 800,
+            "Bugallon" => 400,
+            "Burgos" => 800,
+            "Calasiao" => 150,
+            "Dagupan City" => 100,
+            "Dasol" => 500,
+            "Laoac" => 300,
+            "Lingayen" => 300,
+            "Manaoag" => 250,
+            "Mangaldan" => 200,
+            "Mangatarem" => 400,
+            "Mapandan" => 300,
+            "Natividad" => 600,
+            "Rosales" => 400,
+            "San Fabian" => 400,
+            "San Jacinto" => 300,
+            "San Manuel" => 600,
+            "San Nicolas" => 600,
+            "San Quintin" => 600,
+            "Sison" => 400,
+            "Sta. Barbara" => 300,
+            "Sta. Maria" => 500,
+            "Sual" => 300,
+            "Tayug" => 500,
+            "Umingan" => 600,
+            "Urbiztondo" => 600,
+            "Urdaneta" => 400,
+            "Villasis" => 400
         ];
 
         $bookingDurationHours = (strtotime($validatedData['end_time']) - strtotime($validatedData['booking_time'])) / 3600;

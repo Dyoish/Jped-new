@@ -243,10 +243,55 @@
                             <label for="location" class="form-label">Select Location</label>
                             <select name="location" id="location" class="form-select" required>
                                 <option value="">Choose a location...</option>
-                                <option value="Dagupan">Dagupan</option>
+                                <option value="Agno">Agno</option>
+                                <option value="Aguilar">Aguilar</option>
+                                <option value="Alaminos">Alaminos</option>
+                                <option value="Alcala">Alcala</option>
+                                <option value="Anda">Anda</option>
+                                <option value="Asingan">Asingan</option>
+                                <option value="Balungao">Balungao</option>
+                                <option value="Bani">Bani</option>
+                                <option value="Basista">Basista</option>
+                                <option value="Bautista">Bautista</option>
+                                <option value="Bayambang">Bayambang</option>
+                                <option value="Binalonan">Binalonan</option>
                                 <option value="Binmaley">Binmaley</option>
-                                <option value="Lingayen">Lingayen</option>
+                                <option value="Bolinao">Bolinao</option>
+                                <option value="Bugallon">Bugallon</option>
+                                <option value="Burgos">Burgos</option>
                                 <option value="Calasiao">Calasiao</option>
+                                <option value="Dagupan City">Dagupan City</option>
+                                <option value="Dasol">Dasol</option>
+                                <option value="Infanta">Infanta</option>
+                                <option value="Labrador">Labrador</option>
+                                <option value="Laoac">Laoac</option>
+                                <option value="Lingayen">Lingayen</option>
+                                <option value="Mabini">Mabini</option>
+                                <option value="Malasiqui">Malasiqui</option>
+                                <option value="Manaoag">Manaoag</option>
+                                <option value="Mangaldan">Mangaldan</option>
+                                <option value="Mangatarem">Mangatarem</option>
+                                <option value="Mapandan">Mapandan</option>
+                                <option value="Natividad">Natividad</option>
+                                <option value="Pozorrubio">Pozorrubio</option>
+                                <option value="Rosales">Rosales</option>
+                                <option value="San Carlos City">San Carlos City</option>
+                                <option value="San Fabian">San Fabian</option>
+                                <option value="San Jacinto">San Jacinto</option>
+                                <option value="San Manuel">San Manuel</option>
+                                <option value="San Nicolas">San Nicolas</option>
+                                <option value="San Quintin">San Quintin</option>
+                                <option value="Sison">Sison</option>
+                                <option value="Sta. Barbara">Sta. Barbara</option>
+                                <option value="Sta. Maria">Sta. Maria</option>
+                                <option value="Sto. Tomas">Sto. Tomas</option>
+                                <option value="Sual">Sual</option>
+                                <option value="Tayug">Tayug</option>
+                                <option value="Umingan">Umingan</option>
+                                <option value="Urbiztondo">Urbiztondo</option>
+                                <option value="Urdaneta">Urdaneta</option>
+                                <option value="Villasis">Villasis</option>
+
                             </select>
                         </div>
 
@@ -403,10 +448,44 @@
             };
 
             const locationPrices = {
-                "Dagupan": 100,
+                "Agno": 800,
+                "Alaminos": 600,
+                "Anda": 500,
+                "Balungao": 400,
+                "Bani": 500,
+                "Basista": 350,
+                "Bayambang": 350,
+                "Binalonan": 400,
                 "Binmaley": 150,
-                "Lingayen": 200,
-                "Calasiao": 125
+                "Bolinao": 800,
+                "Bugallon": 400,
+                "Burgos": 800,
+                "Calasiao": 150,
+                "Dagupan City": 100,
+                "Dasol": 500,
+                "Laoac": 300,
+                "Lingayen": 300,
+                "Manaoag": 250,
+                "Mangaldan": 200,
+                "Mangatarem": 400,
+                "Mapandan": 300,
+                "Natividad": 600,
+                "Rosales": 400,
+                "San Fabian": 400,
+                "San Jacinto": 300,
+                "San Manuel": 600,
+                "San Nicolas": 600,
+                "San Quintin": 600,
+                "Sison": 400,
+                "Sta. Barbara": 300,
+                "Sta. Maria": 500,
+                "Sual": 300,
+                "Tayug": 500,
+                "Umingan": 600,
+                "Urbiztondo": 600,
+                "Urdaneta": 400,
+                "Villasis": 400
+
             };
 
             const hourlyRates = {
