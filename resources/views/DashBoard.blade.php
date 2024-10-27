@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JPED | Home</title>
-    <link rel="icon" href="images/J.png" sizes="50x50" type="image/png"> <!-- Favicon link -->
+    <link rel="icon" href="images/J.png" sizes="50x50" type="image/png">
     <link rel="stylesheet" href="dashboard.css">
     <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
