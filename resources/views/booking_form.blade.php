@@ -334,9 +334,10 @@
                         <!-- Add this div below the service dropdown -->
                         <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
-                            <input type="text" id="price" class="form-control" placeholder="Price will appear here"
+                            <input type="text" id="price" class="form-control" placeholder="₱ Price will appear here"
                                 readonly>
                         </div>
+
 
                         <button type="submit" class="btn btn-primary w-100">Book Now</button>
                     </form>
@@ -473,7 +474,6 @@
                 "Urbiztondo": 600,
                 "Urdaneta": 400,
                 "Villasis": 400
-
             };
 
             const hourlyRates = {
@@ -499,9 +499,6 @@
             const startHour = parseInt(startTime.split(':')[0], 10);
             const endHour = parseInt(endTime.split(':')[0], 10);
 
-            // Debugging log
-            console.log("Start Hour:", startHour, "End Hour:", endHour);
-
             // Ensure end time is greater than start time
             if (endHour <= startHour) {
                 alert("End time must be later than start time.");
@@ -511,24 +508,19 @@
 
             const duration = endHour - startHour;
 
-            // Debugging log
-            console.log("Duration:", duration);
-
             if (serviceId && locationId && duration > 0) {
                 const servicePrice = servicePrices[serviceId];
                 const locationPrice = locationPrices[locationId];
                 const hourlyPrice = hourlyRates[duration + ' hour' + (duration > 1 ? 's' : '')]; // Adjust key for pluralization
 
-                // Debugging log
-                console.log("Service Price:", servicePrice, "Location Price:", locationPrice, "Hourly Price:", hourlyPrice);
-
                 // Total price calculation
                 const totalPrice = servicePrice + locationPrice + (hourlyPrice || 0); // Add 0 if hourlyPrice is undefined
-                document.getElementById('price').value = totalPrice;
+                document.getElementById('price').value = '₱ ' + totalPrice; // Prepend the peso sign
             } else {
                 document.getElementById('price').value = ''; // Clear price if inputs are not valid
             }
         }
+
 
         document.querySelector('select[name="service_id"]').addEventListener('change', calculatePrice);
         document.querySelector('select[name="location"]').addEventListener('change', calculatePrice);

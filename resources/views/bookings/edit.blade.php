@@ -431,7 +431,7 @@
 
                     // Total price calculation
                     const totalPrice = servicePrice + locationPrice + hourlyPrice;
-                    document.getElementById('price').value = totalPrice;
+                    document.getElementById('price').value = '₱' + totalPrice;
                 } else {
                     document.getElementById('price').value = ''; // Clear price if inputs are not valid
                 }

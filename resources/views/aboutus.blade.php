@@ -460,7 +460,7 @@
         <!-- Profile 4 -->
         <div class="profile-item">
             <div class="hover-effect">
-                <img src="images/profile/" alt="Profile 4" class="profile-pic">
+                <img src="images/profile/Mark.jpg" alt="Profile 4" class="profile-pic">
                 <div class="hover-text">
                     <p>Mark Capinpin <br>
                         (Reseacher) <br>
@@ -473,7 +473,7 @@
         <!-- Profile 5 -->
         <div class="profile-item">
             <div class="hover-effect">
-                <img src="images/profile/" alt="Profile 5" class="profile-pic">
+                <img src="images/profile/Lester.jpg" alt="Profile 5" class="profile-pic">
                 <div class="hover-text">
                     <p>Lester Taluban <br>
                         (Front End Developer) <br>

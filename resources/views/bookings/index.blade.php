@@ -138,15 +138,16 @@
                                     <strong>Booking Date:</strong> {{ $booking->booking_date }}<br>
                                     <strong>Start Time:</strong> {{ date('h:i A', strtotime($booking->booking_time)) }}<br>
                                     <strong>End Time:</strong> {{ date('h:i A', strtotime($booking->end_time)) }}<br>
-                                    <strong>Price:</strong> {{ $booking->price }}<br>
+                                    <strong>Price: ₱</strong> {{ $booking->price }}<br>
                                     <strong>Status:</strong> {{ ucfirst($booking->status) }}
                                 </p>
                             </div>
 
-                            <div class="card-footer 
-                                    {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
-                                    {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
-                                    {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
+                            <div
+                                class="card-footer 
+                                                    {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
+                                                    {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
+                                                    {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
                                 {{ ucfirst($booking->status) }}
                             </div>
                         </div>
@@ -171,7 +172,7 @@
                                         <p><strong>Start Time:</strong> {{ date('h:i A', strtotime($booking->booking_time)) }}
                                         </p>
                                         <p><strong>End Time:</strong> {{ date('h:i A', strtotime($booking->end_time)) }}</p>
-                                        <p><strong>Price:</strong> {{ $booking->price }}</p>
+                                        <p><strong>Price: ₱</strong> {{ $booking->price }}</p>
                                         <p><strong>Status:</strong> {{ ucfirst($booking->status) }}</p>
                                     </div>
                                     <div class="modal-footer">
