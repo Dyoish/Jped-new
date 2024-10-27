@@ -220,17 +220,13 @@
                 <label for="location" class="form-label">Select Location</label>
                 <select name="location" id="location" class="form-select"
                     value="{{ old('location', $booking->location) }}" required>
-                    <option value="">Choose a location...</option>
+                    <option value="" {{ $booking->location == '' ? 'selected' : '' }}>Choose a location...</option>
                     <option value="Agno" {{ $booking->location == 'Agno' ? 'selected' : '' }}>Agno</option>
-                    <option value="Aguilar" {{ $booking->location == 'Aguilar' ? 'selected' : '' }}>Aguilar</option>
                     <option value="Alaminos" {{ $booking->location == 'Alaminos' ? 'selected' : '' }}>Alaminos</option>
-                    <option value="Alcala" {{ $booking->location == 'Alcala' ? 'selected' : '' }}>Alcala</option>
                     <option value="Anda" {{ $booking->location == 'Anda' ? 'selected' : '' }}>Anda</option>
-                    <option value="Asingan" {{ $booking->location == 'Asingan' ? 'selected' : '' }}>Asingan</option>
                     <option value="Balungao" {{ $booking->location == 'Balungao' ? 'selected' : '' }}>Balungao</option>
                     <option value="Bani" {{ $booking->location == 'Bani' ? 'selected' : '' }}>Bani</option>
                     <option value="Basista" {{ $booking->location == 'Basista' ? 'selected' : '' }}>Basista</option>
-                    <option value="Bautista" {{ $booking->location == 'Bautista' ? 'selected' : '' }}>Bautista</option>
                     <option value="Bayambang" {{ $booking->location == 'Bayambang' ? 'selected' : '' }}>Bayambang</option>
                     <option value="Binalonan" {{ $booking->location == 'Binalonan' ? 'selected' : '' }}>Binalonan</option>
                     <option value="Binmaley" {{ $booking->location == 'Binmaley' ? 'selected' : '' }}>Binmaley</option>
@@ -241,23 +237,15 @@
                     <option value="Dagupan City" {{ $booking->location == 'Dagupan City' ? 'selected' : '' }}>Dagupan City
                     </option>
                     <option value="Dasol" {{ $booking->location == 'Dasol' ? 'selected' : '' }}>Dasol</option>
-                    <option value="Infanta" {{ $booking->location == 'Infanta' ? 'selected' : '' }}>Infanta</option>
-                    <option value="Labrador" {{ $booking->location == 'Labrador' ? 'selected' : '' }}>Labrador</option>
                     <option value="Laoac" {{ $booking->location == 'Laoac' ? 'selected' : '' }}>Laoac</option>
                     <option value="Lingayen" {{ $booking->location == 'Lingayen' ? 'selected' : '' }}>Lingayen</option>
-                    <option value="Mabini" {{ $booking->location == 'Mabini' ? 'selected' : '' }}>Mabini</option>
-                    <option value="Malasiqui" {{ $booking->location == 'Malasiqui' ? 'selected' : '' }}>Malasiqui</option>
                     <option value="Manaoag" {{ $booking->location == 'Manaoag' ? 'selected' : '' }}>Manaoag</option>
                     <option value="Mangaldan" {{ $booking->location == 'Mangaldan' ? 'selected' : '' }}>Mangaldan</option>
                     <option value="Mangatarem" {{ $booking->location == 'Mangatarem' ? 'selected' : '' }}>Mangatarem
                     </option>
                     <option value="Mapandan" {{ $booking->location == 'Mapandan' ? 'selected' : '' }}>Mapandan</option>
                     <option value="Natividad" {{ $booking->location == 'Natividad' ? 'selected' : '' }}>Natividad</option>
-                    <option value="Pozorrubio" {{ $booking->location == 'Pozorrubio' ? 'selected' : '' }}>Pozorrubio
-                    </option>
                     <option value="Rosales" {{ $booking->location == 'Rosales' ? 'selected' : '' }}>Rosales</option>
-                    <option value="San Carlos City" {{ $booking->location == 'San Carlos City' ? 'selected' : '' }}>San
-                        Carlos City</option>
                     <option value="San Fabian" {{ $booking->location == 'San Fabian' ? 'selected' : '' }}>San Fabian
                     </option>
                     <option value="San Jacinto" {{ $booking->location == 'San Jacinto' ? 'selected' : '' }}>San Jacinto
@@ -273,8 +261,6 @@
                     </option>
                     <option value="Sta. Maria" {{ $booking->location == 'Sta. Maria' ? 'selected' : '' }}>Sta. Maria
                     </option>
-                    <option value="Sto. Tomas" {{ $booking->location == 'Sto. Tomas' ? 'selected' : '' }}>Sto. Tomas
-                    </option>
                     <option value="Sual" {{ $booking->location == 'Sual' ? 'selected' : '' }}>Sual</option>
                     <option value="Tayug" {{ $booking->location == 'Tayug' ? 'selected' : '' }}>Tayug</option>
                     <option value="Umingan" {{ $booking->location == 'Umingan' ? 'selected' : '' }}>Umingan</option>
@@ -282,6 +268,7 @@
                     </option>
                     <option value="Urdaneta" {{ $booking->location == 'Urdaneta' ? 'selected' : '' }}>Urdaneta</option>
                     <option value="Villasis" {{ $booking->location == 'Villasis' ? 'selected' : '' }}>Villasis</option>
+
                 </select>
             </div>
 

@@ -136,18 +136,17 @@
                                     <strong>Service:</strong> {{ $booking->service->name }}<br>
                                     <strong>Location:</strong> {{ $booking->location }}<br>
                                     <strong>Booking Date:</strong> {{ $booking->booking_date }}<br>
-                                    <strong>Start Time:</strong> {{ $booking->booking_time }}<br>
-                                    <strong>End Time:</strong> {{ $booking->end_time }}<br>
+                                    <strong>Start Time:</strong> {{ date('h:i A', strtotime($booking->booking_time)) }}<br>
+                                    <strong>End Time:</strong> {{ date('h:i A', strtotime($booking->end_time)) }}<br>
                                     <strong>Price:</strong> {{ $booking->price }}<br>
                                     <strong>Status:</strong> {{ ucfirst($booking->status) }}
                                 </p>
                             </div>
 
-                            <div
-                                class="card-footer 
-                                                {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
-                                                {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
-                                                {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
+                            <div class="card-footer 
+                                    {{ trim(strtolower($booking->status)) === 'approved' ? 'footer-approved' : '' }}
+                                    {{ trim(strtolower($booking->status)) === 'pending' ? 'footer-pending' : '' }}
+                                    {{ trim(strtolower($booking->status)) === 'rejected' ? 'footer-rejected' : '' }}">
                                 {{ ucfirst($booking->status) }}
                             </div>
                         </div>
@@ -169,14 +168,14 @@
                                         </p>
                                         <p><strong>Location:</strong> {{ $booking->location }}</p>
                                         <p><strong>Booking Date:</strong> {{ $booking->booking_date }}</p>
-                                        <p><strong>Start Time:</strong> {{ $booking->booking_time }}</p>
-                                        <p><strong>End Time:</strong> {{ $booking->end_time }}</p>
+                                        <p><strong>Start Time:</strong> {{ date('h:i A', strtotime($booking->booking_time)) }}
+                                        </p>
+                                        <p><strong>End Time:</strong> {{ date('h:i A', strtotime($booking->end_time)) }}</p>
                                         <p><strong>Price:</strong> {{ $booking->price }}</p>
                                         <p><strong>Status:</strong> {{ ucfirst($booking->status) }}</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <!-- Only show Edit button if status is "pending" -->
                                         @if ($booking->status === 'pending')
                                             <a href="/bookings/{{ $booking->id }}/edit" class="btn btn-primary">Edit</a>
                                         @endif
@@ -187,6 +186,7 @@
                     </div>
                 @endforeach
             </div>
+
         @endif
     </div>
 
