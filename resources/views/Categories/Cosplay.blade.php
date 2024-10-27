@@ -149,8 +149,8 @@
         }
 
         .modal-description {
-            max-width: 45%;
-            padding-left: 20px;
+            max-width: 100%;
+            padding-left: 0px;
         }
 
         .modal-details {
@@ -319,69 +319,79 @@
                 <div class="row">
                     <!-- Gallery item 1 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/cosplay/eyt.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/cosplay/eyt.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="Nanami Kento" data-description="In this moment, I’m not just me; I’m a hero!"
+                            data-rating="4.9" data-comments='["This is pure artistry—your character shines through!"]'>
                     </div>
                     <!-- Gallery item 2 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/cosplay/tweneyt.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/cosplay/tweneyt.jpg" alt="Gallery Image 2" class="img-fluid"
+                            data-title="Popeye" data-description="Every stitch tells a story—cosplay is my art."
+                            data-rating="4.7"
+                            data-comments='["You’ve brought this character to life beautifully—stunning work!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 3 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/cosplay/twenpayb.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/cosplay/twenpayb.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Mash"
+                            data-description="Bringing fantasy to life, one character at a time!" data-rating="4.8"
+                            data-comments='["Beautiful composition!", "Absolutely breathtaking! The details are on point!"]'>
                     </div>
                     <!-- Gallery item 4 -->
                     <div class="col-md-4 col-sm-6 gallery-item" style="margin-top: -150px;">
-                        <img src="images/cosplay/twenseb.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/cosplay/twenseb.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="John Weak"
+                            data-description="Transforming into my favorite character, one costume at a time."
+                            data-rating="4.8"
+                            data-comments='["Beautiful composition!", "This looks like a scene straight out of a storybook—amazing!."]'>
                     </div>
                     <!-- Gallery item 5 -->
                     <div class="col-md-4 col-sm-6 gallery-item" style="margin-top: -480px;">
-                        <img src="images/cosplay/leben.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/cosplay/leben.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Howl"
+                            data-description="Embodying the spirit of the character—let the adventure begin!"
+                            data-rating="5"
+                            data-comments='["You nailed the essence of the character—so impressive!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 6 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/cosplay/twelb.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/cosplay/twelb.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="Yae Miko"
+                            data-description="Where imagination meets reality—this is my playground." data-rating="4.8"
+                            data-comments='["This capture is a perfect blend of creativity and passion!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 7 -->
                     <div class="col-md-4 col-sm-6 gallery-item" style="margin-top: -570px;">
-                        <img src=" images/cosplay/nayn.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src=" images/cosplay/nayn.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="Ninong Ry"
+                            data-description="Diving into a world of fantasy, one cosplay at a time." data-rating="4.5"
+                            data-comments='["Beautiful composition!", "What a vibe! This shot takes me right back to the show."]'>
                     </div>
                     <!-- Gallery item 8 -->
                     <div class="col-md-4 col-sm-6 gallery-item" style="margin-top: -550px;">
-                        <img src="images/cosplay/por.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
+                        <img src="images/cosplay/por.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="Two Nanami Kento" data-description="Costume complete, let the character shine!"
+                            data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 9 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/cosplay/sixt.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/cosplay/sixt.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="Nanami's Rage"
+                            data-description="Every detail matters—this is more than just a costume; it’s a transformation."
+                            data-rating="4.5"
+                            data-comments='["This capture is dripping with atmosphere—absolutely beautiful!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 10 -->
                     <div class="col-md-4 col-sm-6 gallery-item" style="margin-top: -220px;">
-                        <img src="images/cosplay/sebt.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
+                        <img src="images/cosplay/sebt.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Nanami"
+                            data-description="Celebrating creativity and passion—this is what cosplay is all about!"
+                            data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 11 -->
                     <div class="col-md-4 col-sm-6 gallery-item" style="margin-top: -880px;">
-                        <img src="images/cosplay/twensix.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/cosplay/twensix.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="Cosplay Fair " data-description="Costume complete, let the character shine!"
+                            data-rating="4.5" data-comments='["Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                 </div>
     </section>
@@ -433,7 +443,42 @@
                         <div class="modal-comments mt-3">
                             <strong>Comments:</strong>
                             <div id="modalComments"></div>
+
+                            <!-- New Comments Container -->
+                            <div class="new-comments-container mt-3">
+                                <strong>Your Submitted Comments:</strong>
+                                <div id="newComments"></div>
+                            </div>
                         </div>
+
+                        <!-- Rating System -->
+                        <div class="rating mt-3">
+                            <strong>Your Rating:</strong>
+                            <div>
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5">5 stars</label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4">4 stars</label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2">2 stars</label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1">1 star</label>
+                            </div>
+                        </div>
+
+                        <!-- Comment Input -->
+                        <div class="comment-input mt-3">
+                            <strong>Your Comment:</strong>
+                            <textarea id="commentText" class="form-control" rows="3"
+                                placeholder="Write your comment here..."></textarea>
+                        </div>
+                        <br>
+
+                        <!-- Submit Button -->
+                        <button id="submitComment" class="btn"
+                            style="background-color: gray; color: white; border: none; transition: background-color 0.3s;">Submit</button>
                     </div>
                 </div>
             </div>
@@ -496,6 +541,72 @@
             }
             lastScrollTop = scrollTop;
         });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalRating = document.getElementById('modalRating');
+            const modalComments = document.getElementById('modalComments');
+            const newComments = document.getElementById('newComments'); // New container for submitted comments
+            const submitComment = document.getElementById('submitComment');
+            const commentText = document.getElementById('commentText');
+
+            // Load comments from localStorage
+            const loadComments = () => {
+                const savedComments = JSON.parse(localStorage.getItem('comments')) || {};
+                const currentImageTitle = modalTitle.textContent; // Assuming you set this when opening the modal
+                modalComments.innerHTML = savedComments[currentImageTitle]
+                    ? savedComments[currentImageTitle].map(comment => `<p>${comment}</p>`).join('')
+                    : 'No comments yet.';
+
+                // Load the new comments into newComments div
+                newComments.innerHTML = savedComments[currentImageTitle]
+                    ? savedComments[currentImageTitle].map(comment => `<p>${comment}</p>`).join('')
+                    : 'No comments yet.';
+            };
+
+            // Set image details and load comments
+            const setImageDetails = (img) => {
+                modalImage.src = img.src;
+                modalTitle.textContent = img.getAttribute('data-title');
+                modalDescription.textContent = img.getAttribute('data-description');
+                modalRating.textContent = img.getAttribute('data-rating');
+                loadComments();
+            };
+
+            // Event listener for comment submission
+            submitComment.addEventListener('click', function () {
+                const currentImageTitle = modalTitle.textContent;
+
+                // Retrieve existing comments or initialize an array
+                const savedComments = JSON.parse(localStorage.getItem('comments')) || {};
+                if (!savedComments[currentImageTitle]) {
+                    savedComments[currentImageTitle] = [];
+                }
+
+                // Add new comment
+                if (commentText.value.trim() !== '') { // Check if the comment is not empty
+                    savedComments[currentImageTitle].push(commentText.value.trim());
+                    localStorage.setItem('comments', JSON.stringify(savedComments));
+                    loadComments(); // Load comments after adding a new one
+                    commentText.value = ''; // Clear the input after submission
+                }
+            });
+
+            // Assuming you have a way to open the modal and set the image details
+            // Here is an example for attaching an event listener to the images in the gallery
+            document.querySelectorAll('.gallery-item img').forEach(img => {
+                img.addEventListener('click', function () {
+                    setImageDetails(this);
+                    // Show the modal (using Bootstrap's modal)
+                    var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+                    myModal.show();
+                });
+            });
+        });
+
     </script>
 </body>
 

@@ -149,8 +149,8 @@
         }
 
         .modal-description {
-            max-width: 45%;
-            padding-left: 20px;
+            max-width: 100%;
+            padding-left: 0px;
         }
 
         .modal-details {
@@ -198,10 +198,9 @@
             display: flex;
             justify-content: space-around;
             align-items: flex-start;
-            margin-top: 80px;
+            margin-top: 40px;
             padding: 20px;
             background-color: #f4f4f4;
-            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -302,60 +301,102 @@
                 <br>
                 <br>
                 <div class="row">
-                    <!-- Gallery item 1 -->
-                    <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/chaven.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Kape"
-                            data-description="masarap mag kape" data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                    </div>
                     <!-- Gallery item 2 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/ibons.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/gallery/ibons.jpg" alt="Gallery Image 2" class="img-fluid" data-title="Raven"
+                            data-description="With wings woven from whispers of mystery, the raven soars through shadows, a guardian of secrets and a messenger of the unseen."
+                            data-rating="4.9" data-comments='["I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 3 -->
                     <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/france.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                        <img src="images/gallery/rafa.jpg" alt="Gallery Image 3" class="img-fluid"
+                            data-title="Raphaell Ridao"
+                            data-description="Moments that pulse with energy and passion—live for the music!"
+                            data-rating="4.6"
+                            data-comments='["A quiet masterpiece—so much beauty in a single moment.", "I love the mood of this shot."]'>
                     </div>
-                    <!-- Gallery item 4 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/gi (1).jpg" alt="Gallery Image 4" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                    </div>
-                    <!-- Gallery item 5 -->
-                    <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/bino.jpg" alt="Gallery Image 5" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                    </div>
-                    <!-- Gallery item 6 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/rafa.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                    </div>
-                    <!-- Gallery item 7 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/cato.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
-                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
-                    </div>
-                    <!-- Gallery item 8 -->
-                    <div class="col-md-4 col-sm-6 gallery-item">
-                        <img src="images/gallery/katsu.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                    <!-- Gallery item 17 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: 0px;'>
+                        <img src="images/model/mamajo.jpg" alt="Gallery Image 2" class="img-fluid"
+                            data-title="Glaiza Joyce"
+                            data-description="Creating unforgettable moments, one click at a time." data-rating="4.6"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
                     <!-- Gallery item 9 -->
-                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -200px;'>
-                        <img src="images/gallery/cat.jpg" alt="Gallery Image 6" class="img-fluid" data-title="Kape"
-                            data-description="A serene portrait of a person enjoying coffee." data-rating="4.5"
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -20px;'>
+                        <img src="images/products/toap.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="Tote Cap"
+                            data-description="Where style meets passion—always ready to represent." data-rating="4.5"
                             data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
                     </div>
+                    <!-- Gallery item 7 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -20px;'>
+                        <img src="images/portraits/alyy.jpg" alt="Gallery Image 6" class="img-fluid"
+                            data-title="Alyysa Merto"
+                            data-description="The soul shines brightest through the simplest gestures; in every glance, there's a lifetime of experience."
+                            data-rating="4.9"
+                            data-comments='["Beautiful composition!", "Every detail in this shot is perfect. Love it!"]'>
+                    </div>
+                    <!-- Gallery item 6 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: 0px;'>
+                        <img src="images/concert/twelb.jpg" alt="Gallery Image 6" class="img-fluid" data-title="J2K"
+                            data-description="The stage is set, and the magic unfolds—pure adrenaline."
+                            data-rating="4.7" data-comments='["Beautiful composition!", "Amazing lighting!"]'>
+                    </div>
+                    <!-- Gallery item 8 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -40px;'>
+                        <img src="images/model/wow.jpg" alt="Gallery Image 2" class="img-fluid"
+                            data-title="Joaqin and Jemaica" data-description="In the spotlight, every detail shines."
+                            data-rating="4.8" data-comments='["I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 9 -->
+                    <div class="col-md-4 col-sm-6 gallery-item">
+                        <img src="images/companion/rip.jpg" alt="Gallery Image 3" class="img-fluid" data-title="Browny"
+                            data-description="the cat may be on your lap, but you're still at their service."
+                            data-rating="4.8" data-comments='["I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 11 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -450px;'>
+                        <img src="images/portraits/jem.jpg" alt="Gallery Image 6" class="img-fluid"
+                            data-title="Jem Harold Centino"
+                            data-description="Finding beauty in the stillness of a single expression." data-rating="4.3"
+                            data-comments='["Beautiful composition!", "This photo tells a story only the heart can hear."]'>
+                    </div>
+                    <!-- Gallery item 9 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -40px;'>
+                        <img src="images/concert/gui.jpg" alt="Gallery Image 6" class="img-fluid"
+                            data-title="Concert Upang"
+                            data-description="This is where I feel alive—dancing with the stars." data-rating="4.7"
+                            data-comments='["Beautiful composition!", "You captured the essence of the moment—simply unforgettable!"]'>
+                    </div>
+                    <!-- Gallery item 5 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style="margin-top: 0px;">
+                        <img src="images/cosplay/leben.jpg" alt="Gallery Image 1" class="img-fluid" data-title="Howl"
+                            data-description="Embodying the spirit of the character—let the adventure begin!"
+                            data-rating="5"
+                            data-comments='["You nailed the essence of the character—so impressive!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 8 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -450px;'>
+                        <img src="images/products/alltwo.jpg" alt="Gallery Image 1" class="img-fluid"
+                            data-title="Summer Collection"
+                            data-description="'Keep Growing' - A Summer Collection by Exceed Clothing Co."
+                            data-rating="4.9"
+                            data-comments='["Beautiful composition!", "Amazing lighting!", "I love the mood of this shot."]'>
+                    </div>
+                    <!-- Gallery item 15 -->
+                    <div class="col-md-4 col-sm-6 gallery-item">
+                    </div>
+                    <!-- Gallery item 15 -->
+                    <div class="col-md-4 col-sm-6 gallery-item">
+                    </div>
+                    <!-- Gallery item 2 -->
+                    <div class="col-md-4 col-sm-6 gallery-item" style='margin-top: -410px;'>
+                        <img src="images/portraits/rumii.jpg" alt="Gallery Image 2" class="img-fluid"
+                            data-title="France Loren" data-description="Natural light, pure emotion." data-rating="4.3"
+                            data-comments='["I love the mood of this shot."]'>
+                    </div>
+
                 </div>
             </div>
     </section>
@@ -379,7 +420,42 @@
                         <div class="modal-comments mt-3">
                             <strong>Comments:</strong>
                             <div id="modalComments"></div>
+
+                            <!-- New Comments Container -->
+                            <div class="new-comments-container mt-3">
+                                <strong>Your Submitted Comments:</strong>
+                                <div id="newComments"></div>
+                            </div>
                         </div>
+
+                        <!-- Rating System -->
+                        <div class="rating mt-3">
+                            <strong>Your Rating:</strong>
+                            <div>
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5">5 stars</label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4">4 stars</label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2">2 stars</label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1">1 star</label>
+                            </div>
+                        </div>
+
+                        <!-- Comment Input -->
+                        <div class="comment-input mt-3">
+                            <strong>Your Comment:</strong>
+                            <textarea id="commentText" class="form-control" rows="3"
+                                placeholder="Write your comment here..."></textarea>
+                        </div>
+                        <br>
+
+                        <!-- Submit Button -->
+                        <button id="submitComment" class="btn"
+                            style="background-color: gray; color: white; border: none; transition: background-color 0.3s;">Submit</button>
                     </div>
                 </div>
             </div>
@@ -470,6 +546,72 @@
             }
             lastScrollTop = scrollTop;
         });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalRating = document.getElementById('modalRating');
+            const modalComments = document.getElementById('modalComments');
+            const newComments = document.getElementById('newComments'); // New container for submitted comments
+            const submitComment = document.getElementById('submitComment');
+            const commentText = document.getElementById('commentText');
+
+            // Load comments from localStorage
+            const loadComments = () => {
+                const savedComments = JSON.parse(localStorage.getItem('comments')) || {};
+                const currentImageTitle = modalTitle.textContent; // Assuming you set this when opening the modal
+                modalComments.innerHTML = savedComments[currentImageTitle]
+                    ? savedComments[currentImageTitle].map(comment => `<p>${comment}</p>`).join('')
+                    : 'No comments yet.';
+
+                // Load the new comments into newComments div
+                newComments.innerHTML = savedComments[currentImageTitle]
+                    ? savedComments[currentImageTitle].map(comment => `<p>${comment}</p>`).join('')
+                    : 'No comments yet.';
+            };
+
+            // Set image details and load comments
+            const setImageDetails = (img) => {
+                modalImage.src = img.src;
+                modalTitle.textContent = img.getAttribute('data-title');
+                modalDescription.textContent = img.getAttribute('data-description');
+                modalRating.textContent = img.getAttribute('data-rating');
+                loadComments();
+            };
+
+            // Event listener for comment submission
+            submitComment.addEventListener('click', function () {
+                const currentImageTitle = modalTitle.textContent;
+
+                // Retrieve existing comments or initialize an array
+                const savedComments = JSON.parse(localStorage.getItem('comments')) || {};
+                if (!savedComments[currentImageTitle]) {
+                    savedComments[currentImageTitle] = [];
+                }
+
+                // Add new comment
+                if (commentText.value.trim() !== '') { // Check if the comment is not empty
+                    savedComments[currentImageTitle].push(commentText.value.trim());
+                    localStorage.setItem('comments', JSON.stringify(savedComments));
+                    loadComments(); // Load comments after adding a new one
+                    commentText.value = ''; // Clear the input after submission
+                }
+            });
+
+            // Assuming you have a way to open the modal and set the image details
+            // Here is an example for attaching an event listener to the images in the gallery
+            document.querySelectorAll('.gallery-item img').forEach(img => {
+                img.addEventListener('click', function () {
+                    setImageDetails(this);
+                    // Show the modal (using Bootstrap's modal)
+                    var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+                    myModal.show();
+                });
+            });
+        });
+
     </script>
 </body>
 
