@@ -425,7 +425,7 @@
                 <img src="images/profile/josh.jpg" alt="Profile 1" class="profile-pic">
                 <div class="hover-text">
                     <p>Josh Dalmacio <br>
-                        (Project Manager) <br>
+                        (Project Manager/Full Stack Dev) <br>
                         Photographer
                     </p>
                 </div>
@@ -448,7 +448,7 @@
         <!-- Profile 3 -->
         <div class="profile-item">
             <div class="hover-effect">
-                <img src="images/profile/" alt="Profile 3" class="profile-pic">
+                <img src="images/profile/leya.jpg" alt="Profile 3" class="profile-pic">
                 <div class="hover-text">
                     <p>Leyanna Sanchez <br>
                         (Full Stack Developer) <br>

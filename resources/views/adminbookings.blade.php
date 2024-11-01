@@ -146,7 +146,7 @@
 
     @if(session('success'))
         <div
-            style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; margin-bottom: 20px; margin-left: 400px;">
+            style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; margin-bottom: 20px; margin-left: 350px;">
             {{ session('success') }}
         </div>
     @endif
@@ -249,8 +249,8 @@
                                     <td>{{ $booking->price ?? 'N/A' }}</td>
                                     <td
                                         class="{{ $booking->status == 'pending' ? 'status-pending' : '' }}
-                                                                    {{ $booking->status == 'accepted' ? 'status-accepted' : '' }}
-                                                                    {{ $booking->status == 'rejected' ? 'status-rejected' : '' }}">
+                                                                            {{ $booking->status == 'accepted' ? 'status-accepted' : '' }}
+                                                                            {{ $booking->status == 'rejected' ? 'status-rejected' : '' }}">
                                         {{ ucfirst($booking->status ?? 'N/A') }}
                                     </td>
                                     <td>
